@@ -14,7 +14,16 @@ export default async function handler(
     });
     const hotel = await prisma.hotel.findMany({ where: { isArchive: false } });
     const room = await prisma.room.findMany({ where: { isArchive: false } });
-    return res.status(200).json({ city, location, hotel, room });
+    const bus = await prisma.bus.findMany({ where: { isArchive: false } });
+    const airLine = await prisma.airLine.findMany({
+      where: { isArchive: false },
+    });
+    const touristGuide = await prisma.touristGuide.findMany({
+      where: { isArchive: false },
+    });
+    return res
+      .status(200)
+      .json({ city, location, hotel, room, bus, airLine, touristGuide });
   }
   res.status(405).send("method not allowed");
 }

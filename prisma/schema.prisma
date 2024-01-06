@@ -18,6 +18,8 @@ model City {
   isArchive Boolean @default(false)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
+  Bus Bus[]
+  AirLine AirLine[]
   Location    Location[]
   Hotel       Hotel[]
 }
@@ -55,10 +57,59 @@ model Room {
   assetUrl  String?
   hotel     Hotel    @relation(fields: [hotelId], references: [id])
   hotelId   Int
+  isAvailable Boolean
   isArchive Boolean @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Bus {
+   id        Int      @id @default(autoincrement())
+   name String
+   assetUrl String?
+   price Int
+   to String
+   seatNum Int
+   time String
+   isAvailable Boolean
+   cityId Int 
+   city        City     @relation(fields: [cityId], references: [id])
+   isArchive Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AirLine {
+   id        Int      @id @default(autoincrement())
+   name String 
+   assetUrl String?
+   price Int
+   to String
+   seatNum Int
+   time String
+   isAvailable Boolean
+   cityId Int 
+    city        City     @relation(fields: [cityId], references: [id])
+   isArchive Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TouristGuide {
+  id        Int      @id @default(autoincrement())
+  name String
+  assetUrl String?
+  price Int 
+  language String
+  isAvailable Boolean
+   isArchive Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+
+
 
 enum RoomType {
   ONE
