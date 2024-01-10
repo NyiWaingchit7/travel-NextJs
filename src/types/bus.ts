@@ -1,23 +1,24 @@
-import { AirLine } from "@prisma/client";
+import { Bus } from "@prisma/client";
 import { BaseOptions } from "./app";
 
-export interface AirLineSlice {
-  items: AirLine[];
+export interface BusSlice {
+  items: Bus[];
   isLoading: boolean;
   error: Error | null;
 }
 
-export interface CreateAirLineOptions extends BaseOptions {
+export interface CreateBusOptions extends BaseOptions {
   name: string;
   assetUrl?: string;
   price: number;
   to: string;
   seatNum: number;
   time: string;
+  isAvailable: boolean;
   cityId: number;
 }
 
-export interface UpdateAirLineOptions extends BaseOptions {
+export interface UpdateBusOptions extends BaseOptions {
   id: number;
   name: string;
   assetUrl?: string;
@@ -29,6 +30,6 @@ export interface UpdateAirLineOptions extends BaseOptions {
   isAvailable: boolean;
 }
 
-export interface DeleteAirLineOptions extends BaseOptions {
+export interface DeleteBus extends BaseOptions {
   id: number;
 }
