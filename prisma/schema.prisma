@@ -71,7 +71,7 @@ model Bus {
    to String
    seatNum Int
    time String
-   isAvailable Boolean
+   isAvailable Boolean @default(true)
    cityId Int 
    city        City     @relation(fields: [cityId], references: [id])
    isArchive Boolean @default(false)
