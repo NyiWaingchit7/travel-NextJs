@@ -12,6 +12,7 @@ const initialState: LocationSlice = {
   isLoading: false,
   error: null,
 };
+
 export const getLocation = createAsyncThunk(
   "get/location",
   async (_, thunkApi) => {

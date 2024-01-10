@@ -7,19 +7,19 @@ export interface TouristGuideSlice {
   error: Error | null;
 }
 
-export interface CreateRoom extends BaseOptions {
+export interface CreateTouristGuide extends BaseOptions {
   name: string;
   price: number;
   language: string;
   isAvailable: boolean;
 }
-export interface UpdateRoom extends BaseOptions {
+export interface UpdateTouristGuide extends BaseOptions {
   id: number;
   name: string;
   price: number;
   language: string;
   isAvailable: boolean;
 }
-export interface DeleteRoom extends BaseOptions {
+export interface DeleteTouristGuide extends BaseOptions {
   id: number;
 }
