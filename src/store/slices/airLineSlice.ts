@@ -1,11 +1,120 @@
-import { AirLineSlice } from "@/types/airLine";
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  AirLineSlice,
+  CreateAirLineOptions,
+  DeleteAirLineOptions,
+  UpdateAirLineOptions,
+} from "@/types/airLine";
+import { config } from "@/utils/config";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState: AirLineSlice = {
   items: [],
   isLoading: false,
   error: null,
 };
+
+export const getAirLine = createAsyncThunk(
+  "airLine/getAirLine",
+  async (_, thunkApi) => {
+    const response = await fetch(`${config.apiBaseUrl}/air-line`);
+    const data = await response.json();
+    thunkApi.dispatch(setAirLine(data));
+  }
+);
+
+export const createAirLine = createAsyncThunk(
+  "airLine/createAirLine",
+  async (options: CreateAirLineOptions, thunkApi) => {
+    const {
+      onError,
+      onSuccess,
+      name,
+      assetUrl,
+      price,
+      to,
+      seatNum,
+      time,
+      cityId,
+    } = options;
+    try {
+      const response = await fetch(`${config.apiBaseUrl}/air-line`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name,
+          price,
+          assetUrl,
+          to,
+          seatNum,
+          time,
+          cityId,
+        }),
+      });
+      const data = await response.json();
+
+      onSuccess && onSuccess();
+    } catch (err) {
+      onError && onError();
+    }
+  }
+);
+
+export const updateAirLine = createAsyncThunk(
+  "airLine/updateAirLine",
+  async (option: UpdateAirLineOptions, thunkApi) => {
+    const {
+      id,
+      name,
+      price,
+      assetUrl,
+      to,
+      seatNum,
+      time,
+      cityId,
+      isAvailable,
+      onSuccess,
+      onError,
+    } = option;
+    try {
+      const response = await fetch(`${config.apiBaseUrl}/air-line`, {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          id,
+          name,
+          price,
+          assetUrl,
+          to,
+          seatNum,
+          time,
+          cityId,
+          isAvailable,
+        }),
+      });
+      const data = await response.json();
+      onSuccess && onSuccess();
+    } catch (err) {
+      onError && onError();
+    }
+  }
+);
+
+export const deleteAirLine = createAsyncThunk(
+  "airLin/deleteAirLine",
+  async (option: DeleteAirLineOptions, thunkApi) => {
+    const { id, onSuccess, onError } = option;
+    try {
+      const response = await fetch(`${config.apiBaseUrl}/air-line`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+      onSuccess && onSuccess();
+    } catch (err) {
+      onError && onError();
+    }
+  }
+);
+
 const airLineSlice = createSlice({
   name: "airLine",
   initialState,
