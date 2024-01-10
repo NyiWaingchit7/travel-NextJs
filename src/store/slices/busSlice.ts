@@ -1,7 +1,7 @@
-import { AirLineSlice } from "@/types/airLine";
+import { BusSlice } from "@/types/bus";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: AirLineSlice = {
+const initialState: BusSlice = {
   items: [],
   isLoading: false,
   error: null,
