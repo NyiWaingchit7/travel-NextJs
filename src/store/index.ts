@@ -1,8 +1,13 @@
+import { TouristGuideSlice } from "@/types/touristGuide";
 import { configureStore } from "@reduxjs/toolkit";
 import airLineReducer from "./slices/airLineSlice";
 import appReducer from "./slices/appSlice";
 import busReducer from "./slices/busSlice";
 import cityReducer from "./slices/citySlice";
+import locationReducer from "./slices/locationSlice";
+import hotelReucer from "./slices/hotelSlice";
+import roomReducer from "./slices/roomSlice";
+import touristGuideReducer from "./slices/touristGuideSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +15,10 @@ export const store = configureStore({
     airLine: airLineReducer,
     bus: busReducer,
     city: cityReducer,
+    location: locationReducer,
+    hotel: hotelReucer,
+    room: roomReducer,
+    touristGuide: touristGuideReducer,
   },
 });
 
