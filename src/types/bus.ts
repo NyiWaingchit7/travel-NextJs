@@ -1,15 +1,11 @@
 import { Bus } from "@prisma/client";
-<<<<<<< HEAD
 import { BaseOptions } from "./app";
-=======
->>>>>>> 694937cf72b0290a7c9ace03ec62576619805a17
 
 export interface BusSlice {
   items: Bus[];
   isLoading: boolean;
   error: Error | null;
 }
-<<<<<<< HEAD
 
 export interface CreateBusOptions extends BaseOptions {
   name: string;
@@ -34,8 +30,6 @@ export interface UpdateBusOptions extends BaseOptions {
   isAvailable: boolean;
 }
 
-export interface DeleteBus extends BaseOptions {
+export interface DeleteBusOptions extends BaseOptions {
   id: number;
 }
-=======
->>>>>>> 694937cf72b0290a7c9ace03ec62576619805a17

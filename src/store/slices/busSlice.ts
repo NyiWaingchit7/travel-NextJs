@@ -1,5 +1,11 @@
 import { AirLineSlice } from "@/types/airLine";
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  CreateBusOptions,
+  DeleteBusOptions,
+  UpdateBusOptions,
+} from "@/types/bus";
+import { config } from "@/utils/config";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState: AirLineSlice = {
   items: [],
@@ -13,7 +19,7 @@ export const getBus = createAsyncThunk("bus/getBus", async (_, thunkApi) => {
   thunkApi.dispatch(setBus(data));
 });
 
-const createAirLine = createAsyncThunk(
+export const createBus = createAsyncThunk(
   "bus/createBus",
   async (options: CreateBusOptions, thunkApi) => {
     const {
@@ -97,6 +103,7 @@ export const deleteBus = createAsyncThunk(
     try {
       const response = await fetch(`${config.apiBaseUrl}/bus`, {
         method: "DELETE",
+        body: JSON.stringify({ id }),
       });
       const data = await response.json();
       onSuccess && onSuccess();
