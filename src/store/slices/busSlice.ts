@@ -1,13 +1,7 @@
-import {
-  BusSlice,
-  CreateBusOptions,
-  DeleteBusOptions,
-  UpdateBusOptions,
-} from "@/types/bus";
-import { config } from "@/utils/config";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { AirLineSlice } from "@/types/airLine";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: BusSlice = {
+const initialState: AirLineSlice = {
   items: [],
   isLoading: false,
   error: null,

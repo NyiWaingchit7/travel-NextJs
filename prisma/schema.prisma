@@ -57,7 +57,7 @@ model Room {
   assetUrl  String?
   hotel     Hotel    @relation(fields: [hotelId], references: [id])
   hotelId   Int
-  isAvailable Boolean
+  isAvailable Boolean @default(true)
   isArchive Boolean @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -71,7 +71,7 @@ model Bus {
    to String
    seatNum Int
    time String
-   isAvailable Boolean
+   isAvailable Boolean @default(true)
    cityId Int 
    city        City     @relation(fields: [cityId], references: [id])
    isArchive Boolean @default(false)
