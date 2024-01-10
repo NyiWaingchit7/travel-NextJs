@@ -1,3 +1,4 @@
+import Layout from "@/component/layout/Layout";
 import { store } from "@/store";
 import "@/styles/globals.css";
 import { theme } from "@/utils/theme";
@@ -9,7 +10,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </Provider>
   );

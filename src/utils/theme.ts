@@ -5,13 +5,13 @@ export const theme = createTheme({
       main: "#000000",
     },
     secondary: {
-      main: "#FBE122",
+      main: "#365486",
     },
     info: {
-      main: "#f6f6f6",
+      main: "#FBA1B7",
     },
     success: {
-      main: "#d40b29",
+      main: "#994D1C",
     },
   },
 });
