@@ -45,14 +45,11 @@ export const updateTouristGuide = createAsyncThunk(
     const { id, name, price, language, isAvailable, onSuccess, onError } =
       option;
     try {
-      const response = await fetch(
-        `${config.apiBaseUrl}/tourist-guide?id=${id}`,
-        {
-          method: "PUT",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ name, price, language, isAvailable }),
-        }
-      );
+      const response = await fetch(`${config.apiBaseUrl}/tourist-guide`, {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ id, name, price, language, isAvailable }),
+      });
       const data = await response.json();
       onSuccess && onSuccess();
     } catch (err) {
@@ -65,12 +62,10 @@ export const deleteTouristGuide = createAsyncThunk(
   async (option: DeleteTouristGuide, thunkApi) => {
     const { id, onSuccess, onError } = option;
     try {
-      const response = await fetch(
-        `${config.apiBaseUrl}/tourist-guide?id=${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${config.apiBaseUrl}/tourist-guide`, {
+        method: "DELETE",
+        body: JSON.stringify({ id }),
+      });
       const data = await response.json();
       onSuccess && onSuccess();
     } catch (err) {
