@@ -15,7 +15,7 @@ const initialState: AirLineSlice = {
 
 export const getBus = createAsyncThunk("bus/getBus", async (_, thunkApi) => {
   const response = await fetch(`${config.apiBaseUrl}/bus`);
-  const data = await response.json();
+  const { data } = await response.json();
   thunkApi.dispatch(setBus(data));
 });
 
@@ -105,7 +105,7 @@ export const deleteBus = createAsyncThunk(
         method: "DELETE",
         body: JSON.stringify({ id }),
       });
-      const data = await response.json();
+
       onSuccess && onSuccess();
     } catch (err) {
       onError && onError();

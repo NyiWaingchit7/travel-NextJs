@@ -13,21 +13,15 @@ const initialState: AppSlice = {
 
 export const fetchAppData = createAsyncThunk(
   "app/fetchAppData",
-  async (options: GetAppDataOptions, thunkAPI) => {
-    const { onError, onSuccess } = options;
-    try {
-      const response = await fetch(`${config.apiBaseUrl}/app`);
-      const appData = await response.json();
-      const { city, location, hotel, room, bus, airLine, touristGuide } =
-        appData;
+  async (_, thunkAPI) => {
+    const response = await fetch(`${config.apiBaseUrl}/app`);
+    const appData = await response.json();
+    const { city, location, hotel, room, bus, airLine, touristGuide } = appData;
 
-      thunkAPI.dispatch(setInit(true));
-      thunkAPI.dispatch(setCity(city));
-      thunkAPI.dispatch(setBus(bus));
-      thunkAPI.dispatch(setAirLine(airLine));
-    } catch (err) {
-      onError && onError();
-    }
+    thunkAPI.dispatch(setInit(true));
+    thunkAPI.dispatch(setCity(city));
+    thunkAPI.dispatch(setBus(bus));
+    thunkAPI.dispatch(setAirLine(airLine));
   }
 );
 

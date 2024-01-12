@@ -15,7 +15,7 @@ const initialState: HotelSLice = {
 
 export const getHotel = createAsyncThunk("get/Hotel", async (_, thunkApi) => {
   const response = await fetch(`${config.apiBaseUrl}/hotel`);
-  const data = await response.json();
+  const { data } = await response.json();
   thunkApi.dispatch(setHotel(data));
 });
 
@@ -61,7 +61,7 @@ export const deleteHotel = createAsyncThunk(
       const response = await fetch(`${config.apiBaseUrl}/hotel?id=${id}`, {
         method: "DELETE",
       });
-      const data = await response.json();
+
       onSuccess && onSuccess();
     } catch (err) {
       onError && onError();

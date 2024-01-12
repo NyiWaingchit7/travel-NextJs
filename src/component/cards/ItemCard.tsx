@@ -19,76 +19,33 @@ export default function ItemCard({
   assetUrl,
   onClick,
 }: Props) {
-  if (href) {
-    return (
-      <Link href={href} style={{ textDecoration: "none" }}>
+  return (
+    <Box sx={{ width: { xs: "40%", sm: "20%" }, m: 1 }}>
+      <Link href={href || ""} style={{ textDecoration: "none" }}>
         <Paper
           elevation={3}
           sx={{
-            width: 170,
-            height: 170,
-            p: 2,
+            width: "100%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            m: 2,
             cursor: "pointer",
             opacity: isAvailable === false ? 0.4 : 1,
+            borderRadius: 3,
+            p: 1,
           }}
         >
-          <Box sx={{ mb: 2 }}>
-            {assetUrl ? (
-              <Image src={assetUrl} height={110} width={130} alt={title} />
-            ) : (
-              <Image
-                src={"/default-image.jpg"}
-                height={110}
-                width={130}
-                alt={title}
-              />
-            )}
+          <Box sx={{ width: "100%", p: 1, mb: 1 }}>
+            <Box
+              component="img"
+              sx={{ width: "100%", borderRadius: 3 }}
+              src={assetUrl || "../default-image.jpg"}
+            />
           </Box>
-          <Typography sx={{ fontWeight: "700" }}>{title}</Typography>
-          {description && (
-            <Typography sx={{ fontSize: 14 }}>{description}</Typography>
-          )}
+          <Typography sx={{ fontWeight: "bold" }}>{title}</Typography>
         </Paper>
       </Link>
-    );
-  } else {
-    return (
-      <Paper
-        elevation={3}
-        sx={{
-          width: 170,
-          height: 170,
-          p: 2,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          m: 2,
-          opacity: isAvailable === false ? 0.4 : 1,
-        }}
-      >
-        <Box sx={{ mt: 1 }}>
-          {assetUrl ? (
-            <Image src={assetUrl} height={110} width={130} alt={title} />
-          ) : (
-            <Image
-              src={"/default-image.jpg"}
-              height={110}
-              width={130}
-              alt={title}
-            />
-          )}
-        </Box>
-        <Typography sx={{ fontWeight: "700" }}>{title}</Typography>
-        {description && (
-          <Typography sx={{ fontSize: 14 }}>{description}</Typography>
-        )}
-      </Paper>
-    );
-  }
+    </Box>
+  );
 }

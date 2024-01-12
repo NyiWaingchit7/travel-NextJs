@@ -42,7 +42,7 @@ export const updateRoom = createAsyncThunk(
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ type, price, hotelId, isAvailable }),
       });
-      const data = await response.json();
+      const { data } = await response.json();
       onSuccess && onSuccess();
     } catch (err) {
       onError && onError();
@@ -57,7 +57,7 @@ export const deleteRoom = createAsyncThunk(
       const response = await fetch(`${config.apiBaseUrl}/room?id=${id}`, {
         method: "DELETE",
       });
-      const data = await response.json();
+
       onSuccess && onSuccess();
     } catch (err) {
       onError && onError();

@@ -17,7 +17,7 @@ export const getAirLine = createAsyncThunk(
   "airLine/getAirLine",
   async (_, thunkApi) => {
     const response = await fetch(`${config.apiBaseUrl}/air-line`);
-    const data = await response.json();
+    const { data } = await response.json();
     thunkApi.dispatch(setAirLine(data));
   }
 );
@@ -107,7 +107,7 @@ export const deleteAirLine = createAsyncThunk(
       const response = await fetch(`${config.apiBaseUrl}/air-line`, {
         method: "DELETE",
       });
-      const data = await response.json();
+
       onSuccess && onSuccess();
     } catch (err) {
       onError && onError();

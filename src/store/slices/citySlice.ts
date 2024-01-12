@@ -15,7 +15,7 @@ const initialState: CitySlice = {
 
 export const getCity = createAsyncThunk("city/getCity", async (_, thunkApi) => {
   const response = await fetch(`${config.apiBaseUrl}/city`);
-  const data = await response.json();
+  const { data } = await response.json();
   thunkApi.dispatch(setCity(data));
 });
 
@@ -68,7 +68,7 @@ export const deleteCity = createAsyncThunk(
       const response = await fetch(`${config.apiBaseUrl}/city?id=${id}`, {
         method: "DELETE",
       });
-      const data = await response.json();
+
       onSuccess && onSuccess();
     } catch (err) {
       onError && onError();

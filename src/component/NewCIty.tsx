@@ -1,29 +1,25 @@
 import { useAppDispatch } from "@/store/hook";
-import { createCity, getCity } from "@/store/slices/citySlice";
+import { createCity, getCity, updateCity } from "@/store/slices/citySlice";
 import {
-  Avatar,
   Box,
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemButton,
-  ListItemText,
   TextField,
 } from "@mui/material";
-import { blue } from "@mui/material/colors";
-import { useState } from "react";
+import { City } from "@prisma/client";
+
+import { useEffect, useState } from "react";
 interface props {
   open: boolean;
   setOpen: (data: any) => void;
+  cityData?: City;
 }
 const defaultCity = { name: "", description: "" };
 
-const NewCity = ({ open, setOpen }: props) => {
+const NewCity = ({ open, setOpen, cityData }: props) => {
   const [newCity, setNewCity] = useState(defaultCity);
   const dispatch = useAppDispatch();
   const onSuccess = () => {
@@ -34,6 +30,16 @@ const NewCity = ({ open, setOpen }: props) => {
   const handleCreateCity = () => {
     dispatch(createCity({ ...newCity, onSuccess }));
   };
+  const handleUpdateCity = () => {
+    dispatch(updateCity({ id: cityData?.id as number, ...newCity, onSuccess }));
+  };
+  useEffect(() => {
+    if (cityData) {
+      setNewCity(cityData);
+    } else {
+      setNewCity(defaultCity);
+    }
+  }, [open]);
   return (
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
@@ -50,6 +56,7 @@ const NewCity = ({ open, setOpen }: props) => {
             placeholder="Name..."
             onChange={(e) => setNewCity({ ...newCity, name: e.target.value })}
             sx={{ mb: 1 }}
+            defaultValue={newCity.name}
           />
           <TextField
             placeholder="Description..."
@@ -57,6 +64,7 @@ const NewCity = ({ open, setOpen }: props) => {
               setNewCity({ ...newCity, description: e.target.value })
             }
             sx={{ mb: 1 }}
+            defaultValue={newCity.description}
           />
         </DialogContent>
         <DialogActions
@@ -76,15 +84,27 @@ const NewCity = ({ open, setOpen }: props) => {
           >
             Cancel
           </Button>
-          <Button
-            variant="contained"
-            color="success"
-            sx={{ mx: 1 }}
-            disabled={!newCity.name || !newCity.description}
-            onClick={handleCreateCity}
-          >
-            Comfirm
-          </Button>
+          {cityData ? (
+            <Button
+              variant="contained"
+              color="success"
+              sx={{ mx: 1 }}
+              disabled={!newCity.name || !newCity.description}
+              onClick={handleUpdateCity}
+            >
+              Update
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="success"
+              sx={{ mx: 1 }}
+              disabled={!newCity.name || !newCity.description}
+              onClick={handleCreateCity}
+            >
+              Comfirm
+            </Button>
+          )}
         </DialogActions>
       </Dialog>
     </Box>

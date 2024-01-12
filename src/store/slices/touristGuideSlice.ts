@@ -17,7 +17,7 @@ export const getTouristGuide = createAsyncThunk(
   "get/TouristGuide",
   async (_, thunkApi) => {
     const response = await fetch(`${config.apiBaseUrl}/tourist-guide`);
-    const data = await response.json();
+    const { data } = await response.json();
     thunkApi.dispatch(setTouristGuide(data));
   }
 );
@@ -66,7 +66,7 @@ export const deleteTouristGuide = createAsyncThunk(
         method: "DELETE",
         body: JSON.stringify({ id }),
       });
-      const data = await response.json();
+
       onSuccess && onSuccess();
     } catch (err) {
       onError && onError();

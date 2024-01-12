@@ -3,10 +3,10 @@ import DirectionsBusFilledIcon from "@mui/icons-material/DirectionsBusFilled";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import PersonIcon from "@mui/icons-material/Person";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
-import LocalHotelIcon from "@mui/icons-material/LocalHotel";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 import Link from "next/link";
 
 const AdminSideBar = () => {
@@ -32,7 +32,15 @@ const AdminSideBar = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <Typography sx={{ fontWeight: "bold" }}>{d.name}</Typography>
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: { xs: "0.8rem", lg: "1rem" },
+                    mr: 1,
+                  }}
+                >
+                  {d.name}
+                </Typography>
                 <Box>{d.icon}</Box>
               </Box>
               <Box
@@ -68,7 +76,7 @@ const sidebars = [
   {
     id: 3,
     name: "Hotel",
-    icon: <LocalHotelIcon />,
+    icon: <MapsHomeWorkIcon />,
     link: "/admin/hotel",
   },
   {
