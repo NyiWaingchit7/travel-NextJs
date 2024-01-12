@@ -19,7 +19,7 @@ export const getCity = createAsyncThunk("city/getCity", async (_, thunkApi) => {
   thunkApi.dispatch(setCity(data));
 });
 
-const createCity = createAsyncThunk(
+export const createCity = createAsyncThunk(
   "city/createCity",
   async (options: CreateCityOptions, thunkApi) => {
     const { onError, onSuccess, name, assetUrl, description } = options;
@@ -41,16 +41,6 @@ const createCity = createAsyncThunk(
     }
   }
 );
-
-const citySlice = createSlice({
-  name: "city",
-  initialState,
-  reducers: {
-    setCity: (state, action) => {
-      state.items = action.payload;
-    },
-  },
-});
 
 export const updateCity = createAsyncThunk(
   "city/updateCity",
@@ -85,6 +75,16 @@ export const deleteCity = createAsyncThunk(
     }
   }
 );
+
+const citySlice = createSlice({
+  name: "city",
+  initialState,
+  reducers: {
+    setCity: (state, action) => {
+      state.items = action.payload;
+    },
+  },
+});
 
 export const { setCity } = citySlice.actions;
 export default citySlice.reducer;

@@ -7,40 +7,44 @@ import LocalHotelIcon from "@mui/icons-material/LocalHotel";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import Link from "next/link";
 
 const AdminSideBar = () => {
   return (
     <Box sx={{ mt: 3 }}>
       <Box sx={{ color: "info.light", fontWeight: "bold" }}>
         {sidebars.map((d) => (
-          <Box
-            sx={{
-              m: 1,
-              p: 1,
-              cursor: "pointer",
-            }}
-          >
+          <Link href={d.link} key={d.id} style={{ textDecoration: "none" }}>
             <Box
               sx={{
+                m: 1,
                 p: 1,
-                "&:hover": { bgcolor: "secondary.main" },
-                borderRadius: 3,
-                display: "flex",
-                justifyContent: "space-between",
+                cursor: "pointer",
+                color: "info.light",
               }}
             >
-              <Typography sx={{ fontWeight: "bold" }}>{d.name}</Typography>
-              <Box>{d.icon}</Box>
+              <Box
+                sx={{
+                  p: 1,
+                  "&:hover": { bgcolor: "secondary.main" },
+                  borderRadius: 3,
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Typography sx={{ fontWeight: "bold" }}>{d.name}</Typography>
+                <Box>{d.icon}</Box>
+              </Box>
+              <Box
+                sx={{
+                  height: "1px",
+                  bgcolor: "info.light",
+                  width: "100%",
+                  mt: 1,
+                }}
+              ></Box>
             </Box>
-            <Box
-              sx={{
-                height: "1px",
-                bgcolor: "info.light",
-                width: "100%",
-                mt: 1,
-              }}
-            ></Box>
-          </Box>
+          </Link>
         ))}
       </Box>
     </Box>
@@ -53,40 +57,48 @@ const sidebars = [
     id: 1,
     name: "City",
     icon: <LocationCityIcon />,
+    link: "/admin/city",
   },
   {
     id: 2,
     name: "Location",
     icon: <LocationOnIcon />,
+    link: "/admin/location",
   },
   {
     id: 3,
     name: "Hotel",
     icon: <LocalHotelIcon />,
+    link: "/admin/hotel",
   },
   {
     id: 4,
     name: "Room",
     icon: <MeetingRoomIcon />,
+    link: "/admin/room",
   },
   {
     id: 5,
     name: "Tourist Guides",
     icon: <PersonIcon />,
+    link: "/admin/tourist-guide",
   },
   {
     id: 6,
     name: "AirLine Ticket",
     icon: <FlightTakeoffIcon />,
+    link: "/admin/airLine-ticket",
   },
   {
     id: 7,
     name: "Bus",
     icon: <DirectionsBusFilledIcon />,
+    link: "/admin/bus",
   },
   {
     id: 8,
     name: "Booking",
     icon: <BookmarkIcon />,
+    link: "/admin/booking",
   },
 ];
