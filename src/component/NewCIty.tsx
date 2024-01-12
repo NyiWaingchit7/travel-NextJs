@@ -43,7 +43,7 @@ const NewCity = ({ open, setOpen, cityData }: props) => {
   return (
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Add New Player</DialogTitle>
+        <DialogTitle>Add City Player</DialogTitle>
         <DialogContent
           sx={{
             display: "flex",
