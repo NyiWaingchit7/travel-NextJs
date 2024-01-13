@@ -35,6 +35,7 @@ const Hotel = () => {
               key={d.id}
               title={d.name}
               description={d.description}
+              assetUrl={"../default-hotel.jpg"}
               href={`/admin/hotel/${d.id}`}
             />
           ))}

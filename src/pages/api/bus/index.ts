@@ -7,7 +7,10 @@ export default async function handler(
 ) {
   const method = req.method;
   if (method === "GET") {
-    const data = await prisma.city.findMany({ where: { isArchive: false } });
+    const data = await prisma.city.findMany({
+      where: { isArchive: false },
+      orderBy: { id: "asc" },
+    });
     return res.status(200).json({ data });
   } else if (method === "POST") {
     const { name, price, to, seatNum, time, cityId, isAvailable } = req.body;

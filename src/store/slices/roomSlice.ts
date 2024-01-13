@@ -10,7 +10,7 @@ const initialState: RoomSlice = {
 
 export const getRoom = createAsyncThunk("get/Room", async (_, thunkApi) => {
   const response = await fetch(`${config.apiBaseUrl}/room`);
-  const data = await response.json();
+  const { data } = await response.json();
   thunkApi.dispatch(setroom(data));
 });
 

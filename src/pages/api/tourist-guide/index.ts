@@ -9,6 +9,7 @@ export default async function handler(
   if (method === "GET") {
     const data = await prisma.touristGuide.findMany({
       where: { isArchive: false },
+      orderBy: { id: "asc" },
     });
     return res.status(200).json({ data });
   } else if (method === "POST") {

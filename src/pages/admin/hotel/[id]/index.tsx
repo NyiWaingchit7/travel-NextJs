@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import { deleteHotel, getHotel } from "@/store/slices/hotelSlice";
 import NewHotel from "@/component/NewHotel";
+import Room from "../../room";
 const HotelDetail = () => {
   const router = useRouter();
   const id = Number(router.query.id);
@@ -85,7 +86,7 @@ const HotelDetail = () => {
       >
         <Box
           sx={{
-            width: { xs: "80%", md: "50%" },
+            width: { xs: "70%", sm: "50%", lg: "30%" },
             display: "flex",
             flexDirection: "column",
 
@@ -124,6 +125,7 @@ const HotelDetail = () => {
           )}
         </Box>
       </Box>
+      <Room />
       <NewHotel open={open} setOpen={setOpen} hotelData={data} />
     </Box>
   );

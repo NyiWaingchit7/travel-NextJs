@@ -35,7 +35,10 @@ export default async function handler(
     await prisma.hotel.update({ data: { isArchive: true }, where: { id } });
     return res.status(200).send("delete successfully");
   } else if (method === "GET") {
-    const data = await prisma.hotel.findMany({ where: { isArchive: false } });
+    const data = await prisma.hotel.findMany({
+      where: { isArchive: false },
+      orderBy: { id: "asc" },
+    });
     return res.status(200).json({ data });
   }
   res.status(405).json({ name: "method not allow" });

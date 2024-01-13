@@ -1,14 +1,16 @@
 import { Box, Paper, Typography } from "@mui/material";
+import { RoomType } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
-  title: string;
+  title?: string;
   isAvailable?: boolean;
   href?: string;
   description?: string;
   assetUrl?: string;
-  onClick?: () => void;
+  type?: RoomType;
+  price?: number;
 }
 
 export default function ItemCard({
@@ -17,7 +19,8 @@ export default function ItemCard({
   description,
   isAvailable,
   assetUrl,
-  onClick,
+  type,
+  price,
 }: Props) {
   return (
     <Box sx={{ width: { xs: "40%", sm: "20%" }, m: 1 }}>
@@ -34,13 +37,21 @@ export default function ItemCard({
             opacity: isAvailable === false ? 0.4 : 1,
             borderRadius: 3,
             p: 1,
+            "&:hover": { bgcolor: "info.dark" },
           }}
         >
-          <Box sx={{ width: "100%", p: 1, mb: 1 }}>
+          <Box
+            sx={{
+              width: "100%",
+              height: { xs: "120px", md: "180px" },
+              p: 1,
+              mb: 1,
+            }}
+          >
             <Box
               component="img"
-              sx={{ width: "100%", borderRadius: 3 }}
-              src={assetUrl || "../default-image.jpg"}
+              sx={{ width: "100%", height: "100%", borderRadius: 3 }}
+              src={assetUrl || "../../default-image.jpg"}
             />
           </Box>
           <Typography sx={{ fontWeight: "bold" }}>{title}</Typography>

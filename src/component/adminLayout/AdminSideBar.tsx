@@ -30,6 +30,10 @@ const AdminSideBar = () => {
                   borderRadius: 3,
                   display: "flex",
                   justifyContent: "space-between",
+                  ".Mui-selected": {
+                    bgcolor: "secondary.main",
+                    color: "red",
+                  },
                 }}
               >
                 <Typography
@@ -79,12 +83,7 @@ const sidebars = [
     icon: <MapsHomeWorkIcon />,
     link: "/admin/hotel",
   },
-  {
-    id: 4,
-    name: "Room",
-    icon: <MeetingRoomIcon />,
-    link: "/admin/room",
-  },
+
   {
     id: 5,
     name: "Tourist Guides",

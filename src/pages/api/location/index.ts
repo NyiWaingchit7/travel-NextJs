@@ -37,6 +37,7 @@ export default async function handler(
   } else if (method === "GET") {
     const data = await prisma.location.findMany({
       where: { isArchive: false },
+      orderBy: { id: "asc" },
     });
     return res.status(200).json({ data });
   }

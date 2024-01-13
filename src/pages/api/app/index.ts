@@ -11,15 +11,27 @@ export default async function handler(
     const city = await prisma.city.findMany({ where: { isArchive: false } });
     const location = await prisma.location.findMany({
       where: { isArchive: false },
+      orderBy: { id: "asc" },
     });
-    const hotel = await prisma.hotel.findMany({ where: { isArchive: false } });
-    const room = await prisma.room.findMany({ where: { isArchive: false } });
-    const bus = await prisma.bus.findMany({ where: { isArchive: false } });
+    const hotel = await prisma.hotel.findMany({
+      where: { isArchive: false },
+      orderBy: { id: "asc" },
+    });
+    const room = await prisma.room.findMany({
+      where: { isArchive: false },
+      orderBy: { id: "asc" },
+    });
+    const bus = await prisma.bus.findMany({
+      where: { isArchive: false },
+      orderBy: { id: "asc" },
+    });
     const airLine = await prisma.airLine.findMany({
       where: { isArchive: false },
+      orderBy: { id: "asc" },
     });
     const touristGuide = await prisma.touristGuide.findMany({
       where: { isArchive: false },
+      orderBy: { id: "asc" },
     });
     return res
       .status(200)
