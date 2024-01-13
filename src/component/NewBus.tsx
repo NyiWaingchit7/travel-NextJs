@@ -9,27 +9,27 @@ import {
   DialogTitle,
   TextField,
 } from "@mui/material";
-import { AirLine } from "@prisma/client";
+import { Bus } from "@prisma/client";
 import { useState } from "react";
 interface Props {
   open: boolean;
   setOpen: (data: any) => void;
-  airLineData?: AirLine;
+  busData?: Bus;
 }
-const defaultAirLine = {
+const defaultBus = {
   name: "",
   address: "",
   phoneNumber1: "",
   phoneNumber2: "",
   cityId: 1,
 };
-export default function NewAirLine({ open, setOpen, airLineData }: Props) {
-  const [newAirLine, setNewAirLine] = useState(defaultAirLine);
+export default function NewAirLine({ open, setOpen, busData }: Props) {
+  const [newBus, setNewBus] = useState(defaultBus);
   const dispatch = useAppDispatch();
   const handleConfirm = () => {
     dispatch(
       createAirLine({
-        ...newAirLine,
+        ...newBus,
         onSuccess() {
           console.log("success");
         },
@@ -40,7 +40,7 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
   return (
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Add New Air Line</DialogTitle>
+        <DialogTitle>Add New Bus</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -49,9 +49,7 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             label="Name"
             type="input"
             fullWidth
-            onChange={(evt) =>
-              setNewAirLine({ ...newAirLine, name: evt.target.value })
-            }
+            onChange={(evt) => setNewBus({ ...newBus, name: evt.target.value })}
           />
           <TextField
             autoFocus
@@ -61,7 +59,7 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             type="input"
             fullWidth
             onChange={(evt) =>
-              setNewAirLine({ ...newAirLine, address: evt.target.value })
+              setNewBus({ ...newBus, address: evt.target.value })
             }
           />
           <TextField
@@ -72,7 +70,7 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             type="input"
             fullWidth
             onChange={(evt) =>
-              setNewAirLine({ ...newAirLine, phoneNumber1: evt.target.value })
+              setNewBus({ ...newBus, phoneNumber1: evt.target.value })
             }
           />
 
@@ -83,7 +81,7 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             type="input"
             fullWidth
             onChange={(evt) =>
-              setNewAirLine({ ...newAirLine, phoneNumber2: evt.target.value })
+              setNewBus({ ...newBus, phoneNumber2: evt.target.value })
             }
           />
         </DialogContent>
@@ -96,11 +94,7 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             Cancel
           </Button>
           <Button
-            disabled={
-              !newAirLine.address ||
-              !newAirLine.name ||
-              !newAirLine.phoneNumber1
-            }
+            disabled={!newBus.address || !newBus.name || !newBus.phoneNumber1}
             variant="contained"
             color="success"
             onClick={handleConfirm}
