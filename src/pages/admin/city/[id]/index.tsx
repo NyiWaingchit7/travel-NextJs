@@ -1,11 +1,13 @@
-import { useAppDispatch, useAppSelector } from "@/store/hook";
-import { Box, Button, Paper, Typography } from "@mui/material";
-import { useRouter } from "next/router";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { deleteCity, getCity } from "@/store/slices/citySlice";
-import { useState } from "react";
+import Location from "@/component/Location";
 import NewCity from "@/component/NewCIty";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
+import { deleteCity, getCity } from "@/store/slices/citySlice";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import { Box, Button, Typography } from "@mui/material";
+import { useRouter } from "next/router";
+import { useState } from "react";
+
 const CityDetail = () => {
   const router = useRouter();
   const id = Number(router.query.id);
@@ -105,6 +107,7 @@ const CityDetail = () => {
           )}
         </Box>
       </Box>
+      <Location />
       <NewCity open={open} setOpen={setOpen} cityData={data} />
     </Box>
   );

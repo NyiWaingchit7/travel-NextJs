@@ -15,7 +15,7 @@ export default function RoomCard({ data }: Props) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   return (
-    <Box sx={{ width: "200px", m: 1 }}>
+    <Box sx={{ width: { xs: "40%", sm: "15%" }, m: 1 }}>
       <Paper
         elevation={3}
         sx={{

@@ -1,12 +1,10 @@
-import { Box, Typography } from "@mui/material";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 import DirectionsBusFilledIcon from "@mui/icons-material/DirectionsBusFilled";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
-import PersonIcon from "@mui/icons-material/Person";
-import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
+import PersonIcon from "@mui/icons-material/Person";
+import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 
 const AdminSideBar = () => {
@@ -30,6 +28,7 @@ const AdminSideBar = () => {
                   borderRadius: 3,
                   display: "flex",
                   justifyContent: "space-between",
+                  alignItems: "center",
                   ".Mui-selected": {
                     bgcolor: "secondary.main",
                     color: "red",
@@ -70,12 +69,6 @@ const sidebars = [
     name: "City",
     icon: <LocationCityIcon />,
     link: "/admin/city",
-  },
-  {
-    id: 2,
-    name: "Location",
-    icon: <LocationOnIcon />,
-    link: "/admin/location",
   },
   {
     id: 3,
