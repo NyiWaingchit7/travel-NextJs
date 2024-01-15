@@ -1,3 +1,4 @@
+import NewBus from "@/component/NewBus";
 import ItemCard from "@/component/cards/ItemCard";
 import { useAppSelector } from "@/store/hook";
 import { Box, Button } from "@mui/material";
@@ -27,6 +28,7 @@ const Bus = () => {
           />
         ))}
       </Box>
+      <NewBus open={open} setOpen={setOpen} />
     </Box>
   );
 };

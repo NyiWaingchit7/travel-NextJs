@@ -122,7 +122,7 @@ const NewLocation = ({ open, setOpen, locationData }: Props) => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={newLocation.cityId}
+              value={newLocation.cityId || ""}
               label="Age"
               onChange={(evt) =>
                 setNewLocation({
