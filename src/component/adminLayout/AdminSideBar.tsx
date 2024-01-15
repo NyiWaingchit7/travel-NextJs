@@ -85,27 +85,21 @@ const sidebars = [
   },
 
   {
-    id: 5,
+    id: 4,
     name: "Tourist Guides",
     icon: <PersonIcon />,
     link: "/admin/tourist-guide",
   },
   {
-    id: 6,
+    id: 5,
     name: "AirLine Ticket",
     icon: <FlightTakeoffIcon />,
     link: "/admin/airLine-ticket",
   },
   {
-    id: 7,
+    id: 6,
     name: "Bus",
     icon: <DirectionsBusFilledIcon />,
     link: "/admin/bus",
-  },
-  {
-    id: 8,
-    name: "Booking",
-    icon: <BookmarkIcon />,
-    link: "/admin/booking",
   },
 ];
