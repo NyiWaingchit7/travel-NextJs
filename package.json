@@ -18,7 +18,7 @@
     "@types/react-redux": "^7.1.33",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
-    "prisma": "^5.7.1",
+    "prisma": "^5.8.0",
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^9.0.4"

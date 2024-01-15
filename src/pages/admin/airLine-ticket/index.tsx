@@ -1,4 +1,5 @@
 import ItemCard from "@/component/cards/ItemCard";
+import NewAirLine from "@/component/NewAirLine";
 import { useAppSelector } from "@/store/hook";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
@@ -27,6 +28,7 @@ const AirLineTicket = () => {
           />
         ))}
       </Box>
+      <NewAirLine setOpen={setOpen} open={open} />
     </Box>
   );
 };

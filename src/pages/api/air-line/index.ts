@@ -10,18 +10,23 @@ export default async function handler(
     const data = await prisma.airLine.findMany({ where: { isArchive: false } });
     return res.status(200).json({ data });
   } else if (method === "POST") {
-    const { name, price, to, seatNum, time, cityId, isAvailable } = req.body;
-    const isValid =
-      name &&
-      price &&
-      to &&
-      seatNum &&
-      time &&
-      cityId &&
-      isAvailable !== undefined;
+    const { name, address, phoneNumber1, phoneNumber2, cityId } = req.body;
+    const isValid = name && address && phoneNumber1 && phoneNumber2 && cityId;
+
     if (!isValid) res.status(400).send("Bad request.");
+    //this need to change
+    const to = "";
+    const isAvailable = true;
     const data = await prisma.airLine.create({
-      data: { name, price, to, seatNum, time, cityId, isAvailable },
+      data: {
+        name,
+        address,
+        phoneNumber1,
+        phoneNumber2,
+        cityId,
+        to,
+        isAvailable,
+      },
     });
     res.status(200).json({ data });
   } else if (method === "PUT") {
@@ -41,7 +46,7 @@ export default async function handler(
     if (!exist) res.status(400).send("Bad request.");
     const data = await prisma.airLine.update({
       where: { id },
-      data: { name, price, to, seatNum, time, cityId, isAvailable },
+      data: { name, to, cityId, isAvailable },
     });
     res.status(200).json({ data });
   } else if (method === "DELETE") {

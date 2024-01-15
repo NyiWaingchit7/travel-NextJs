@@ -17,7 +17,7 @@ export const getLocation = createAsyncThunk(
   "get/location",
   async (_, thunkApi) => {
     const response = await fetch(`${config.apiBaseUrl}/location`);
-    const data = await response.json();
+    const { data } = await response.json();
     thunkApi.dispatch(setlocation(data));
   }
 );
@@ -64,7 +64,6 @@ export const deleteLocation = createAsyncThunk(
       const response = await fetch(`${config.apiBaseUrl}/location?id=${id}`, {
         method: "DELETE",
       });
-      const data = await response.json();
       onSuccess && onSuccess();
     } catch (err) {
       onError && onError();

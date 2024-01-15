@@ -15,11 +15,11 @@ model City {
   name        String
   assetUrl    String?
   description String
-  isArchive Boolean @default(false)
+  isArchive   Boolean    @default(false)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
-  Bus Bus[]
-  AirLine AirLine[]
+  Bus         Bus[]
+  AirLine     AirLine[]
   Location    Location[]
   Hotel       Hotel[]
 }
@@ -32,7 +32,7 @@ model Location {
   description String
   city        City     @relation(fields: [cityId], references: [id])
   cityId      Int
-  isArchive Boolean @default(false)
+  isArchive   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -44,72 +44,69 @@ model Hotel {
   description String
   city        City     @relation(fields: [cityId], references: [id])
   cityId      Int
-  isArchive Boolean @default(false)
+  isArchive   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   Room        Room[]
 }
 
 model Room {
-  id        Int      @id @default(autoincrement())
-  type      RoomType
-  price     Int
-  assetUrl  String?
-  hotel     Hotel    @relation(fields: [hotelId], references: [id])
-  hotelId   Int
-  isAvailable Boolean @default(true)
-  isArchive Boolean @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  type        RoomType
+  price       Int
+  assetUrl    String?
+  hotel       Hotel    @relation(fields: [hotelId], references: [id])
+  hotelId     Int
+  isAvailable Boolean  @default(true)
+  isArchive   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Bus {
-   id        Int      @id @default(autoincrement())
-   name String
-   assetUrl String?
-   price Int
-   to String
-   seatNum Int
-   time String
-   isAvailable Boolean @default(true)
-   cityId Int 
-   city        City     @relation(fields: [cityId], references: [id])
-   isArchive Boolean @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  name         String
+  assetUrl     String?
+  address      String
+  phoneNumber1 String
+  phoneNumber2 String?
+  to           String
+  isAvailable  Boolean  @default(true)
+  cityId       Int
+  city         City     @relation(fields: [cityId], references: [id])
+  isArchive    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model AirLine {
-   id        Int      @id @default(autoincrement())
-   name String 
-   assetUrl String?
-   price Int
-   to String
-   seatNum Int
-   time String
-   isAvailable Boolean
-   cityId Int 
-    city        City     @relation(fields: [cityId], references: [id])
-   isArchive Boolean @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  name         String
+  assetUrl     String?
+  address      String
+  phoneNumber1 String
+  phoneNumber2 String?
+  to           String
+  isAvailable  Boolean
+  cityId       Int
+  city         City     @relation(fields: [cityId], references: [id])
+  isArchive    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model TouristGuide {
-  id        Int      @id @default(autoincrement())
-  name String
-  assetUrl String?
-  price Int 
-  language String
+  id          Int      @id @default(autoincrement())
+  name        String
+  assetUrl    String?
+  phoneNumber String
+  price       Int
+  language    String
   isAvailable Boolean
-   isArchive Boolean @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  isArchive   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
-
-
-
-
 
 enum RoomType {
   ONE

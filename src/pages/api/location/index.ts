@@ -30,10 +30,10 @@ export default async function handler(
   } else if (method === "DELETE") {
     const id = Number(req.query.id);
     const exist = await prisma.location.findFirst({ where: { id } });
-    if (!exist) return res.status(405).send("reqest does not found");
+    if (!exist) return res.status(405).send("request does not found");
 
-    await prisma.city.update({ data: { isArchive: true }, where: { id } });
-    return res.status(200).send("delete successfully");
+    await prisma.location.update({ data: { isArchive: true }, where: { id } });
+    return res.status(200).send("deleted successfully");
   } else if (method === "GET") {
     const data = await prisma.location.findMany({
       where: { isArchive: false },

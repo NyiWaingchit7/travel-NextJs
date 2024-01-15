@@ -30,10 +30,9 @@ export const createAirLine = createAsyncThunk(
       onSuccess,
       name,
       assetUrl,
-      price,
-      to,
-      seatNum,
-      time,
+      address,
+      phoneNumber1,
+      phoneNumber2,
       cityId,
     } = options;
     try {
@@ -42,11 +41,11 @@ export const createAirLine = createAsyncThunk(
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           name,
-          price,
+
           assetUrl,
-          to,
-          seatNum,
-          time,
+          address,
+          phoneNumber1,
+          phoneNumber2,
           cityId,
         }),
       });
@@ -65,11 +64,12 @@ export const updateAirLine = createAsyncThunk(
     const {
       id,
       name,
-      price,
+
       assetUrl,
       to,
-      seatNum,
-      time,
+      address,
+      phoneNumber1,
+      phoneNumber2,
       cityId,
       isAvailable,
       onSuccess,
@@ -82,11 +82,12 @@ export const updateAirLine = createAsyncThunk(
         body: JSON.stringify({
           id,
           name,
-          price,
+
           assetUrl,
           to,
-          seatNum,
-          time,
+          address,
+          phoneNumber1,
+          phoneNumber2,
           cityId,
           isAvailable,
         }),
