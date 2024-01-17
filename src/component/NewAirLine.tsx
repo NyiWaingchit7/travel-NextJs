@@ -41,14 +41,20 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Add New Air Line</DialogTitle>
-        <DialogContent>
+        <DialogContent
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center0",
+            flexDirection: "column",
+          }}
+        >
           <TextField
             autoFocus
             required
             margin="dense"
             label="Name"
             type="input"
-            fullWidth
             onChange={(evt) =>
               setNewAirLine({ ...newAirLine, name: evt.target.value })
             }
@@ -59,7 +65,6 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             margin="dense"
             label="Address"
             type="input"
-            fullWidth
             onChange={(evt) =>
               setNewAirLine({ ...newAirLine, address: evt.target.value })
             }
@@ -70,7 +75,6 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             margin="dense"
             label="Phone Number"
             type="input"
-            fullWidth
             onChange={(evt) =>
               setNewAirLine({ ...newAirLine, phoneNumber1: evt.target.value })
             }
@@ -81,7 +85,6 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             margin="dense"
             label="Second Phone Number"
             type="input"
-            fullWidth
             onChange={(evt) =>
               setNewAirLine({ ...newAirLine, phoneNumber2: evt.target.value })
             }

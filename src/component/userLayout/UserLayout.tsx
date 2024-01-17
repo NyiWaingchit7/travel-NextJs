@@ -8,7 +8,7 @@ const UserLayout = ({ children }: prop) => {
   return (
     <Box>
       this is userlayout
-      <Box>{children}</Box>
+      <Box sx={{ width: "100%" }}>{children}</Box>
     </Box>
   );
 };

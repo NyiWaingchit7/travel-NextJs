@@ -69,12 +69,22 @@ const NewHotel = ({ open, setOpen, hotelData }: props) => {
         >
           <TextField
             placeholder="Name..."
+            autoFocus
+            required
+            margin="dense"
+            label="Name"
+            type="input"
             onChange={(e) => setNewHotel({ ...newHotel, name: e.target.value })}
             sx={{ mb: 1 }}
             defaultValue={newHotel.name}
           />
           <TextField
             placeholder="Description..."
+            autoFocus
+            required
+            margin="dense"
+            label="Name"
+            type="input"
             onChange={(e) =>
               setNewHotel({ ...newHotel, description: e.target.value })
             }

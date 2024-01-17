@@ -96,6 +96,8 @@ const NewRoom = ({ open, setOpen, roomData }: props) => {
             </Select>
           </FormControl>
           <TextField
+            required
+            label="price"
             placeholder="Price..."
             type="number"
             onChange={(e) =>

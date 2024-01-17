@@ -54,12 +54,22 @@ const NewCity = ({ open, setOpen, cityData }: props) => {
         >
           <TextField
             placeholder="Name..."
+            autoFocus
+            required
+            margin="dense"
+            label="Name"
+            type="input"
             onChange={(e) => setNewCity({ ...newCity, name: e.target.value })}
             sx={{ mb: 1 }}
             defaultValue={newCity.name}
           />
           <TextField
             placeholder="Description..."
+            autoFocus
+            required
+            margin="dense"
+            label="Name"
+            type="input"
             onChange={(e) =>
               setNewCity({ ...newCity, description: e.target.value })
             }
