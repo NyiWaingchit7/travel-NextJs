@@ -70,6 +70,7 @@ const sidebars = [
     icon: <LocationCityIcon />,
     link: "/admin/city",
   },
+
   {
     id: 3,
     name: "Hotel",
@@ -87,7 +88,7 @@ const sidebars = [
     id: 6,
     name: "AirLine Ticket",
     icon: <FlightTakeoffIcon />,
-    link: "/admin/airLine-ticket",
+    link: "/admin/air-line",
   },
   {
     id: 7,

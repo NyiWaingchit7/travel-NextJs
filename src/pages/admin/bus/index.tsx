@@ -1,4 +1,5 @@
 import ItemCard from "@/component/cards/ItemCard";
+import NewBus from "@/component/NewBus";
 import { useAppSelector } from "@/store/hook";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
@@ -27,6 +28,7 @@ const Bus = () => {
           />
         ))}
       </Box>
+      <NewBus open={open} setOpen={setOpen}/>
     </Box>
   );
 };

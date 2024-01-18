@@ -10,13 +10,25 @@ export default async function handler(
     const data = await prisma.airLine.findMany({ where: { isArchive: false } });
     return res.status(200).json({ data });
   } else if (method === "POST") {
-    const { name, address, phoneNumber1, phoneNumber2, cityId } = req.body;
-    const isValid = name && address && phoneNumber1 && phoneNumber2 && cityId;
+    const {
+      name,
+      isAvailable,
+      address,
+      to,
+      phoneNumber1,
+      phoneNumber2,
+      cityId,
+    } = req.body;
+    const isValid =
+      name &&
+      address &&
+      to &&
+      phoneNumber1 &&
+      cityId &&
+      isAvailable !== undefined;
 
     if (!isValid) res.status(400).send("Bad request.");
-    //this need to change
-    const to = "";
-    const isAvailable = true;
+
     const data = await prisma.airLine.create({
       data: {
         name,
@@ -30,14 +42,21 @@ export default async function handler(
     });
     res.status(200).json({ data });
   } else if (method === "PUT") {
-    const { name, price, to, seatNum, time, cityId, isAvailable, id } =
-      req.body;
+    const {
+      name,
+      isAvailable,
+      address,
+      to,
+      phoneNumber1,
+      phoneNumber2,
+      cityId,
+      id,
+    } = req.body;
     const isValid =
       name &&
-      price &&
+      address &&
       to &&
-      seatNum &&
-      time &&
+      phoneNumber1 &&
       cityId &&
       isAvailable !== undefined &&
       id;
@@ -46,15 +65,23 @@ export default async function handler(
     if (!exist) res.status(400).send("Bad request.");
     const data = await prisma.airLine.update({
       where: { id },
-      data: { name, to, cityId, isAvailable },
+      data: {
+        name,
+        isAvailable,
+        address,
+        to,
+        phoneNumber1,
+        phoneNumber2,
+        cityId,
+      },
     });
     res.status(200).json({ data });
   } else if (method === "DELETE") {
-    const { id } = req.body;
+    const id = Number(req.query.id);
     if (!id) res.status(400).send("Bad request.");
     const exist = await prisma.airLine.findFirst({ where: { id } });
     if (!exist) res.status(400).send("Bad request.");
-    await prisma.bus.update({
+    await prisma.airLine.update({
       where: { id },
       data: { isArchive: true },
     });

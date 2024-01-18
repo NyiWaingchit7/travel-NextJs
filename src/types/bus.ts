@@ -10,22 +10,22 @@ export interface BusSlice {
 export interface CreateBusOptions extends BaseOptions {
   name: string;
   assetUrl?: string;
-  price: number;
-  to: string;
-  seatNum: number;
-  time: string;
-  isAvailable: boolean;
+  to: number;
+  address: string;
+  phoneNumber1: string;
+  phoneNumber2?: string;
   cityId: number;
+  isAvailable: boolean;
 }
 
 export interface UpdateBusOptions extends BaseOptions {
   id: number;
   name: string;
   assetUrl?: string;
-  price: number;
-  to: string;
-  seatNum: number;
-  time: string;
+  to: number;
+  address: string;
+  phoneNumber1: string;
+  phoneNumber2?: string;
   cityId: number;
   isAvailable: boolean;
 }

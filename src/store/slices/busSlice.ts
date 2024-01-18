@@ -23,15 +23,16 @@ export const createBus = createAsyncThunk(
   "bus/createBus",
   async (options: CreateBusOptions, thunkApi) => {
     const {
-      onError,
-      onSuccess,
       name,
       assetUrl,
-      price,
       to,
-      seatNum,
-      time,
+      address,
+      phoneNumber1,
+      phoneNumber2,
       cityId,
+      isAvailable,
+      onSuccess,
+      onError,
     } = options;
     try {
       const response = await fetch(`${config.apiBaseUrl}/bus`, {
@@ -39,12 +40,13 @@ export const createBus = createAsyncThunk(
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           name,
-          price,
           assetUrl,
           to,
-          seatNum,
-          time,
+          address,
+          phoneNumber1,
+          phoneNumber2,
           cityId,
+          isAvailable,
         }),
       });
       const data = await response.json();
@@ -62,11 +64,11 @@ export const updateBus = createAsyncThunk(
     const {
       id,
       name,
-      price,
       assetUrl,
       to,
-      seatNum,
-      time,
+      address,
+      phoneNumber1,
+      phoneNumber2,
       cityId,
       isAvailable,
       onSuccess,
@@ -79,11 +81,11 @@ export const updateBus = createAsyncThunk(
         body: JSON.stringify({
           id,
           name,
-          price,
           assetUrl,
           to,
-          seatNum,
-          time,
+          address,
+          phoneNumber1,
+          phoneNumber2,
           cityId,
           isAvailable,
         }),
@@ -101,7 +103,7 @@ export const deleteBus = createAsyncThunk(
   async (option: DeleteBusOptions, thunkApi) => {
     const { id, onSuccess, onError } = option;
     try {
-      const response = await fetch(`${config.apiBaseUrl}/bus`, {
+      const response = await fetch(`${config.apiBaseUrl}/bus?id=${id}`, {
         method: "DELETE",
         body: JSON.stringify({ id }),
       });

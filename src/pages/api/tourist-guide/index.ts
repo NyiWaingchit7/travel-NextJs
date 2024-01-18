@@ -13,29 +13,34 @@ export default async function handler(
     });
     return res.status(200).json({ data });
   } else if (method === "POST") {
-    const { name, price, language, isAvailable } = req.body;
-    const isValid = name && price && isAvailable !== undefined;
+    const { name, price, phoneNumber, language, isAvailable } = req.body;
+    console.log(name, price, phoneNumber, language, isAvailable);
+
+    const isValid =
+      name && price && isAvailable !== undefined && phoneNumber && language;
     if (!isValid) res.status(400).send("Bad request.");
     const data = await prisma.touristGuide.create({
-      data: { name, price, language, isAvailable },
+      data: { name, price, language, isAvailable, phoneNumber },
     });
     res.status(200).json({ data });
   } else if (method === "PUT") {
-    const { name, price, language, isAvailable, id } = req.body;
-    const isValid = name && price && isAvailable !== undefined && id;
+    const { name, price, phoneNumber, language, isAvailable, id } = req.body;
+    const isValid =
+      name && price && isAvailable !== undefined && id && phoneNumber;
     if (!isValid) res.status(400).send("Bad request.");
     const exist = await prisma.touristGuide.findFirst({ where: { id } });
     if (!exist) res.status(400).send("Bad request.");
     const data = await prisma.touristGuide.update({
       where: { id },
-      data: { name, price, language, isAvailable },
+      data: { name, price, phoneNumber, language, isAvailable },
     });
     res.status(200).json({ data });
   } else if (method === "DELETE") {
-    const { id } = req.body;
+    const id = Number(req.query.id);
+
     if (!id) res.status(400).send("Bad request.");
     const exist = await prisma.touristGuide.findFirst({ where: { id } });
-    if (!exist) res.status(400).send("Bad request.");
+    if (!exist) res.status(400).send("Bad request. not exist");
     await prisma.touristGuide.update({
       where: { id },
       data: { isArchive: true },

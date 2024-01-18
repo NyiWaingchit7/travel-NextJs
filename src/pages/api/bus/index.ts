@@ -7,35 +7,60 @@ export default async function handler(
 ) {
   const method = req.method;
   if (method === "GET") {
-    const data = await prisma.city.findMany({
+    const data = await prisma.bus.findMany({
       where: { isArchive: false },
       orderBy: { id: "asc" },
     });
     return res.status(200).json({ data });
   } else if (method === "POST") {
-    const { name, price, to, seatNum, time, cityId, isAvailable } = req.body;
+    const {
+      name,
+      assetUrl,
+      to,
+      address,
+      phoneNumber1,
+      phoneNumber2,
+      cityId,
+      isAvailable,
+    } = req.body;
     const isValid =
       name &&
-      price &&
+      address &&
       to &&
-      seatNum &&
-      time &&
+      phoneNumber1 &&
       cityId &&
       isAvailable !== undefined;
     if (!isValid) res.status(400).send("Bad request.");
     const data = await prisma.bus.create({
-      data: { name, price, to, seatNum, time, cityId, isAvailable },
+      data: {
+        name,
+        assetUrl,
+        to,
+        address,
+        phoneNumber1,
+        phoneNumber2,
+        cityId,
+        isAvailable,
+      },
     });
     res.status(200).json({ data });
   } else if (method === "PUT") {
-    const { name, price, to, seatNum, time, cityId, isAvailable, id } =
-      req.body;
+    const {
+      id,
+      name,
+      assetUrl,
+      to,
+      address,
+      phoneNumber1,
+      phoneNumber2,
+      cityId,
+      isAvailable,
+    } = req.body;
     const isValid =
       name &&
-      price &&
+      address &&
       to &&
-      seatNum &&
-      time &&
+      phoneNumber1 &&
       cityId &&
       isAvailable !== undefined &&
       id;
@@ -44,11 +69,20 @@ export default async function handler(
     if (!exist) res.status(400).send("Bad request.");
     const data = await prisma.bus.update({
       where: { id },
-      data: { name, price, to, seatNum, time, cityId, isAvailable },
+      data: {
+        name,
+        assetUrl,
+        to,
+        address,
+        phoneNumber1,
+        phoneNumber2,
+        cityId,
+        isAvailable,
+      },
     });
     res.status(200).json({ data });
   } else if (method === "DELETE") {
-    const { id } = req.body;
+    const id = Number(req.query.id);
     if (!id) res.status(400).send("Bad request.");
     const exist = await prisma.bus.findFirst({ where: { id } });
     if (!exist) res.status(400).send("Bad request.");

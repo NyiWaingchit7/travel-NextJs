@@ -1,4 +1,5 @@
 import ItemCard from "@/component/cards/ItemCard";
+import NewTouristGuide from "@/component/NewTouristGuide";
 import { useAppSelector } from "@/store/hook";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
@@ -29,6 +30,7 @@ const TouristGuide = () => {
           />
         ))}
       </Box>
+      <NewTouristGuide open={open} setOpen={setOpen} />
     </Box>
   );
 };

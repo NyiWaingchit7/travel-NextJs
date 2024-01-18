@@ -10,20 +10,22 @@ export interface AirLineSlice {
 export interface CreateAirLineOptions extends BaseOptions {
   name: string;
   assetUrl?: string;
-  address: String;
-  phoneNumber1: String;
-  phoneNumber2?: String;
+  address: string;
+  phoneNumber1: string;
+  phoneNumber2?: string;
   cityId: number;
+  to: number;
+  isAvailable: boolean;
 }
 
 export interface UpdateAirLineOptions extends BaseOptions {
   id: number;
   name: string;
   assetUrl?: string;
-  to: string;
-  address: String;
-  phoneNumber1: String;
-  phoneNumber2?: String;
+  to: number;
+  address: string;
+  phoneNumber1: string;
+  phoneNumber2?: string;
   cityId: number;
   isAvailable: boolean;
 }
