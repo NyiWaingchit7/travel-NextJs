@@ -25,12 +25,26 @@ export const getTouristGuide = createAsyncThunk(
 export const createTouristGuide = createAsyncThunk(
   "create/TouristGuide",
   async (option: CreateTouristGuide, thunkApi) => {
-    const { name, price, language, isAvailable, onSuccess, onError } = option;
+    const {
+      name,
+      price,
+      phoneNumber,
+      language,
+      isAvailable,
+      onSuccess,
+      onError,
+    } = option;
     try {
       const response = await fetch(`${config.apiBaseUrl}/tourist-guide`, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ name, price, language, isAvailable }),
+        body: JSON.stringify({
+          name,
+          price,
+          language,
+          phoneNumber,
+          isAvailable,
+        }),
       });
       const data = await response.json();
       onSuccess && onSuccess();
@@ -42,13 +56,28 @@ export const createTouristGuide = createAsyncThunk(
 export const updateTouristGuide = createAsyncThunk(
   "update/TouristGuide",
   async (option: UpdateTouristGuide, thunkApi) => {
-    const { id, name, price, language, isAvailable, onSuccess, onError } =
-      option;
+    const {
+      id,
+      name,
+      price,
+      phoneNumber,
+      language,
+      isAvailable,
+      onSuccess,
+      onError,
+    } = option;
     try {
       const response = await fetch(`${config.apiBaseUrl}/tourist-guide`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ id, name, price, language, isAvailable }),
+        body: JSON.stringify({
+          id,
+          name,
+          price,
+          language,
+          phoneNumber,
+          isAvailable,
+        }),
       });
       const data = await response.json();
       onSuccess && onSuccess();
@@ -61,11 +90,14 @@ export const deleteTouristGuide = createAsyncThunk(
   "delete/TouristGuide",
   async (option: DeleteTouristGuide, thunkApi) => {
     const { id, onSuccess, onError } = option;
+
     try {
-      const response = await fetch(`${config.apiBaseUrl}/tourist-guide`, {
-        method: "DELETE",
-        body: JSON.stringify({ id }),
-      });
+      const response = await fetch(
+        `${config.apiBaseUrl}/tourist-guide?id=${id}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       onSuccess && onSuccess();
     } catch (err) {

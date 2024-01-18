@@ -30,10 +30,12 @@ export const createAirLine = createAsyncThunk(
       onSuccess,
       name,
       assetUrl,
+      to,
       address,
       phoneNumber1,
       phoneNumber2,
       cityId,
+      isAvailable,
     } = options;
     try {
       const response = await fetch(`${config.apiBaseUrl}/air-line`, {
@@ -41,12 +43,13 @@ export const createAirLine = createAsyncThunk(
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           name,
-
+          to,
           assetUrl,
           address,
           phoneNumber1,
           phoneNumber2,
           cityId,
+          isAvailable,
         }),
       });
       const data = await response.json();
@@ -64,7 +67,6 @@ export const updateAirLine = createAsyncThunk(
     const {
       id,
       name,
-
       assetUrl,
       to,
       address,
@@ -105,7 +107,7 @@ export const deleteAirLine = createAsyncThunk(
   async (option: DeleteAirLineOptions, thunkApi) => {
     const { id, onSuccess, onError } = option;
     try {
-      const response = await fetch(`${config.apiBaseUrl}/air-line`, {
+      const response = await fetch(`${config.apiBaseUrl}/air-line?id=${id}`, {
         method: "DELETE",
       });
 

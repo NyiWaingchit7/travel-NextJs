@@ -24,7 +24,7 @@ const AirLineTicket = () => {
           <ItemCard
             key={item.id}
             title={item.name}
-            href={`/admin/bus/${item.id}`}
+            href={`/admin/air-line/${item.id}`}
           />
         ))}
       </Box>

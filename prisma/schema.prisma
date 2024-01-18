@@ -70,7 +70,7 @@ model Bus {
   address      String
   phoneNumber1 String
   phoneNumber2 String?
-  to           String
+  to           Int
   isAvailable  Boolean  @default(true)
   cityId       Int
   city         City     @relation(fields: [cityId], references: [id])
@@ -86,7 +86,7 @@ model AirLine {
   address      String
   phoneNumber1 String
   phoneNumber2 String?
-  to           String
+  to           Int
   isAvailable  Boolean
   cityId       Int
   city         City     @relation(fields: [cityId], references: [id])
