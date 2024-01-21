@@ -1,9 +1,9 @@
 import { Box, Paper, Typography } from "@mui/material";
 import { RoomType } from "@prisma/client";
+import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
-  name?: string;
   title?: string;
   isAvailable?: boolean;
   href?: string;
@@ -21,10 +21,9 @@ export default function ItemCard({
   assetUrl,
   type,
   price,
-  name,
 }: Props) {
   return (
-    <Box sx={{ width: "200px", m: 1 }}>
+    <Box sx={{ width: { xs: "42%", sm: "22%" }, m: 1 }}>
       <Link href={href || ""} style={{ textDecoration: "none" }}>
         <Paper
           elevation={3}
@@ -37,8 +36,9 @@ export default function ItemCard({
             cursor: "pointer",
             opacity: isAvailable === false ? 0.4 : 1,
             borderRadius: 3,
+            bgcolor: "secondary.main",
             p: 1,
-            "&:hover": { bgcolor: "info.dark" },
+            "&:hover": { bgcolor: "secondary.dark" },
           }}
         >
           <Box
@@ -55,10 +55,15 @@ export default function ItemCard({
               src={assetUrl || "../../default-image.jpg"}
             />
           </Box>
-          {name && <Typography sx={{ fontWeight: "bold" }}>{name}</Typography>}
-          {title && (
-            <Typography sx={{ fontWeight: "bold" }}>{title}</Typography>
-          )}
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              color: "info.light",
+              fontSize: { xs: "0.7rem", sm: "0.8rem" },
+            }}
+          >
+            {title?.toLocaleUpperCase()}
+          </Typography>
         </Paper>
       </Link>
     </Box>
