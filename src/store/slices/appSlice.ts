@@ -32,6 +32,23 @@ export const fetchAppData = createAsyncThunk(
     thunkAPI.dispatch(setAirLine(airLine));
   }
 );
+export const userAppData = createAsyncThunk(
+  "app/userAppData",
+  async (_, thunkAPI) => {
+    const response = await fetch(`${config.apiBaseUrl}/user`);
+    const appData = await response.json();
+    const { city, location, hotel, room, bus, airLine, touristGuide } = appData;
+
+    thunkAPI.dispatch(setInit(true));
+    thunkAPI.dispatch(setCity(city));
+    thunkAPI.dispatch(setBus(bus));
+    thunkAPI.dispatch(setHotel(hotel));
+    thunkAPI.dispatch(setlocation(location));
+    thunkAPI.dispatch(setroom(room));
+    thunkAPI.dispatch(setTouristGuide(touristGuide));
+    thunkAPI.dispatch(setAirLine(airLine));
+  }
+);
 
 const appSlice = createSlice({
   name: "app",
