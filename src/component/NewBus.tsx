@@ -7,6 +7,12 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
+  FormControlLabel,
+  InputLabel,
+  MenuItem,
+  Select,
+  Switch,
   TextField,
 } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -72,14 +78,7 @@ export default function NewAirLine({ open, setOpen, busData }: Props) {
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Add New Bus</DialogTitle>
-        <DialogContent
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center0",
-            flexDirection: "column",
-          }}
-        >
+        <DialogContent>
           <TextField
             autoFocus
             required
@@ -87,6 +86,7 @@ export default function NewAirLine({ open, setOpen, busData }: Props) {
             label="Name"
             type="input"
             fullWidth
+            defaultValue={newBus.name}
             onChange={(evt) => setNewBus({ ...newBus, name: evt.target.value })}
           />
           <TextField
@@ -96,6 +96,7 @@ export default function NewAirLine({ open, setOpen, busData }: Props) {
             label="Address"
             type="input"
             fullWidth
+            defaultValue={newBus.address}
             onChange={(evt) =>
               setNewBus({ ...newBus, address: evt.target.value })
             }
@@ -107,20 +108,67 @@ export default function NewAirLine({ open, setOpen, busData }: Props) {
             label="Phone Number"
             type="input"
             fullWidth
+            defaultValue={newBus.phoneNumber1}
             onChange={(evt) =>
               setNewBus({ ...newBus, phoneNumber1: evt.target.value })
             }
           />
-
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Second Phone Number"
-            type="input"
-            fullWidth
-            onChange={(evt) =>
-              setNewBus({ ...newBus, phoneNumber2: evt.target.value })
+          <FormControl sx={{ mt: 3 }} fullWidth>
+            <InputLabel id="demo-simple-select-label">
+              Departure Point
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={newBus.cityId}
+              label="Departure Point"
+              defaultValue={newBus.cityId}
+              onChange={(evt) =>
+                setNewBus({
+                  ...newBus,
+                  cityId: Number(evt.target.value),
+                })
+              }
+            >
+              {cities.map((item) => (
+                <MenuItem key={item.id} value={item.id}>
+                  {item.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl sx={{ mt: 3 }} fullWidth>
+            <InputLabel id="demo-simple-select-label">Destination </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={newBus.to}
+              label="Destination "
+              defaultValue={newBus.to}
+              onChange={(evt) =>
+                setNewBus({
+                  ...newBus,
+                  to: Number(evt.target.value),
+                })
+              }
+            >
+              {cities.map((item) => (
+                <MenuItem key={item.id} value={item.id}>
+                  {item.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControlLabel
+            control={
+              <Switch
+                defaultChecked={newBus.isAvailable}
+                onChange={(evt, value) =>
+                  setNewBus({ ...newBus, isAvailable: value })
+                }
+              />
             }
+            label="Available"
           />
         </DialogContent>
         <DialogActions sx={{ pb: 3 }}>

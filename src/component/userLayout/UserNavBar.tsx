@@ -1,22 +1,20 @@
-import {
-  Box,
-  InputAdornment,
-  Menu,
-  MenuItem,
-  TextField,
-  Typography,
-} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import React from "react";
+import { Box, InputAdornment, TextField, Typography } from "@mui/material";
 
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const UserNavBar = () => {
   const router = useRouter();
   return (
     <Box
-      sx={{ bgcolor: "secondary.dark", position: "sticky", top: 0, zIndex: 5 }}
+      sx={{
+        px: { md: 8 },
+        bgcolor: "secondary.dark",
+        position: "sticky",
+        top: 0,
+        zIndex: 5,
+      }}
     >
       <Box
         sx={{

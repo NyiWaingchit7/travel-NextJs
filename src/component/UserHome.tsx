@@ -7,20 +7,27 @@ const UserHome = () => {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "flex-start",
+          alignItems: "center",
           maxWidth: "1300px",
           mx: "auto",
         }}
       >
-        <Box sx={{ width: "25%", mt: 3 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 3,
+          }}
+        >
           <Typography
             sx={{
               fontSize: {
                 xs: "1.5rem",
                 sm: "3rem",
                 md: "4rem",
-                fontWeight: "bold",
+                fontWeight: "700",
               },
+              fontFamily: "cursive",
               mx: 2,
             }}
           >

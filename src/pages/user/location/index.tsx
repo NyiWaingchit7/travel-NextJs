@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/hook";
-import { Box, Card, CardActionArea, Typography } from "@mui/material";
+import { Box, CardActionArea, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -14,7 +14,7 @@ const UserLocation = () => {
     <Box>
       <Box>{cityId}</Box>
       {locations.map((d) => (
-        <Box sx={{ m: 1 }}>
+        <Box key={d.id} sx={{ m: 1 }}>
           <Link
             href={`/user/location/${d.id}?cityId=${cityId}`}
             key={d.id}

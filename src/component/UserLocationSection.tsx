@@ -13,11 +13,11 @@ const UserLocation = () => {
           justifyContent: "space-between",
           alignItems: "centr",
           maxWidth: "1200px",
-          mx: "auto",
+          mx: { xs: 2, lg: "auto" },
         }}
       >
         <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-          Popular Cities
+          Popular Places
         </Typography>
         <Typography
           sx={{
