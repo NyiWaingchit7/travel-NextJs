@@ -9,6 +9,7 @@ const UserNavBar = () => {
   return (
     <Box
       sx={{
+        py: 2,
         px: { md: 8 },
         bgcolor: "secondary.dark",
         position: "sticky",
@@ -23,7 +24,7 @@ const UserNavBar = () => {
           alignItems: "center",
         }}
       >
-        <Box sx={{ width: "70px" }}>
+        <Box sx={{ display: { xs: "none", md: "block" }, width: "70px" }}>
           <Box component="img" src="../userLogo.png" sx={{ width: "100%" }} />
         </Box>
         <Box
@@ -43,7 +44,13 @@ const UserNavBar = () => {
                   "&:hover": { borderBottom: 2, borderColor: "info.main" },
                 }}
               >
-                <Typography sx={{ fontWeight: "bold", color: "info.light" }}>
+                <Typography
+                  align="center"
+                  sx={{
+                    fontWeight: "bold",
+                    color: "info.light",
+                  }}
+                >
                   {" "}
                   {d.name}
                 </Typography>
