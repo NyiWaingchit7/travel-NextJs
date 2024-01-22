@@ -6,8 +6,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 import NewAirLine, { DefaultAirLine } from "@/component/NewAirLine";
-import { deleteAirLine } from "@/store/slices/airLineSlice";
-import { getHotel } from "@/store/slices/hotelSlice";
+import { deleteAirLine, getAirLine } from "@/store/slices/airLineSlice";
 const AieLineDetail = () => {
   const router = useRouter();
   const id = Number(router.query.id);
@@ -22,7 +21,7 @@ const AieLineDetail = () => {
   );
   const dispatch = useAppDispatch();
   const onSuccess = () => {
-    dispatch(getHotel());
+    dispatch(getAirLine());
     router.push("/admin/air-line");
   };
   if (!data) return null;
@@ -37,13 +36,6 @@ const AieLineDetail = () => {
           width: { xs: "100%", md: "85%" },
         }}
       >
-        {/* <Box sx={{ bgcolor: "success.main", p: 1, borderRadius: 2 }}>
-          <Typography
-            sx={{ fontWeight: "bold", fontSize: "1.2rem", color: "info.light" }}
-          >
-            City - {cityName}
-          </Typography>
-        </Box> */}
         <Box
           sx={{
             display: "flex",

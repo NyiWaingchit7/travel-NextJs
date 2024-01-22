@@ -68,7 +68,7 @@ const NewCity = ({ open, setOpen, cityData }: props) => {
             autoFocus
             required
             margin="dense"
-            label="Name"
+            label="Description"
             type="input"
             onChange={(e) =>
               setNewCity({ ...newCity, description: e.target.value })

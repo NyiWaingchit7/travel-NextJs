@@ -1,5 +1,4 @@
 import { useAppDispatch, useAppSelector } from "@/store/hook";
-import { updateCity } from "@/store/slices/citySlice";
 import { createHotel, getHotel, updateHotel } from "@/store/slices/hotelSlice";
 import {
   Box,
@@ -83,7 +82,7 @@ const NewHotel = ({ open, setOpen, hotelData }: props) => {
             autoFocus
             required
             margin="dense"
-            label="Name"
+            label="Description"
             type="input"
             onChange={(e) =>
               setNewHotel({ ...newHotel, description: e.target.value })
