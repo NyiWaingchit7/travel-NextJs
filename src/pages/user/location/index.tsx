@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/hook";
-import { Box, CardActionArea, Typography } from "@mui/material";
+import { Box, Card, CardActionArea, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -13,11 +13,7 @@ const UserLocation = () => {
   return (
     <Box>
       {locations.map((d) => (
-<<<<<<< HEAD
-        <Box key={d.id} sx={{ m: 1 }}>
-=======
         <Card sx={{ m: 1 }} key={d.id}>
->>>>>>> nwc-user
           <Link
             href={`/user/location/${d.id}?cityId=${cityId}`}
             style={{ textDecoration: "none", marginTop: "1000px" }}
