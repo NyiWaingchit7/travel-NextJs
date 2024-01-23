@@ -12,12 +12,14 @@ const UserLocation = () => {
 
   return (
     <Box>
-      <Box>{cityId}</Box>
       {locations.map((d) => (
+<<<<<<< HEAD
         <Box key={d.id} sx={{ m: 1 }}>
+=======
+        <Card sx={{ m: 1 }} key={d.id}>
+>>>>>>> nwc-user
           <Link
             href={`/user/location/${d.id}?cityId=${cityId}`}
-            key={d.id}
             style={{ textDecoration: "none", marginTop: "1000px" }}
           >
             <CardActionArea
@@ -76,7 +78,7 @@ const UserLocation = () => {
               </Box>
             </CardActionArea>
           </Link>
-        </Box>
+        </Card>
       ))}
     </Box>
   );

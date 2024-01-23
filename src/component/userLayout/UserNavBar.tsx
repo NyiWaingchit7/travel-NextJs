@@ -35,9 +35,12 @@ const UserNavBar = () => {
           }}
         >
           {cates.map((d) => (
-            <Link href={`${d.linkTag}`} style={{ textDecoration: "none" }}>
+            <Link
+              href={`${d.linkTag}`}
+              key={d.id}
+              style={{ textDecoration: "none" }}
+            >
               <Box
-                key={d.id}
                 sx={{
                   mx: 2,
                   cursor: "pointer",

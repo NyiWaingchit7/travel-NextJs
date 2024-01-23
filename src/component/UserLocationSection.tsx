@@ -1,10 +1,27 @@
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
 import ItemCard from "./cards/ItemCard";
+import { Location } from "@prisma/client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-const UserLocation = () => {
+interface Prop {
+  data: Location[];
+  id: number;
+}
+
+const UserLocation = ({ data, id }: Prop) => {
   const locations = useAppSelector((store) => store.location.items);
+  const [showData, setShowData] = useState<Location[]>(locations);
   if (!locations) return null;
+
+  useEffect(() => {
+    if (data) {
+      setShowData(data);
+    } else {
+      setShowData(locations);
+    }
+  }, [id, locations]);
   return (
     <Box sx={{ mt: 3 }}>
       <Box
@@ -48,7 +65,7 @@ const UserLocation = () => {
           mx: "auto",
         }}
       >
-        {locations.slice(0, 4).map((d) => (
+        {showData.slice(0, 4).map((d) => (
           <ItemCard key={d.id} title={d.name} />
         ))}
       </Box>

@@ -35,6 +35,7 @@ const AdminTopBar = () => {
                 variant="contained"
                 onClick={() => signOut({ callbackUrl: "/admin" })}
                 color="success"
+                sx={{ color: "info.main" }}
               >
                 Log out
               </Button>
@@ -77,7 +78,7 @@ const AdminTopBar = () => {
             variant="contained"
             onClick={() => signOut({ callbackUrl: "/admin" })}
             color="success"
-            sx={{ mt: 4 }}
+            sx={{ mt: 4, color: "info.main" }}
           >
             Log out
           </Button>
