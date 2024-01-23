@@ -1,3 +1,4 @@
+import UserLocationSection from "@/component/UserLocationSection";
 import ItemCard from "@/component/cards/ItemCard";
 import { useAppSelector } from "@/store/hook";
 import { Box, CardActionArea, Typography } from "@mui/material";
@@ -60,7 +61,7 @@ const CitiesDetail = () => {
         </Box>
       </Box>
       <Box sx={{ mt: 3 }}>
-        <Box
+        {/* <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
@@ -109,7 +110,8 @@ const CitiesDetail = () => {
           {locations.slice(0, 4).map((d) => (
             <ItemCard key={d.id} title={d.name} />
           ))}
-        </Box>
+        </Box> */}
+        <UserLocationSection data={locations} id={id} />
       </Box>
     </Box>
   );

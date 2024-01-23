@@ -49,7 +49,6 @@ const Location = () => {
             <ItemCard
               key={item.id}
               title={item.title}
-              name={item.name}
               href={`/admin/location/${item.id}`}
             />
           ))}
