@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 interface Prop {
-  data: Location[];
-  id: number;
+  data?: Location[];
+  id?: number;
 }
 
 const UserLocation = ({ data, id }: Prop) => {
@@ -66,7 +66,7 @@ const UserLocation = ({ data, id }: Prop) => {
         }}
       >
         {showData.slice(0, 4).map((d) => (
-          <ItemCard key={d.id} title={d.name} />
+          <ItemCard key={d.id} title={d.name} href={`/user/location/${d.id}`} />
         ))}
       </Box>
     </Box>

@@ -5,6 +5,7 @@ import {
   UpdateBusOptions,
 } from "@/types/bus";
 import { config } from "@/utils/config";
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState: AirLineSlice = {

@@ -23,6 +23,7 @@ export default async function handler(
       cityId,
       isAvailable,
     } = req.body;
+
     const isValid =
       name &&
       address &&

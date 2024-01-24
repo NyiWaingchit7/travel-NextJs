@@ -51,7 +51,12 @@ const UserCity = () => {
         }}
       >
         {cities.slice(0, 4).map((d) => (
-          <ItemCard key={d.id} title={d.name} assetUrl="../Yangon.jpg" />
+          <ItemCard
+            key={d.id}
+            title={d.name}
+            assetUrl="../Yangon.jpg"
+            href={`/user/city/${d.id}`}
+          />
         ))}
       </Box>
     </Box>

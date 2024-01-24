@@ -61,56 +61,6 @@ const CitiesDetail = () => {
         </Box>
       </Box>
       <Box sx={{ mt: 3 }}>
-        {/* <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "centr",
-            maxWidth: "1200px",
-            mx: "auto",
-          }}
-        >
-          <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-            Popular Places
-          </Typography>
-          <Link
-            href={`/user/location?cityId=${id}`}
-            style={{ textDecoration: "none" }}
-          >
-            <Typography
-              sx={{
-                fontWeight: "bold",
-                cursor: "pointer",
-                color: "success.light",
-                p: 1,
-                textAlign: "center",
-                "&:hover": {
-                  bgcolor: "success.main",
-                  color: "info.main",
-
-                  borderRadius: 2,
-                },
-              }}
-            >
-              View All{" "}
-            </Typography>
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexWrap: "wrap",
-            mt: 2,
-            maxWidth: "1100px",
-            mx: "auto",
-          }}
-        >
-          {locations.slice(0, 4).map((d) => (
-            <ItemCard key={d.id} title={d.name} />
-          ))}
-        </Box> */}
         <UserLocationSection data={locations} id={id} />
       </Box>
     </Box>
