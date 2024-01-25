@@ -1,13 +1,18 @@
-import BookmarkIcon from "@mui/icons-material/Bookmark";
+import { useAppSelector } from "@/store/hook";
+import CircleIcon from "@mui/icons-material/Circle";
 import DirectionsBusFilledIcon from "@mui/icons-material/DirectionsBusFilled";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
+import MessageIcon from "@mui/icons-material/Message";
 import PersonIcon from "@mui/icons-material/Person";
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 
 const AdminSideBar = () => {
+  const contactUs = useAppSelector((store) => store.contactUs.items);
+  const isHaveNewMessage = contactUs.find((item) => item.isRead === false);
+
   return (
     <Box sx={{ mt: 3 }}>
       <Box sx={{ color: "info.light", fontWeight: "bold" }}>
@@ -44,7 +49,20 @@ const AdminSideBar = () => {
                 >
                   {d.name}
                 </Typography>
-                <Box>{d.icon}</Box>
+                <Box sx={{ display: "flex", position: "relative" }}>
+                  {d.icon}{" "}
+                  {d.id === 7 && isHaveNewMessage && (
+                    <CircleIcon
+                      sx={{
+                        position: "absolute",
+                        top: -15,
+                        right: -15,
+                        color: "#FA3E3E",
+                        fontSize: "16px",
+                      }}
+                    />
+                  )}
+                </Box>
               </Box>
               <Box
                 sx={{
@@ -95,5 +113,11 @@ const sidebars = [
     name: "Bus",
     icon: <DirectionsBusFilledIcon />,
     link: "/admin/bus",
+  },
+  {
+    id: 7,
+    name: "User Messages",
+    icon: <MessageIcon />,
+    link: "/admin/contact-us",
   },
 ];

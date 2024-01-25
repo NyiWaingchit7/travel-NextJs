@@ -100,6 +100,6 @@ export const cates = [
   {
     id: 4,
     name: "Contact Us",
-    linkTag: "",
+    linkTag: "/user/contact-us",
   },
 ];

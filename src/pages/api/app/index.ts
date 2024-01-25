@@ -33,9 +33,22 @@ export default async function handler(
       where: { isArchive: false },
       orderBy: { id: "asc" },
     });
+    const contactUs = await prisma.contactUs.findMany({
+      where: { isArchive: false },
+      orderBy: { id: "asc" },
+    });
     return res
       .status(200)
-      .json({ city, location, hotel, room, bus, airLine, touristGuide });
+      .json({
+        city,
+        location,
+        hotel,
+        room,
+        bus,
+        airLine,
+        touristGuide,
+        contactUs,
+      });
   }
   res.status(405).send("method not allowed");
 }

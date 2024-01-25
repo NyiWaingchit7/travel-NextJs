@@ -9,7 +9,9 @@ interface prop {
 
 const UserLayout = ({ children }: prop) => {
   const dispatch = useAppDispatch();
-  useEffect(() => {}, [dispatch(userAppData())]);
+  useEffect(() => {
+    dispatch(userAppData());
+  }, []);
   return (
     <Box>
       <UserNavBar />

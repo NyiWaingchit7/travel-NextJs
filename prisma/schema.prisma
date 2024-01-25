@@ -108,6 +108,17 @@ model TouristGuide {
   updatedAt   DateTime @updatedAt
 }
 
+model ContactUs {
+  id          Int      @id @default(autoincrement())
+  name        String
+  contact     String
+  advice String 
+  isRead Boolean @default(false)
+  isArchive   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 enum RoomType {
   ONE
   TWO
