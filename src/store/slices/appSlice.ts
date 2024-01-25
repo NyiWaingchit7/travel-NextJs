@@ -1,9 +1,10 @@
-import { AppSlice, GetAppDataOptions } from "@/types/app";
+import { AppSlice } from "@/types/app";
 import { config } from "@/utils/config";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { setAirLine } from "./airLineSlice";
 import { setBus } from "./busSlice";
 import { setCity } from "./citySlice";
+import { setContactUs } from "./contactUsSlice";
 import { setHotel } from "./hotelSlice";
 import { setlocation } from "./locationSlice";
 import { setroom } from "./roomSlice";
@@ -20,7 +21,16 @@ export const fetchAppData = createAsyncThunk(
   async (_, thunkAPI) => {
     const response = await fetch(`${config.apiBaseUrl}/app`);
     const appData = await response.json();
-    const { city, location, hotel, room, bus, airLine, touristGuide } = appData;
+    const {
+      city,
+      location,
+      hotel,
+      room,
+      bus,
+      airLine,
+      touristGuide,
+      contactUs,
+    } = appData;
 
     thunkAPI.dispatch(setInit(true));
     thunkAPI.dispatch(setCity(city));
@@ -30,6 +40,7 @@ export const fetchAppData = createAsyncThunk(
     thunkAPI.dispatch(setroom(room));
     thunkAPI.dispatch(setTouristGuide(touristGuide));
     thunkAPI.dispatch(setAirLine(airLine));
+    thunkAPI.dispatch(setContactUs(contactUs));
   }
 );
 export const userAppData = createAsyncThunk(
