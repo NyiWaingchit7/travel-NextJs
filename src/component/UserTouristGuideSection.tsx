@@ -1,9 +1,22 @@
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
 import ItemCard from "./cards/ItemCard";
-
-const UserTouristGuides = () => {
+import { TouristGuide } from "@prisma/client";
+import { useState, useEffect } from "react";
+interface Prop {
+  data?: TouristGuide[];
+  id?: number;
+}
+const UserTouristGuides = ({ data, id }: Prop) => {
   const touristGuides = useAppSelector((store) => store.touristGuide.items);
+  const [showData, setShowData] = useState<TouristGuide[]>(touristGuides);
+  useEffect(() => {
+    if (data) {
+      setShowData(data);
+    } else {
+      setShowData(touristGuides);
+    }
+  }, [id, touristGuides]);
   if (!touristGuides) return null;
   return (
     <Box sx={{ mt: 3 }}>
@@ -17,7 +30,7 @@ const UserTouristGuides = () => {
         }}
       >
         <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-          Popular Tourist Guides
+          Tourist Guides
         </Typography>
         <Typography
           sx={{
@@ -48,7 +61,7 @@ const UserTouristGuides = () => {
           mx: "auto",
         }}
       >
-        {touristGuides.slice(0, 4).map((d) => (
+        {showData.slice(0, 4).map((d) => (
           <ItemCard key={d.id} title={d.name} />
         ))}
       </Box>

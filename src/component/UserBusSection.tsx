@@ -1,9 +1,22 @@
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
 import ItemCard from "./cards/ItemCard";
-
-const UserBus = () => {
+import { Bus } from "@prisma/client";
+import { useEffect, useState } from "react";
+interface Prop {
+  data?: Bus[];
+  id?: number;
+}
+const UserBus = ({ data, id }: Prop) => {
   const buses = useAppSelector((store) => store.bus.items);
+  const [showData, setShowData] = useState<Bus[]>(buses);
+  useEffect(() => {
+    if (data) {
+      setShowData(data);
+    } else {
+      setShowData(buses);
+    }
+  }, [id, buses]);
   if (!buses) return null;
   return (
     <Box sx={{ mt: 3 }}>
@@ -17,7 +30,7 @@ const UserBus = () => {
         }}
       >
         <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-          Popular Buses
+          Buses
         </Typography>
         <Typography
           sx={{
@@ -48,7 +61,7 @@ const UserBus = () => {
           mx: "auto",
         }}
       >
-        {buses.slice(0, 4).map((d) => (
+        {showData.slice(0, 4).map((d) => (
           <ItemCard key={d.id} title={d.name} />
         ))}
       </Box>
