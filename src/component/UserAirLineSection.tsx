@@ -1,9 +1,23 @@
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
 import ItemCard from "./cards/ItemCard";
+import { AirLine } from "@prisma/client";
+import { useEffect, useState } from "react";
+interface Prop {
+  data?: AirLine[];
+  id?: number;
+}
 
-const UserAirLine = () => {
+const UserAirLine = ({ data, id }: Prop) => {
   const airLines = useAppSelector((store) => store.airLine.items);
+  const [showData, setShowData] = useState<AirLine[]>(airLines);
+  useEffect(() => {
+    if (data) {
+      setShowData(data);
+    } else {
+      setShowData(airLines);
+    }
+  }, [id, airLines]);
   if (!airLines) return null;
   return (
     <Box sx={{ mt: 3 }}>
@@ -17,7 +31,7 @@ const UserAirLine = () => {
         }}
       >
         <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-          Popular Air Lines
+          Air Lines
         </Typography>
         <Typography
           sx={{
@@ -48,7 +62,7 @@ const UserAirLine = () => {
           mx: "auto",
         }}
       >
-        {airLines.slice(0, 4).map((d) => (
+        {showData.slice(0, 4).map((d) => (
           <ItemCard key={d.id} title={d.name} />
         ))}
       </Box>

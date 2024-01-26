@@ -33,8 +33,13 @@ const UserLocation = ({ data, id }: Prop) => {
           mx: { xs: 2, lg: "auto" },
         }}
       >
-        <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-          Popular Places
+        <Typography
+          sx={{
+            fontSize: "1.3rem",
+            fontWeight: "bold",
+          }}
+        >
+          Places
         </Typography>
         <Typography
           sx={{
@@ -51,7 +56,7 @@ const UserLocation = ({ data, id }: Prop) => {
             },
           }}
         >
-          View All{" "}
+          View All
         </Typography>
       </Box>
       <Box

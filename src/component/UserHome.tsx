@@ -17,6 +17,7 @@ const UserHome = () => {
             display: "flex",
             justifyContent: "center",
             mt: 3,
+            width: "30%",
           }}
         >
           <Typography
@@ -38,6 +39,7 @@ const UserHome = () => {
           sx={{
             width: { xs: "150px", sm: "200px", md: "300px" },
             height: { xs: "150px", sm: "200px", md: "300px" },
+            mt: 3,
           }}
         >
           <Box
@@ -48,7 +50,7 @@ const UserHome = () => {
               objectFit: "cover",
             }}
             component="img"
-            src="../userLogo.png"
+            src="../cover.jpg"
           />
         </Box>
       </Box>

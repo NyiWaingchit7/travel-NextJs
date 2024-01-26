@@ -48,7 +48,7 @@ const Location = () => {
           {location.map((item) => (
             <ItemCard
               key={item.id}
-              title={item.title}
+              title={item.name}
               href={`/admin/location/${item.id}`}
             />
           ))}
