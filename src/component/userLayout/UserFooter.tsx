@@ -28,7 +28,7 @@ const UserFooter = () => {
           mb: 3,
         }}
       >
-        {cates.map((d) => (
+        {cates.slice(2, 4).map((d) => (
           <Link
             href={`${d.linkTag}`}
             key={d.id}
@@ -36,9 +36,14 @@ const UserFooter = () => {
           >
             <Box
               sx={{
+                color: "info.light",
                 m: 1,
                 cursor: "pointer",
-                "&:hover": { borderBottom: 1, borderColor: "info.main" },
+                "&:hover": {
+                  borderBottom: 1,
+                  borderColor: "info.main",
+                  color: "info.dark",
+                },
                 height: "20px",
               }}
             >
@@ -46,7 +51,6 @@ const UserFooter = () => {
                 align="center"
                 sx={{
                   fontWeight: "bold",
-                  color: "info.light",
                 }}
               >
                 {" "}
@@ -55,11 +59,61 @@ const UserFooter = () => {
             </Box>
           </Link>
         ))}
+        <Link href={""} style={{ textDecoration: "none" }}>
+          <Box
+            sx={{
+              color: "info.light",
+              m: 1,
+              cursor: "pointer",
+              "&:hover": {
+                borderBottom: 1,
+                borderColor: "info.main",
+                color: "info.dark",
+              },
+              height: "20px",
+            }}
+          >
+            <Typography sx={{ fontWeight: "bold" }}>FAQ</Typography>
+          </Box>
+        </Link>
+        <Link href={""} style={{ textDecoration: "none" }}>
+          <Box
+            sx={{
+              color: "info.light",
+              m: 1,
+              cursor: "pointer",
+              "&:hover": {
+                borderBottom: 1,
+                borderColor: "info.main",
+                color: "info.dark",
+              },
+              height: "20px",
+            }}
+          >
+            <Typography sx={{ fontWeight: "bold" }}>
+              Privacy and Policy
+            </Typography>
+          </Box>
+        </Link>
       </Box>
-      <Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+        }}
+      >
         <Box sx={{ display: "flex" }}>
           {footerIcons.map((d) => (
-            <Box key={d.id} sx={{ m: 1, color: "info.light" }}>
+            <Box
+              key={d.id}
+              sx={{
+                m: 1,
+                color: "info.light",
+                ":hover": { color: "info.dark" },
+              }}
+            >
               {d.icon}
             </Box>
           ))}
@@ -76,9 +130,13 @@ const UserFooter = () => {
             sx={{ display: "flex", alignItems: "center", color: "info.light" }}
           >
             <LocalPhoneIcon sx={{ mx: 1, fontSize: "2rem" }} />
-            <Box>
-              <Typography>09123456789</Typography>
-              <Typography>09123456789</Typography>
+            <Box sx={{ cursor: "pointer" }}>
+              <Typography sx={{ ":hover": { color: "info.dark" } }}>
+                09123456789
+              </Typography>
+              <Typography sx={{ ":hover": { color: "info.dark" } }}>
+                09123456789
+              </Typography>
             </Box>
           </Box>
         </Box>
@@ -90,18 +148,18 @@ export default UserFooter;
 export const footerIcons = [
   {
     id: 1,
-    icon: <FacebookIcon />,
+    icon: <FacebookIcon sx={{ fontSize: "2rem" }} />,
   },
   {
     id: 2,
-    icon: <InstagramIcon />,
+    icon: <InstagramIcon sx={{ fontSize: "2rem" }} />,
   },
   {
     id: 3,
-    icon: <TelegramIcon />,
+    icon: <TelegramIcon sx={{ fontSize: "2rem" }} />,
   },
   {
     id: 4,
-    icon: <TwitterIcon />,
+    icon: <TwitterIcon sx={{ fontSize: "2rem" }} />,
   },
 ];
