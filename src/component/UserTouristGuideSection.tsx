@@ -2,7 +2,7 @@ import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
 import { TouristGuide } from "@prisma/client";
 import { useEffect, useState } from "react";
-import ItemCard from "./cards/ItemCard";
+import UserTouristGuideCard from "./cards/UserTouristGuideCard";
 interface Prop {
   data?: TouristGuide[];
   id?: number;
@@ -61,8 +61,14 @@ const UserTouristGuides = ({ data, id }: Prop) => {
           mx: "auto",
         }}
       >
-        {showData.slice(0, 4).map((d) => (
-          <ItemCard key={d.id} title={d.name} />
+        {showData.slice(0, 4).map((item) => (
+          <UserTouristGuideCard
+            name={item.name}
+            phoneNumber={item.phoneNumber}
+            price={item.price}
+            key={item.id}
+            language={item.language}
+          />
         ))}
       </Box>
     </Box>

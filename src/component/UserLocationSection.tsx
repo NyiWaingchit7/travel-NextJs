@@ -1,6 +1,7 @@
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
 import { Location } from "@prisma/client";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ItemCard from "./cards/ItemCard";
 
