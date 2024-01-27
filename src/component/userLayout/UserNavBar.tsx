@@ -17,15 +17,15 @@ const UserNavBar = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   return (
-    <Box>
-      <Box
-        sx={{
-          bgcolor: "secondary.dark",
-          position: "sticky",
-          top: 0,
-          zIndex: 5,
-        }}
-      >
+    <Box
+      sx={{
+        bgcolor: "secondary.dark",
+        position: "sticky",
+        top: 0,
+        zIndex: 5,
+      }}
+    >
+      <Box>
         <Box
           sx={{
             display: "flex",
@@ -46,6 +46,7 @@ const UserNavBar = () => {
             >
               {cates.map((d) => (
                 <Link
+                  scroll={false}
                   href={`${d.linkTag}`}
                   key={d.id}
                   style={{ textDecoration: "none" }}
