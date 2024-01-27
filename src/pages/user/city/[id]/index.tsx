@@ -24,7 +24,7 @@ const CitiesDetail = () => {
   const hotels = allHotels.filter((item) => item.cityId === id);
   if (!city && !locations && !buses && !airLines && !hotels) return null;
   return (
-    <Box>
+    <Box sx={{ minHeight: "80vh", mt: 5 }}>
       <Box>
         <Box
           sx={{
@@ -47,7 +47,15 @@ const CitiesDetail = () => {
               src="../../Yangon.jpg"
             />
           </Box>
-          <Box sx={{ width: { xs: "70%", sm: "40%" }, mt: 1 }}>
+          <Box
+            sx={{
+              width: { xs: "70%", sm: "40%" },
+              mt: 1,
+              bgcolor: "info.main",
+              p: 2,
+              borderRadius: 3,
+            }}
+          >
             <Typography
               sx={{
                 fontSize: { xs: "0.8rem", md: "1.2rem" },

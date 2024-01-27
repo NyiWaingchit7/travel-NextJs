@@ -6,7 +6,7 @@ const UserCity = () => {
   const cities = useAppSelector((store) => store.city.items);
   if (!cities) return null;
   return (
-    <Card>
+    <Box sx={{ minHeight: "80vh", mt: 5 }}>
       {cities.map((d) => (
         <Box sx={{ m: 1 }} key={d.id}>
           <Link
@@ -71,7 +71,7 @@ const UserCity = () => {
           </Link>
         </Box>
       ))}
-    </Card>
+    </Box>
   );
 };
 export default UserCity;

@@ -14,6 +14,7 @@ const UserLocation = ({ data, id }: Prop) => {
   const locations = useAppSelector((store) => store.location.items);
   const [showData, setShowData] = useState<Location[]>(locations);
   if (!locations) return null;
+  const router = useRouter();
 
   useEffect(() => {
     if (data) {
@@ -63,6 +64,9 @@ const UserLocation = ({ data, id }: Prop) => {
 
               borderRadius: 2,
             },
+          }}
+          onClick={() => {
+            id && router.push(`/user/location?cityId=${id}`);
           }}
         >
           View All

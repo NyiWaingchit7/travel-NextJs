@@ -11,7 +11,7 @@ const UserLocation = () => {
   if (!locations) return null;
 
   return (
-    <Box>
+    <Box sx={{ minHeight: "80vh", mt: 5 }}>
       {locations.map((d) => (
         <Card sx={{ m: 1 }} key={d.id}>
           <Link
