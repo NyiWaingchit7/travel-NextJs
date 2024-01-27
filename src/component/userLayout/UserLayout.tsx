@@ -2,8 +2,8 @@ import { useAppDispatch } from "@/store/hook";
 import { userAppData } from "@/store/slices/appSlice";
 import { Box } from "@mui/material";
 import { ReactNode, useEffect } from "react";
-import UserNavBar from "./UserNavBar";
 import UserFooter from "./UserFooter";
+import UserNavBar from "./UserNavBar";
 interface prop {
   children: ReactNode;
 }

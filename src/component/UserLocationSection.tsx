@@ -1,9 +1,8 @@
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
-import ItemCard from "./cards/ItemCard";
 import { Location } from "@prisma/client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import ItemCard from "./cards/ItemCard";
 
 interface Prop {
   data?: Location[];
