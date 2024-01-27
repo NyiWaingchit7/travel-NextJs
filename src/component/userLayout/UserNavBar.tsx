@@ -1,3 +1,4 @@
+import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import {
   Box,
@@ -6,7 +7,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -34,7 +34,7 @@ const UserNavBar = () => {
           }}
         >
           <Box sx={{ width: "70px" }}>
-            <Box component="img" src="../userLogo.png" sx={{ width: "100%" }} />
+            <Box component="img" src="/userLogo.png" sx={{ width: "100%" }} />
           </Box>
           <Box sx={{ display: { xs: "none", md: "block" } }}>
             <Box
@@ -72,11 +72,12 @@ const UserNavBar = () => {
               ))}
             </Box>
           </Box>
-          <Box sx={{ display: { xs: "none", md: "block" } }}>
+          <Box>
             <TextField
               sx={{
                 bgcolor: "info.main",
-                mx: 1,
+                mx: { md: 1 },
+                mr: 1,
                 borderRadius: 2,
               }}
               size="small"
@@ -98,7 +99,7 @@ const UserNavBar = () => {
           >
             <MenuIcon
               sx={{
-                fontSize: "2rem",
+                fontSize: "2.5rem",
                 color: "info.main",
               }}
             />

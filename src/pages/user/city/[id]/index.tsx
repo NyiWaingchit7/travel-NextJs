@@ -1,27 +1,29 @@
-import UserAirLine from "@/component/UserAirLineSection";
-import UserBus from "@/component/UserBusSection";
+import UserAirLineSection from "@/component/UserAirLineSection";
+import UserBusSection from "@/component/UserBusSection";
+import UserHotelSection from "@/component/UserHotelSection";
 import UserLocationSection from "@/component/UserLocationSection";
-import UserTouristGuides from "@/component/UserTouristGuideSection";
-import ItemCard from "@/component/cards/ItemCard";
 import { useAppSelector } from "@/store/hook";
-import { Box, CardActionArea, Typography } from "@mui/material";
-import Link from "next/link";
+import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 
 const CitiesDetail = () => {
   const router = useRouter();
   const id = Number(router.query.id);
   const cities = useAppSelector((store) => store.city.items);
+  const city = cities.find((d) => d.id === id);
+
   const allLocations = useAppSelector((store) => store.location.items);
   const allBuses = useAppSelector((store) => store.bus.items);
   const allAirLines = useAppSelector((store) => store.airLine.items);
-  const allTouristGuides = useAppSelector((store) => store.touristGuide.items);
-  const city = cities.find((d) => d.id === id);
-  const locations = allLocations.filter((d) => d.cityId === id);
-  const buses = allBuses.filter((d) => d.cityId === id);
-  const airLines = allAirLines.filter((d) => d.cityId === id);
+  const allHotels = useAppSelector((store) => store.hotel.items);
 
-  if (!city && !locations) return null;
+  const locations = allLocations.filter((d) => d.cityId === id);
+  const buses = allBuses.filter((item) => item.cityId === id);
+
+  const airLines = allAirLines.filter((item) => item.cityId === id);
+
+  const hotels = allHotels.filter((item) => item.cityId === id);
+  if (!city && !locations && !buses && !airLines && !hotels) return null;
   return (
     <Box>
       <Box>
@@ -40,7 +42,7 @@ const CitiesDetail = () => {
               component="img"
               sx={{
                 width: "100%",
-                height: { xs: "180px", sm: "250px" },
+                height: { xs: "180px", sm: "350px" },
                 borderRadius: 3,
               }}
               src="../../Yangon.jpg"
@@ -71,12 +73,9 @@ const CitiesDetail = () => {
       </Box>
       <Box sx={{ mt: 3 }}>
         <UserLocationSection data={locations} id={id} />
-      </Box>
-      <Box sx={{ mt: 3 }}>
-        <UserBus data={buses} id={id} />
-      </Box>
-      <Box sx={{ mt: 3 }}>
-        <UserAirLine data={airLines} id={id} />
+        <UserHotelSection data={hotels} id={id} />
+        <UserBusSection data={buses} id={id} />
+        <UserAirLineSection data={airLines} id={id} />
       </Box>
     </Box>
   );

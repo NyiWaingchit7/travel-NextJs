@@ -21,7 +21,7 @@ const defaultForm = {
 const ContactUs = () => {
   const [form, setForm] = useState(defaultForm);
   const dispatch = useAppDispatch();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const onSuccess = () => {
     dispatch(getContactUs());
 
@@ -38,7 +38,6 @@ const ContactUs = () => {
         flexDirection: "column",
         alignItems: "center",
         height: { xs: "100vh", sm: "89.2vh", md: "85vh" },
-        bgcolor: "red",
       }}
     >
       <Typography

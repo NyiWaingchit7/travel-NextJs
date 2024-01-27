@@ -1,25 +1,26 @@
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
-import { Bus } from "@prisma/client";
+import { Hotel } from "@prisma/client";
 import { useEffect, useState } from "react";
 import ItemCard from "./cards/ItemCard";
+
 interface Prop {
-  data?: Bus[];
+  data?: Hotel[];
   id?: number;
 }
-const UserBus = ({ data, id }: Prop) => {
-  const buses = useAppSelector((store) => store.bus.items);
-  const [showData, setShowData] = useState<Bus[]>(buses);
+
+const UserLocation = ({ data, id }: Prop) => {
+  const hotels = useAppSelector((store) => store.hotel.items);
+  const [showData, setShowData] = useState<Hotel[]>(hotels);
+  if (!hotels) return null;
 
   useEffect(() => {
     if (data) {
       setShowData(data);
     } else {
-      setShowData(buses);
+      setShowData(hotels);
     }
-  }, [id, buses]);
-
-  if (!buses) return null;
+  }, [id, hotels]);
   return (
     <Box sx={{ mt: 3 }}>
       <Box
@@ -31,8 +32,13 @@ const UserBus = ({ data, id }: Prop) => {
           mx: { xs: 2, lg: "auto" },
         }}
       >
-        <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-          Buses
+        <Typography
+          sx={{
+            fontSize: "1.3rem",
+            fontWeight: "bold",
+          }}
+        >
+          Hotels
         </Typography>
         <Typography
           sx={{
@@ -49,7 +55,7 @@ const UserBus = ({ data, id }: Prop) => {
             },
           }}
         >
-          View All{" "}
+          View All
         </Typography>
       </Box>
       <Box
@@ -64,10 +70,10 @@ const UserBus = ({ data, id }: Prop) => {
         }}
       >
         {showData.slice(0, 4).map((d) => (
-          <ItemCard key={d.id} title={d.name} />
+          <ItemCard key={d.id} title={d.name} href={`/user/location/${d.id}`} />
         ))}
       </Box>
     </Box>
   );
 };
-export default UserBus;
+export default UserLocation;
