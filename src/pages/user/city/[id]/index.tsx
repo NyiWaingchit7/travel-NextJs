@@ -1,6 +1,5 @@
-import UserAirLineSection from "@/component/UserAirLineSection";
-import UserBusSection from "@/component/UserBusSection";
-import UserHotelSection from "@/component/UserHotelSection";
+import UserAirLine from "@/component/UserAirLineSection";
+import UserBus from "@/component/UserBusSection";
 import UserLocationSection from "@/component/UserLocationSection";
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
@@ -73,9 +72,16 @@ const CitiesDetail = () => {
       </Box>
       <Box sx={{ mt: 3 }}>
         <UserLocationSection data={locations} id={id} />
-        <UserHotelSection data={hotels} id={id} />
-        <UserBusSection data={buses} id={id} />
-        <UserAirLineSection data={airLines} id={id} />
+        {buses.length > 0 && (
+          <Box sx={{ mt: 3 }}>
+            <UserBus data={buses} id={id} />
+          </Box>
+        )}
+        {airLines.length > 0 && (
+          <Box sx={{ mt: 3 }}>
+            <UserAirLine data={airLines} id={id} />
+          </Box>
+        )}
       </Box>
     </Box>
   );

@@ -7,7 +7,17 @@ const UserCity = () => {
   const cities = useAppSelector((store) => store.city.items);
   if (!cities) return null;
   return (
-    <Box id="userCity" sx={{ mt: 3 }}>
+    <Box
+      id="userCity"
+      sx={{
+        maxWidth: "1300px",
+        mx: { xs: 1, md: "auto" },
+        borderRadius: 3,
+        mt: 3,
+        bgcolor: "info.main",
+        p: 3,
+      }}
+    >
       <Box
         sx={{
           display: "flex",
