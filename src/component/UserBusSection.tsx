@@ -19,7 +19,16 @@ const UserBus = ({ data, id }: Prop) => {
   }, [id, buses]);
   if (!buses) return null;
   return (
-    <Box sx={{ mt: 3 }}>
+    <Box
+      sx={{
+        maxWidth: "1300px",
+        mx: { xs: 1, md: "auto" },
+        borderRadius: 3,
+        mt: 3,
+        bgcolor: "info.main",
+        p: 3,
+      }}
+    >
       <Box
         sx={{
           display: "flex",

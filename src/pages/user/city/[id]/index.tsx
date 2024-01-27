@@ -72,12 +72,16 @@ const CitiesDetail = () => {
       <Box sx={{ mt: 3 }}>
         <UserLocationSection data={locations} id={id} />
       </Box>
-      <Box sx={{ mt: 3 }}>
-        <UserBus data={buses} id={id} />
-      </Box>
-      <Box sx={{ mt: 3 }}>
-        <UserAirLine data={airLines} id={id} />
-      </Box>
+      {buses.length > 0 && (
+        <Box sx={{ mt: 3 }}>
+          <UserBus data={buses} id={id} />
+        </Box>
+      )}
+      {airLines.length > 0 && (
+        <Box sx={{ mt: 3 }}>
+          <UserAirLine data={airLines} id={id} />
+        </Box>
+      )}
     </Box>
   );
 };
