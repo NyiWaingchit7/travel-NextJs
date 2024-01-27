@@ -1,7 +1,8 @@
 import { useAppSelector } from "@/store/hook";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { TouristGuide } from "@prisma/client";
 import { useEffect, useState } from "react";
+import ItemCard from "./cards/ItemCard";
 interface Prop {
   data?: TouristGuide[];
   id?: number;
