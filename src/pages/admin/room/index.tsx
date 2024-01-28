@@ -31,6 +31,7 @@ const Room = () => {
           color="success"
           onClick={() => setOpen(true)}
           size="small"
+          sx={{ color: "info.main" }}
         >
           Add new Room
         </Button>

@@ -110,9 +110,10 @@ const ContactUs = () => {
           >
             <Button
               variant="contained"
-              color="success"
               disabled={!form.name || !form.contact || !form.advice}
               onClick={handleSend}
+              color="success"
+              sx={{ color: "info.main" }}
             >
               Send
             </Button>

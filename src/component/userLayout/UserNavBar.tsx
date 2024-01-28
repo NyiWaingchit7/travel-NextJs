@@ -6,6 +6,7 @@ import {
   InputAdornment,
   TextField,
   Typography,
+  Zoom,
 } from "@mui/material";
 
 import Link from "next/link";
@@ -33,9 +34,17 @@ const UserNavBar = () => {
             alignItems: "center",
           }}
         >
-          <Box sx={{ width: "70px" }}>
-            <Box component="img" src="/userLogo.png" sx={{ width: "100%" }} />
-          </Box>
+          <Zoom
+            in={true}
+            style={{
+              transitionDelay: "1000ms",
+              transitionDuration: "1000ms",
+            }}
+          >
+            <Box sx={{ width: "70px" }}>
+              <Box component="img" src="/userLogo.png" sx={{ width: "100%" }} />
+            </Box>
+          </Zoom>
           <Box sx={{ display: { xs: "none", md: "block" } }}>
             <Box
               sx={{
@@ -45,66 +54,94 @@ const UserNavBar = () => {
               }}
             >
               {cates.map((d) => (
-                <Link
-                  scroll={false}
-                  href={`${d.linkTag}`}
+                <Zoom
                   key={d.id}
-                  style={{ textDecoration: "none" }}
+                  in={true}
+                  style={{
+                    transitionDelay: "1000ms",
+                    transitionDuration: "1000ms",
+                  }}
                 >
-                  <Box
-                    sx={{
-                      mx: 2,
-                      cursor: "pointer",
-                      "&:hover": { borderBottom: 2, borderColor: "info.main" },
-                    }}
+                  <Link
+                    scroll={false}
+                    href={`${d.linkTag}`}
+                    key={d.id}
+                    style={{ textDecoration: "none" }}
                   >
-                    <Typography
-                      align="center"
+                    <Box
                       sx={{
-                        fontWeight: "bold",
-                        color: "info.light",
+                        mx: 2,
+                        cursor: "pointer",
+                        "&:hover": {
+                          borderBottom: 2,
+                          borderColor: "info.main",
+                        },
                       }}
                     >
-                      {" "}
-                      {d.name}
-                    </Typography>
-                  </Box>
-                </Link>
+                      <Typography
+                        align="center"
+                        sx={{
+                          fontWeight: "bold",
+                          color: "info.light",
+                        }}
+                      >
+                        {" "}
+                        {d.name}
+                      </Typography>
+                    </Box>
+                  </Link>
+                </Zoom>
               ))}
             </Box>
           </Box>
-          <Box>
-            <TextField
-              sx={{
-                bgcolor: "info.main",
-                mx: { md: 1 },
-                mr: 1,
-                borderRadius: 2,
-              }}
-              size="small"
-              placeholder={`Search .... `}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon sx={{ color: "success.main" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Box>
-          <Box
-            sx={{ display: { xs: "block", md: "none" } }}
-            onClick={() => {
-              setOpen(true);
+          <Zoom
+            in={true}
+            style={{
+              transitionDelay: "1000ms",
+              transitionDuration: "1000ms",
             }}
           >
-            <MenuIcon
-              sx={{
-                fontSize: "2.5rem",
-                color: "info.main",
+            <Box>
+              <TextField
+                sx={{
+                  bgcolor: "info.main",
+                  mx: { md: 1 },
+                  mr: 1,
+                  borderRadius: 2,
+                }}
+                size="small"
+                placeholder={`Search .... `}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon sx={{ color: "success.main" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+          </Zoom>
+          <Zoom
+            in={true}
+            style={{
+              transitionDelay: "1000ms",
+              transitionDuration: "1000ms",
+            }}
+          >
+            <Box
+              sx={{ display: { xs: "block", md: "none" } }}
+              onClick={() => {
+                setOpen(true);
               }}
-            />
-          </Box>
+            >
+              <MenuIcon
+                sx={{
+                  fontSize: "2.5rem",
+                  color: "info.main",
+                }}
+              />
+            </Box>
+          </Zoom>
         </Box>
       </Box>
       <Drawer
@@ -143,7 +180,7 @@ export const cates = [
   {
     id: 3,
     name: "About Us",
-    linkTag: "",
+    linkTag: "/user/about-us",
   },
   {
     id: 4,

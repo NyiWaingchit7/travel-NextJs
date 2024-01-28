@@ -16,6 +16,7 @@ const City = () => {
           color="success"
           onClick={() => setOpen(true)}
           size="small"
+          sx={{ color: "info.main" }}
         >
           Add new City
         </Button>

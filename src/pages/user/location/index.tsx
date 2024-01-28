@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/hook";
-import { Box, Card, CardActionArea, Typography } from "@mui/material";
+import { Box, Card, CardActionArea, Typography, Zoom } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -29,17 +29,25 @@ const UserLocation = () => {
                 boxShadow: 1,
               }}
             >
-              <Box sx={{ width: { xs: "50%", sm: "30%" } }}>
-                <Box
-                  component="img"
-                  sx={{
-                    width: "100%",
-                    height: { xs: "150px", md: "200px" },
-                    borderRadius: 3,
-                  }}
-                  src="../Yangon.jpg"
-                />
-              </Box>
+              <Zoom
+                in={true}
+                style={{
+                  transitionDelay: "500ms",
+                  transitionDuration: "500ms",
+                }}
+              >
+                <Box sx={{ width: { xs: "50%", sm: "30%" } }}>
+                  <Box
+                    component="img"
+                    sx={{
+                      width: "100%",
+                      height: { xs: "150px", md: "200px" },
+                      borderRadius: 3,
+                    }}
+                    src="../Yangon.jpg"
+                  />
+                </Box>
+              </Zoom>
               <Box sx={{ width: { xs: "70%", sm: "40%" }, mt: 1 }}>
                 <Typography
                   sx={{

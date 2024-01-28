@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Slide, Typography } from "@mui/material";
 
 const UserHome = () => {
   return (
@@ -9,50 +9,66 @@ const UserHome = () => {
           justifyContent: "space-between",
           alignItems: "center",
           maxWidth: "1300px",
-          mx: "auto",
+          mx: { xs: 2, lg: "auto" },
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            mt: 3,
-            width: "30%",
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: {
-                xs: "1.5rem",
-                sm: "3rem",
-                md: "4rem",
-                fontWeight: "700",
-              },
-              fontFamily: "cursive",
-              mx: 2,
-            }}
-          >
-            Explore Beautiful World
-          </Typography>
-        </Box>{" "}
-        <Box
-          sx={{
-            width: { xs: "150px", sm: "200px", md: "300px" },
-            height: { xs: "150px", sm: "200px", md: "300px" },
-            mt: 3,
-          }}
+        <Slide
+          direction="left"
+          in={true}
+          mountOnEnter
+          unmountOnExit
+          timeout={2000}
         >
           <Box
             sx={{
-              width: "100%",
-              height: "100%",
-              borderRadius: "50%",
-              objectFit: "cover",
+              display: "flex",
+              justifyContent: "center",
+              mt: 3,
+              width: "30%",
             }}
-            component="img"
-            src="../cover.jpg"
-          />
-        </Box>
+          >
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: "1.5rem",
+                  sm: "3rem",
+                  md: "4rem",
+                  fontWeight: "700",
+                },
+                fontFamily: "cursive",
+                mx: 2,
+              }}
+            >
+              Explore Beautiful World
+            </Typography>
+          </Box>
+        </Slide>
+        <Slide
+          direction="right"
+          in={true}
+          mountOnEnter
+          unmountOnExit
+          timeout={2000}
+        >
+          <Box
+            sx={{
+              width: { xs: "150px", sm: "200px", md: "300px" },
+              height: { xs: "150px", sm: "200px", md: "300px" },
+              mt: 3,
+            }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "50%",
+                objectFit: "cover",
+              }}
+              component="img"
+              src="../cover.jpg"
+            />
+          </Box>
+        </Slide>
       </Box>
     </Box>
   );

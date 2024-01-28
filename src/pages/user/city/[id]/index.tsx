@@ -36,7 +36,7 @@ const CitiesDetail = () => {
             p: 1,
           }}
         >
-          <Box sx={{ width: "60%" }}>
+          <Box sx={{ width: { xs: "60%", md: "40%" } }}>
             <Box
               component="img"
               sx={{
@@ -49,7 +49,7 @@ const CitiesDetail = () => {
           </Box>
           <Box
             sx={{
-              width: { xs: "70%", sm: "40%" },
+              width: { xs: "90%", sm: "70%" },
               mt: 1,
               bgcolor: "info.main",
               p: 2,

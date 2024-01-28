@@ -19,7 +19,17 @@ const UserTouristGuides = ({ data, id }: Prop) => {
   }, [id, touristGuides]);
   if (!touristGuides) return null;
   return (
-    <Box sx={{ mt: 3 }}>
+    <Box
+      sx={{
+        maxWidth: "1300px",
+        mx: { xs: 1, md: "auto" },
+        borderRadius: 3,
+        mt: 3,
+        bgcolor: "info.main",
+        p: 1,
+        boxShadow: 2,
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -29,7 +39,9 @@ const UserTouristGuides = ({ data, id }: Prop) => {
           mx: { xs: 2, lg: "auto" },
         }}
       >
-        <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
+        <Typography
+          sx={{ fontSize: { xs: "0.8rem", sm: "1.4rem" }, fontWeight: "bold" }}
+        >
           Tourist Guides
         </Typography>
         <Typography

@@ -27,7 +27,8 @@ const UserAirLine = ({ data, id }: Prop) => {
         borderRadius: 3,
         mt: 3,
         bgcolor: "info.main",
-        p: 3,
+        p: 1,
+        boxShadow: 2,
       }}
     >
       <Box
@@ -39,7 +40,9 @@ const UserAirLine = ({ data, id }: Prop) => {
           mx: { xs: 2, lg: "auto" },
         }}
       >
-        <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
+        <Typography
+          sx={{ fontSize: { xs: "0.8rem", sm: "1.4rem" }, fontWeight: "bold" }}
+        >
           Air Lines
         </Typography>
         <Typography

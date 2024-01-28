@@ -34,7 +34,7 @@ const UserLocation = ({ data, id }: Prop) => {
       >
         <Typography
           sx={{
-            fontSize: "1.3rem",
+            fontSize: { xs: "0.8rem", sm: "1.4rem" },
             fontWeight: "bold",
           }}
         >

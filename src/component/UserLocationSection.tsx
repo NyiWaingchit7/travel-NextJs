@@ -31,7 +31,8 @@ const UserLocation = ({ data, id }: Prop) => {
         borderRadius: 3,
         mt: 3,
         bgcolor: "info.main",
-        p: 3,
+        p: 1,
+        boxShadow: 2,
       }}
     >
       <Box
@@ -45,7 +46,7 @@ const UserLocation = ({ data, id }: Prop) => {
       >
         <Typography
           sx={{
-            fontSize: "1.3rem",
+            fontSize: { xs: "0.8rem", sm: "1.4rem" },
             fontWeight: "bold",
           }}
         >
