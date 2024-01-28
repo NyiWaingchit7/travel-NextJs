@@ -1,7 +1,7 @@
 import {
   ContactUsSLice,
   CreateContactUsOptions,
-  UpdateContactUsOptions
+  UpdateContactUsOptions,
 } from "@/types/contactUs";
 import { config } from "@/utils/config";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -35,6 +35,7 @@ export const createContactUs = createAsyncThunk(
           advice,
         }),
       });
+      const { data } = await response.json();
 
       onSuccess && onSuccess();
     } catch (err) {
@@ -53,7 +54,7 @@ export const updateContactUs = createAsyncThunk(
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ isRead }),
       });
-      const data = await response.json();
+      const { data } = await response.json();
       onSuccess && onSuccess();
     } catch (err) {
       onError && onError();

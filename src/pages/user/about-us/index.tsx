@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import React from "react";
 
 const AboutUs = () => {
   return (
@@ -51,7 +52,7 @@ const AboutUs = () => {
       </Box>
       <Box sx={{ maxWidth: "1100px", mx: 2, mt: 2 }}>
         <Typography sx={{ fontWeight: "bold" }}>
-          What can we serve for user?
+          What can we support for user?
         </Typography>
         <Typography
           variant="body2"
