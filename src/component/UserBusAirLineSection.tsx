@@ -2,11 +2,29 @@ import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
 import { Bus } from "@prisma/client";
 import { useEffect, useState } from "react";
-import ItemCard from "./cards/ItemCard";
+import UserBusAirLineCard from "./cards/UserBusAirLineCard";
 interface Prop {
   data?: Bus[];
   id?: number;
 }
+
+const UserBusAirLineArray = [
+  {
+    title: "Bus",
+    description:
+      "the ticket system is  not ready yet.but we have best company of buses for transportation. you can search your bus by your current city and contact with phone number and address",
+    href: "/user/bus",
+    assetUrl: "/Bus.jpg",
+  },
+  {
+    title: "Air Line",
+    description:
+      "the ticket system is  not ready yet.but we have best company of air-lines for transportation. you can search your flight by your current city and contact with phone number and address",
+    href: "/user/air-line",
+    assetUrl: "/AirLine.jpg",
+  },
+];
+
 const UserBus = ({ data, id }: Prop) => {
   const buses = useAppSelector((store) => store.bus.items);
   const [showData, setShowData] = useState<Bus[]>(buses);
@@ -34,31 +52,18 @@ const UserBus = ({ data, id }: Prop) => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "centr",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
           maxWidth: "1200px",
           mx: { xs: 2, lg: "auto" },
         }}
       >
-        <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-          Buses
-        </Typography>
         <Typography
-          sx={{
-            fontWeight: "bold",
-            cursor: "pointer",
-            color: "success.light",
-            p: 1,
-            textAlign: "center",
-            "&:hover": {
-              bgcolor: "success.main",
-              color: "info.main",
-
-              borderRadius: 2,
-            },
-          }}
+          textAlign={"center"}
+          sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
         >
-          View All{" "}
+          We also provides transportation services
         </Typography>
       </Box>
       <Box
@@ -72,8 +77,13 @@ const UserBus = ({ data, id }: Prop) => {
           mx: "auto",
         }}
       >
-        {showData.slice(0, 4).map((d) => (
-          <ItemCard key={d.id} title={d.name} />
+        {UserBusAirLineArray.map((item) => (
+          <UserBusAirLineCard
+            title={item.title}
+            description={item.description}
+            href={item.href}
+            assetUrl={item.assetUrl}
+          />
         ))}
       </Box>
     </Box>

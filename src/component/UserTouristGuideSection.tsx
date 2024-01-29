@@ -1,6 +1,7 @@
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
 import { TouristGuide } from "@prisma/client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import UserTouristGuideCard from "./cards/UserTouristGuideCard";
 interface Prop {
@@ -19,45 +20,31 @@ const UserTouristGuides = ({ data, id }: Prop) => {
   }, [id, touristGuides]);
   if (!touristGuides) return null;
   return (
-    <Box sx={{ mt: 3 }}>
+    <Box sx={{ mt: 3, mb: 6 }}>
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
           alignItems: "centr",
           maxWidth: "1200px",
           mx: { xs: 2, lg: "auto" },
         }}
       >
-        <Typography sx={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-          Tourist Guides
-        </Typography>
         <Typography
-          sx={{
-            fontWeight: "bold",
-            cursor: "pointer",
-            color: "success.light",
-            p: 1,
-            textAlign: "center",
-            "&:hover": {
-              bgcolor: "success.main",
-              color: "info.main",
-
-              borderRadius: 2,
-            },
-          }}
+          textAlign={"center"}
+          sx={{ fontSize: { xs: "1.3rem", sm: "1.8rem" }, fontWeight: "bold" }}
         >
-          View All{" "}
+          We Also Have Tourist Guides For You
         </Typography>
       </Box>
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: "space-around",
+          position: "relative",
           flexWrap: "wrap",
           mt: 2,
-          maxWidth: "1100px",
+          maxWidth: "800px",
           mx: "auto",
         }}
       >
@@ -70,6 +57,29 @@ const UserTouristGuides = ({ data, id }: Prop) => {
             language={item.language}
           />
         ))}
+        <Link href={"/user/tourist-guide"} style={{ textDecoration: "none" }}>
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: "0.9rem", sm: "1.2rem" },
+              cursor: "pointer",
+              color: "info.main",
+              p: 1,
+              bgcolor: "success.main",
+              position: "absolute",
+              left: "44.5%",
+              bottom: { xs: -35, md: "45%" },
+              borderRadius: 2,
+              textAlign: "center",
+              "&:hover": {
+                bgcolor: "success.light",
+                color: "info.main",
+              },
+            }}
+          >
+            View All{" "}
+          </Typography>
+        </Link>
       </Box>
     </Box>
   );

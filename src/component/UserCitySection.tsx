@@ -30,7 +30,10 @@ const UserCity = () => {
               mx: { xs: 2, lg: "auto" },
             }}
           >
-            <Typography sx={{ fontSize: "1.8rem", fontWeight: "bold" }}>
+            <Typography
+              textAlign={"center"}
+              sx={{ fontSize: "1.8rem", fontWeight: "bold" }}
+            >
               Popular Cities You Might Want To Visit
             </Typography>
             <Link href={"/user/city"} style={{ textDecoration: "none" }}>
