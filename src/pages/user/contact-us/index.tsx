@@ -36,8 +36,7 @@ const ContactUs = () => {
   return (
     <Box>
       <Box>
-        {" "}
-        <Profiles />{" "}
+        <Profiles />
       </Box>
       <Box
         sx={{

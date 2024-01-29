@@ -36,7 +36,14 @@ const UserLocation = () => {
                   transitionDuration: "500ms",
                 }}
               >
-                <Box sx={{ width: { xs: "50%", sm: "30%" } }}>
+                <Box
+                  sx={{
+                    width: { xs: "50%", sm: "25%" },
+                    p: 1,
+                    boxShadow: 1,
+                    borderRadius: 3,
+                  }}
+                >
                   <Box
                     component="img"
                     sx={{
@@ -74,6 +81,7 @@ const UserLocation = () => {
                       borderRadius: 2,
                       color: "success.main",
                       fontSize: { xs: "0.7rem", md: "1rem" },
+                      fontWeight: "bold",
                     }}
                   >
                     See more

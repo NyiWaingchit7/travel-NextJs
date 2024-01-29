@@ -36,7 +36,14 @@ const CitiesDetail = () => {
             p: 1,
           }}
         >
-          <Box sx={{ width: { xs: "60%", md: "40%" } }}>
+          <Box
+            sx={{
+              width: { xs: "60%", md: "40%" },
+              p: 1,
+              borderRadius: 3,
+              boxShadow: 2,
+            }}
+          >
             <Box
               component="img"
               sx={{
@@ -54,6 +61,7 @@ const CitiesDetail = () => {
               bgcolor: "info.main",
               p: 2,
               borderRadius: 3,
+              boxShadow: 2,
             }}
           >
             <Typography

@@ -25,7 +25,14 @@ const LocationDetail = () => {
             p: 1,
           }}
         >
-          <Box sx={{ width: { xs: "50%", sm: "30%" } }}>
+          <Box
+            sx={{
+              width: { xs: "50%", sm: "30%" },
+              p: 1,
+              borderRadius: 3,
+              boxShadow: 2,
+            }}
+          >
             <Box
               component="img"
               sx={{
@@ -43,6 +50,7 @@ const LocationDetail = () => {
               bgcolor: "info.main",
               p: 2,
               borderRadius: 3,
+              boxShadow: 2,
             }}
           >
             <Typography

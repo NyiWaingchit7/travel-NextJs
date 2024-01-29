@@ -3,9 +3,13 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <Box sx={{ mt: 2 }}>
+    <Box sx={{ mt: 2, minHeight: "60vh" }}>
       <Box sx={{ maxWidth: "1100px", mx: 2, mt: 2 }}>
-        <Typography sx={{ fontWeight: "bold" }}>What do we do?</Typography>
+        <Typography
+          sx={{ fontWeight: "bold", fontSize: { xs: "0.9rem", sm: "1rem" } }}
+        >
+          What do we do?
+        </Typography>
         <Typography
           variant="body2"
           sx={{
@@ -27,7 +31,9 @@ const AboutUs = () => {
         </Typography>
       </Box>
       <Box sx={{ maxWidth: "1100px", mx: 2, mt: 2 }}>
-        <Typography sx={{ fontWeight: "bold" }}>
+        <Typography
+          sx={{ fontWeight: "bold", fontSize: { xs: "0.9rem", sm: "1rem" } }}
+        >
           What is the purpose of the web?
         </Typography>
         <Typography
@@ -51,7 +57,9 @@ const AboutUs = () => {
         </Typography>
       </Box>
       <Box sx={{ maxWidth: "1100px", mx: 2, mt: 2 }}>
-        <Typography sx={{ fontWeight: "bold" }}>
+        <Typography
+          sx={{ fontWeight: "bold", fontSize: { xs: "0.9rem", sm: "1rem" } }}
+        >
           What can we support for user?
         </Typography>
         <Typography

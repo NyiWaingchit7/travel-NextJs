@@ -179,12 +179,12 @@ export const cates = [
   },
   {
     id: 3,
-    name: "About Us",
-    linkTag: "/user/about-us",
+    name: "Contact Us",
+    linkTag: "/user/contact-us",
   },
   {
     id: 4,
-    name: "Contact Us",
-    linkTag: "/user/contact-us",
+    name: "About Us",
+    linkTag: "/user/about-us",
   },
 ];

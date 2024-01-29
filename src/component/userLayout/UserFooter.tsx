@@ -59,7 +59,7 @@ const UserFooter = () => {
             </Box>
           </Link>
         ))}
-        <Link href={""} style={{ textDecoration: "none" }}>
+        <Link href={"/user/faq"} style={{ textDecoration: "none" }}>
           <Box
             sx={{
               color: "info.light",
@@ -76,7 +76,7 @@ const UserFooter = () => {
             <Typography sx={{ fontWeight: "bold" }}>FAQ</Typography>
           </Box>
         </Link>
-        <Link href={""} style={{ textDecoration: "none" }}>
+        <Link href={"/user/privacy-policy"} style={{ textDecoration: "none" }}>
           <Box
             sx={{
               color: "info.light",
