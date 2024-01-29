@@ -22,96 +22,88 @@ const UserCity = () => {
       }}
     >
       <Box>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              maxWidth: "1200px",
+              mx: { xs: 2, lg: "auto" },
+            }}
+          >
+            <Typography
+              textAlign={"center"}
+              sx={{ fontSize: "1.8rem", fontWeight: "bold" }}
+            >
+              Popular Cities You Might Want To Visit
+            </Typography>
+            <Link href={"/user/city"} style={{ textDecoration: "none" }}>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  color: "success.light",
+                  p: 1,
+                  width: "fit-content",
+                  textAlign: "center",
+                  "&:hover": {
+                    bgcolor: "success.main",
+                    color: "info.main",
+                    borderRadius: 2,
+                  },
+                }}
+              >
+                View All ...
+              </Typography>
+            </Link>
+          </Box>
+        </Box>
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             alignItems: "center",
-            maxWidth: "1200px",
-            mx: { xs: 2, lg: "auto" },
             mt: 2,
+            width: "90vw",
+            mx: "auto",
           }}
         >
-          <Typography
-            sx={{
-              fontSize: { xs: "0.8rem", sm: "1.4rem" },
-              fontWeight: "bold",
-            }}
-          >
-            Popular Cities You Might Want To Visit
-          </Typography>
-          <Link href={"/user/city"} style={{ textDecoration: "none" }}>
-            <Typography
-              sx={{
-                fontWeight: "bold",
-                cursor: "pointer",
-                color: "success.light",
-                p: 1,
-                width: "fit-content",
-                textAlign: "center",
-                "&:hover": {
-                  bgcolor: "success.main",
-                  color: "info.main",
-                  borderRadius: 2,
-                },
-              }}
-            >
-              View All
-            </Typography>
-          </Link>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          mt: 2,
-          width: "90vw",
-          mx: "auto",
-          p: 1,
-          borderRadius: 4,
-        }}
-      >
-        <Carousel sx={{ width: "80%" }}>
-          {cities.slice(0, 4).map((item) => (
-            <Link href={`city/${item.id}`} style={{ textDecoration: "none" }}>
-              <Box
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                {" "}
+          <Carousel sx={{ width: "80%" }}>
+            {cities.slice(0, 4).map((item) => (
+              <Link href={`city/${item.id}`} style={{ textDecoration: "none" }}>
                 <Box
-                  component="img"
                   sx={{
                     width: "100%",
-                    height: { xs: "300px", sm: "510px" },
-                    borderRadius: 4,
-                    opacity: "0.9",
+                    display: "flex",
+                    justifyContent: "center",
                   }}
-                  src={"/Yangon.jpg"}
-                />
-                <Box sx={{ position: "absolute", top: 30 }}>
-                  <Typography
+                >
+                  {" "}
+                  <Box
+                    component="img"
                     sx={{
-                      fontSize: {
-                        xs: "1rem",
-                        md: "2rem",
-                        fontWeight: "bold",
-                      },
+                      width: "100%",
+                      height: { xs: "380px", sm: "510px" },
+                      borderRadius: 1,
+                      opacity: "0.9",
                     }}
-                    color="info.light"
-                  >
-                    {item.name}
-                  </Typography>
+                    src={"/Yangon.jpg"}
+                  />
+                  <Box sx={{ position: "absolute", top: 30 }}>
+                    <Typography
+                      variant="h3"
+                      fontWeight={"bold"}
+                      color="info.main"
+                    >
+                      {item.name}
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
-            </Link>
-          ))}
-        </Carousel>
+              </Link>
+            ))}
+          </Carousel>
+        </Box>
       </Box>
     </Box>
   );

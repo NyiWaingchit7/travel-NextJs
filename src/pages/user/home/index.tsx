@@ -1,6 +1,4 @@
-import UserAirLineSection from "@/component/UserAirLineSection";
-
-import UserBusSection from "@/component/UserBusSection";
+import UserBusAirLineSection from "@/component/UserBusAirLineSection";
 import UserCity from "@/component/UserCitySection";
 import UserHome from "@/component/UserHome";
 import UserLocation from "@/component/UserLocationSection";
@@ -13,8 +11,7 @@ const Home = () => {
       <UserHome />
       <UserCity />
       <UserLocation />
-      <UserBusSection />
-      <UserAirLineSection />
+      <UserBusAirLineSection />
       <UserTouristGuideSection />
     </Box>
   );

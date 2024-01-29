@@ -1,5 +1,5 @@
 import UserAirLine from "@/component/UserAirLineSection";
-import UserBus from "@/component/UserBusSection";
+import UserBus from "@/component/UserBusAirLineSection";
 import UserLocationSection from "@/component/UserLocationSection";
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
