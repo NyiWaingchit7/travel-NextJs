@@ -71,14 +71,7 @@ const NewLocation = ({ open, setOpen, locationData }: Props) => {
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Add New Location</DialogTitle>
-        <DialogContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <DialogContent>
           <TextField
             autoFocus
             required
@@ -90,6 +83,7 @@ const NewLocation = ({ open, setOpen, locationData }: Props) => {
             }
             sx={{ mb: 1 }}
             defaultValue={newLocation.name ? newLocation.name : ""}
+            fullWidth
           />
           <TextField
             autoFocus
@@ -102,6 +96,7 @@ const NewLocation = ({ open, setOpen, locationData }: Props) => {
             }
             sx={{ mb: 1 }}
             defaultValue={newLocation.title ? newLocation.title : ""}
+            fullWidth
           />
           <TextField
             autoFocus
@@ -116,6 +111,7 @@ const NewLocation = ({ open, setOpen, locationData }: Props) => {
             defaultValue={
               newLocation.description ? newLocation.description : ""
             }
+            fullWidth
           />
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">City</InputLabel>

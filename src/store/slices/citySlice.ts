@@ -45,12 +45,12 @@ export const createCity = createAsyncThunk(
 export const updateCity = createAsyncThunk(
   "city/updateCity",
   async (option: UpdateCityOptions, thunkApi) => {
-    const { id, name, description, onSuccess, onError } = option;
+    const { id, name, description, assetUrl, onSuccess, onError } = option;
     try {
       const response = await fetch(`${config.apiBaseUrl}/city?id=${id}`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ name, description }),
+        body: JSON.stringify({ name, description, assetUrl }),
       });
       const data = await response.json();
       onSuccess && onSuccess();

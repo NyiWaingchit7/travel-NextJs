@@ -27,8 +27,9 @@ export default function RoomCard({ data }: Props) {
           cursor: "pointer",
           opacity: data.isAvailable === false ? 0.4 : 1,
           borderRadius: 3,
+          bgcolor: "secondary.main",
           p: 1,
-          "&:hover": { bgcolor: "info.dark" },
+          "&:hover": { bgcolor: "secondary.dark" },
         }}
       >
         <Box
@@ -67,7 +68,11 @@ export default function RoomCard({ data }: Props) {
         </Box>
         <Box>
           <Typography
-            sx={{ fontWeight: "bold", fontSize: { xs: "0.7rem", md: "1rem" } }}
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: "0.7rem", md: "1rem" },
+              color: "info.main",
+            }}
           >
             {data.type}
           </Typography>
@@ -76,6 +81,7 @@ export default function RoomCard({ data }: Props) {
               fontWeight: "bold",
               fontSize: { xs: "0.7rem", md: "1rem" },
               my: 1,
+              color: "info.main",
             }}
           >
             {" "}
@@ -92,13 +98,18 @@ export default function RoomCard({ data }: Props) {
           <Button
             size="small"
             variant="contained"
-            color="secondary"
+            color="success"
             sx={{ maxWidth: "10px" }}
             onClick={() => {
               setOpen(true);
             }}
           >
-            <EditIcon sx={{ fontSize: { xs: "1rem", sm: "1.3rem" } }} />
+            <EditIcon
+              sx={{
+                fontSize: { xs: "1rem", sm: "1.3rem" },
+                color: "info.main",
+              }}
+            />
           </Button>
         </Box>
       </Paper>

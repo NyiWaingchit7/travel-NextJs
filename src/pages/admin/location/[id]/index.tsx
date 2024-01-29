@@ -98,7 +98,9 @@ const LocationDetail = () => {
             p: 1,
           }}
         >
-          <Box sx={{ width: "100%", p: 1, mb: 1 }}>
+          <Box
+            sx={{ width: "100%", p: 1, mb: 1, borderRadius: 3, boxShadow: 2 }}
+          >
             <Box
               component="img"
               sx={{ width: "100%", borderRadius: 3 }}
@@ -113,6 +115,7 @@ const LocationDetail = () => {
             bgcolor: "info.main",
             width: "100%",
             borderRadius: 3,
+            boxShadow: 2,
           }}
         >
           <Typography

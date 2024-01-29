@@ -1,20 +1,38 @@
 import Location from "@/component/Location";
 import NewCity from "@/component/NewCIty";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
-import { deleteCity, getCity } from "@/store/slices/citySlice";
+import { deleteCity, getCity, updateCity } from "@/store/slices/citySlice";
+import { fileUpload } from "@/utils/fileUpload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Box, Button, Typography } from "@mui/material";
+import { City } from "@prisma/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const CityDetail = () => {
   const router = useRouter();
   const id = Number(router.query.id);
   const cities = useAppSelector((store) => store.city.items);
-  const data = cities.find((d) => d.id === id);
+  const data = cities.find((d) => d.id === id) as City;
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
+  const handleUpdateImage = async (e: any) => {
+    const image = e.target.files[0];
+
+    const assetUrl = await fileUpload(image);
+    console.log(assetUrl);
+
+    dispatch(
+      updateCity({
+        ...data,
+        assetUrl,
+        onSuccess: () => {
+          dispatch(getCity());
+        },
+      })
+    );
+  };
   const onSuccess = () => {
     dispatch(getCity());
     router.push("/admin/city");
@@ -78,12 +96,38 @@ const CityDetail = () => {
             p: 1,
           }}
         >
-          <Box sx={{ width: "100%", p: 1, mb: 1 }}>
+          <Box
+            sx={{
+              width: "100%",
+              p: 1,
+              mb: 1,
+              borderRadius: 3,
+              boxShadow: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
             <Box
               component="img"
               sx={{ width: "100%", borderRadius: 3 }}
               src={data.assetUrl || "../../default-image.jpg"}
             />
+            <Button
+              variant="outlined"
+              component="label"
+              sx={{ width: "fit-content", mt: 2 }}
+              size="small"
+            >
+              Upload File
+              <input
+                type="file"
+                hidden
+                onChange={(e) => {
+                  handleUpdateImage(e);
+                }}
+              />
+            </Button>
           </Box>
         </Box>{" "}
         <Box
@@ -93,6 +137,8 @@ const CityDetail = () => {
             bgcolor: "info.main",
             width: "100%",
             borderRadius: 3,
+
+            boxShadow: 2,
           }}
         >
           <Typography

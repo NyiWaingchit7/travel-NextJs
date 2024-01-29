@@ -34,7 +34,15 @@ const HotelDetail = () => {
           width: { xs: "100%", md: "85%" },
         }}
       >
-        <Box sx={{ bgcolor: "success.main", p: 1, borderRadius: 2 }}>
+        <Box
+          sx={{
+            bgcolor: "success.main",
+            p: 1,
+            borderRadius: 2,
+
+            boxShadow: 2,
+          }}
+        >
           <Typography
             sx={{ fontWeight: "bold", fontSize: "1.2rem", color: "info.light" }}
           >
@@ -96,7 +104,9 @@ const HotelDetail = () => {
             p: 1,
           }}
         >
-          <Box sx={{ width: "100%", p: 1, mb: 1 }}>
+          <Box
+            sx={{ width: "100%", p: 1, mb: 1, borderRadius: 3, boxShadow: 2 }}
+          >
             <Box
               component="img"
               sx={{ width: "100%", borderRadius: 3 }}
@@ -111,6 +121,7 @@ const HotelDetail = () => {
             bgcolor: "info.main",
             width: "100%",
             borderRadius: 3,
+            boxShadow: 2,
           }}
         >
           <Typography

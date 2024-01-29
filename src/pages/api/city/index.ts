@@ -10,20 +10,22 @@ export default async function handler(
 ) {
   const method = req.method;
   if (method === "POST") {
-    const { name, description } = req.body;
+    const { name, description, assetUrl } = req.body;
     const isValid = name && description;
     if (!isValid) return res.status(405).send("bad request");
-    const data = await prisma.city.create({ data: { name, description } });
+    const data = await prisma.city.create({
+      data: { name, description, assetUrl },
+    });
     return res.status(200).json({ data });
   } else if (method === "PUT") {
     const id = Number(req.query.id);
     const exist = await prisma.city.findFirst({ where: { id } });
     if (!exist) return res.status(405).send("reqest does not found");
-    const { name, description } = req.body;
+    const { name, description, assetUrl } = req.body;
     const isValid = name && description;
     if (!isValid) return res.status(405).send("bad request");
     const data = await prisma.city.update({
-      data: { name, description },
+      data: { name, description, assetUrl },
       where: { id },
     });
     return res.status(200).json({ data });

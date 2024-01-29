@@ -58,14 +58,7 @@ const NewHotel = ({ open, setOpen, hotelData }: props) => {
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Add New Hotel</DialogTitle>
-        <DialogContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <DialogContent>
           <TextField
             placeholder="Name..."
             autoFocus
@@ -76,6 +69,7 @@ const NewHotel = ({ open, setOpen, hotelData }: props) => {
             onChange={(e) => setNewHotel({ ...newHotel, name: e.target.value })}
             sx={{ mb: 1 }}
             defaultValue={newHotel.name}
+            fullWidth
           />
           <TextField
             placeholder="Description..."
@@ -89,6 +83,7 @@ const NewHotel = ({ open, setOpen, hotelData }: props) => {
             }
             sx={{ mb: 1 }}
             defaultValue={newHotel.description}
+            fullWidth
           />
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">City</InputLabel>

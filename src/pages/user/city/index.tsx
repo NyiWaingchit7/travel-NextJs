@@ -46,7 +46,7 @@ const UserCity = () => {
                       height: { xs: "150px", md: "200px" },
                       borderRadius: 3,
                     }}
-                    src="../Yangon.jpg"
+                    src={d.assetUrl || "../Yangon.jpg"}
                   />
                 </Box>
               </Zoom>

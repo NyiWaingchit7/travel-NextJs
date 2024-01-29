@@ -62,7 +62,7 @@ const UserBus = ({ data, id }: Prop) => {
       >
         <Typography
           textAlign={"center"}
-          sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
+          sx={{ fontSize: { xs: "0.9rem", sm: "1.5rem" }, fontWeight: "bold" }}
         >
           We also provides transportation services
         </Typography>

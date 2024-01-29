@@ -26,15 +26,18 @@ const UserCity = () => {
           <Box
             sx={{
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
-              maxWidth: "1200px",
-              mx: { xs: 2, lg: "auto" },
+              width: "100%",
+              mx: 2,
+              justifyContent: "space-between",
+              p: 1,
             }}
           >
             <Typography
-              textAlign={"center"}
-              sx={{ fontSize: "1.8rem", fontWeight: "bold" }}
+              sx={{
+                fontSize: { xs: "0.8rem", sm: "1.5rem" },
+                fontWeight: "bold",
+              }}
             >
               Popular Cities You Might Want To Visit
             </Typography>
@@ -52,9 +55,10 @@ const UserCity = () => {
                     color: "info.main",
                     borderRadius: 2,
                   },
+                  fontSize: { xs: "0.7rem", sm: "1rem" },
                 }}
               >
-                View All ...
+                View All
               </Typography>
             </Link>
           </Box>
@@ -84,17 +88,17 @@ const UserCity = () => {
                     component="img"
                     sx={{
                       width: "100%",
-                      height: { xs: "380px", sm: "510px" },
+                      height: { xs: "300px", sm: "400px" },
                       borderRadius: 1,
                       opacity: "0.9",
                     }}
-                    src={"/Yangon.jpg"}
+                    src={item.assetUrl || "/Yangon.jpg"}
                   />
                   <Box sx={{ position: "absolute", top: 30 }}>
                     <Typography
-                      variant="h3"
                       fontWeight={"bold"}
                       color="info.main"
+                      sx={{ fontSize: { xs: "1.3rem", sm: "2rem" } }}
                     >
                       {item.name}
                     </Typography>

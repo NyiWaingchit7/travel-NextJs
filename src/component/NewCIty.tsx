@@ -3,15 +3,20 @@ import { createCity, getCity, updateCity } from "@/store/slices/citySlice";
 import {
   Box,
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
   TextField,
+  Typography,
 } from "@mui/material";
 import { City } from "@prisma/client";
 
 import { useEffect, useState } from "react";
+import FileDropZone from "./FileDropZone";
+import { fileUpload } from "@/utils/fileUpload";
 interface props {
   open: boolean;
   setOpen: (data: any) => void;
@@ -27,8 +32,16 @@ const NewCity = ({ open, setOpen, cityData }: props) => {
     setOpen(false);
     setNewCity(defaultCity);
   };
-  const handleCreateCity = () => {
-    dispatch(createCity({ ...newCity, onSuccess }));
+  const [image, setImage] = useState<File>();
+  const onFileSelected = (files: File[]) => {
+    setImage(files[0]);
+  };
+  const handleCreateCity = async () => {
+    let assetUrl;
+    if (image) {
+      assetUrl = await fileUpload(image);
+    }
+    dispatch(createCity({ ...newCity, assetUrl, onSuccess }));
   };
   const handleUpdateCity = () => {
     dispatch(updateCity({ id: cityData?.id as number, ...newCity, onSuccess }));
@@ -39,19 +52,12 @@ const NewCity = ({ open, setOpen, cityData }: props) => {
     } else {
       setNewCity(defaultCity);
     }
-  }, [open]);
+  }, [open, cityData]);
   return (
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Add New City </DialogTitle>
-        <DialogContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <DialogContent>
           <TextField
             placeholder="Name..."
             autoFocus
@@ -62,6 +68,7 @@ const NewCity = ({ open, setOpen, cityData }: props) => {
             onChange={(e) => setNewCity({ ...newCity, name: e.target.value })}
             sx={{ mb: 1 }}
             defaultValue={newCity.name}
+            fullWidth
           />
           <TextField
             placeholder="Description..."
@@ -75,7 +82,22 @@ const NewCity = ({ open, setOpen, cityData }: props) => {
             }
             sx={{ mb: 1 }}
             defaultValue={newCity.description}
+            fullWidth
           />
+          {!cityData && (
+            <FormControl>
+              <Box sx={{ mt: 2 }}>
+                <FileDropZone onFileSelected={onFileSelected} />
+                {image && (
+                  <Chip
+                    sx={{ mt: 2 }}
+                    label={image.name}
+                    onDelete={() => setImage(undefined)}
+                  />
+                )}
+              </Box>
+            </FormControl>
+          )}
         </DialogContent>
         <DialogActions
           sx={{

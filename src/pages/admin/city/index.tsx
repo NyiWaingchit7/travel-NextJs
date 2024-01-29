@@ -37,6 +37,7 @@ const City = () => {
               title={d.name}
               description={d.description}
               href={`/admin/city/${d.id}`}
+              assetUrl={d.assetUrl || ""}
             />
           ))}
         </Box>

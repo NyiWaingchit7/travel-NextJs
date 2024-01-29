@@ -70,14 +70,7 @@ const NewRoom = ({ open, setOpen, roomData }: props) => {
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Add New Room</DialogTitle>
-        <DialogContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <DialogContent>
           <FormControl fullWidth sx={{ my: 2 }}>
             <InputLabel id="demo-simple-select-label">Room Type</InputLabel>
             <Select
@@ -105,6 +98,7 @@ const NewRoom = ({ open, setOpen, roomData }: props) => {
             }
             sx={{ mb: 1 }}
             defaultValue={newRoom.price ? newRoom.price : ""}
+            fullWidth
           />
           <FormControlLabel
             control={
