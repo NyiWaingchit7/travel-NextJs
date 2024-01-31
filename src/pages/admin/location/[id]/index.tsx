@@ -104,7 +104,7 @@ const LocationDetail = () => {
             <Box
               component="img"
               sx={{ width: "100%", borderRadius: 3 }}
-              src={location.assetUrl || "../../default-image.jpg"}
+              src={location.assetUrl || "/default-image.jpg"}
             />
           </Box>
         </Box>{" "}
@@ -119,15 +119,11 @@ const LocationDetail = () => {
           }}
         >
           <Typography
-            sx={{ fontWeight: "bold", textAlign: "center", fontSize: "1.3rem" }}
+            sx={{ fontWeight: "bold", textAlign: "center", fontSize: "1.1rem" }}
           >
             {location.name}
           </Typography>
-          <Typography
-            sx={{ fontWeight: "bold", textAlign: "center", fontSize: "1.3rem" }}
-          >
-            {location.title}
-          </Typography>
+
           {location.description && (
             <Typography sx={{ fontSize: 14, mt: 3 }}>
               {location.description}

@@ -51,6 +51,7 @@ const Location = () => {
               key={item.id}
               title={item.name}
               href={`/admin/location/${item.id}`}
+              assetUrl={item.assetUrl || "/default-image.jpg"}
             />
           ))}
         </Box>

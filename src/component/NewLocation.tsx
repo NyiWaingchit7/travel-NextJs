@@ -8,6 +8,7 @@ import {
 import {
   Box,
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
@@ -21,6 +22,9 @@ import {
 import { Location } from "@prisma/client";
 
 import { useEffect, useState } from "react";
+import FileDropZone from "./FileDropZone";
+import { fileUpload } from "@/utils/fileUpload";
+import { useRouter } from "next/router";
 interface Props {
   open: boolean;
   setOpen: (data: any) => void;
@@ -43,18 +47,30 @@ const NewLocation = ({ open, setOpen, locationData }: Props) => {
   const [newLocation, setNewLocation] = useState(defaultLocation);
   const dispatch = useAppDispatch();
   const cities = useAppSelector((store) => store.city.items);
+  const router = useRouter();
+  const cityId = Number(router.query.id);
+  const [image, setImage] = useState<File>();
+  const onFileSelected = (files: File[]) => {
+    setImage(files[0]);
+  };
   const onSuccess = () => {
     setOpen(false);
     setNewLocation(defaultLocation);
     dispatch(getLocation());
   };
-  const handleCreateLocation = () => {
-    dispatch(createLocation({ ...newLocation, onSuccess }));
+  const handleCreateLocation = async () => {
+    let assetUrl;
+    console.log(image);
+
+    if (image) {
+      assetUrl = await fileUpload(image);
+    }
+    dispatch(createLocation({ ...newLocation, cityId, assetUrl, onSuccess }));
   };
   const handleUpdate = () => {
     dispatch(
       updateLocation({
-        id: locationData?.id as number,
+        id: cityId,
         ...newLocation,
         onSuccess,
       })
@@ -66,7 +82,7 @@ const NewLocation = ({ open, setOpen, locationData }: Props) => {
     } else {
       setNewLocation(defaultLocation);
     }
-  }, [open]);
+  }, [open, locationData]);
   return (
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
@@ -113,27 +129,21 @@ const NewLocation = ({ open, setOpen, locationData }: Props) => {
             }
             fullWidth
           />
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">City</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={newLocation.cityId || ""}
-              label="Age"
-              onChange={(evt) =>
-                setNewLocation({
-                  ...newLocation,
-                  cityId: Number(evt.target.value),
-                })
-              }
-            >
-              {cities.map((item) => (
-                <MenuItem key={item.id} value={item.id}>
-                  {item.name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+
+          {!locationData && (
+            <FormControl>
+              <Box sx={{ mt: 2 }}>
+                <FileDropZone onFileSelected={onFileSelected} />
+                {image && (
+                  <Chip
+                    sx={{ mt: 2 }}
+                    label={image.name}
+                    onDelete={() => setImage(undefined)}
+                  />
+                )}
+              </Box>
+            </FormControl>
+          )}
         </DialogContent>
         <DialogActions
           sx={{
@@ -175,8 +185,7 @@ const NewLocation = ({ open, setOpen, locationData }: Props) => {
               disabled={
                 !newLocation.name ||
                 !newLocation.description ||
-                !newLocation.title ||
-                !newLocation.cityId
+                !newLocation.title
               }
               onClick={handleCreateLocation}
             >

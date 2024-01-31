@@ -12,6 +12,7 @@ export interface CreateLocation extends BaseOptions {
   title: string;
   description: string;
   cityId: number;
+  assetUrl?: string;
 }
 export interface UpdateLocation extends BaseOptions {
   id: number;
@@ -19,6 +20,7 @@ export interface UpdateLocation extends BaseOptions {
   title: string;
   description: string;
   cityId: number;
+  assetUrl?: string;
 }
 export interface DeleteLocation extends BaseOptions {
   id: number;

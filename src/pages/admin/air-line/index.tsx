@@ -26,6 +26,7 @@ const AirLineTicket = () => {
             key={item.id}
             title={item.name}
             href={`/admin/air-line/${item.id}`}
+            assetUrl={item.assetUrl || ""}
           />
         ))}
       </Box>

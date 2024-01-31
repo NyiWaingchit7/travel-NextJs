@@ -36,13 +36,6 @@ const AieLineDetail = () => {
           width: { xs: "100%", md: "85%" },
         }}
       >
-        {/* <Box sx={{ bgcolor: "success.main", p: 1, borderRadius: 2 }}>
-          <Typography
-            sx={{ fontWeight: "bold", fontSize: "1.2rem", color: "info.light" }}
-          >
-            City - {cityName}
-          </Typography>
-        </Box> */}
         <Box
           sx={{
             display: "flex",
@@ -98,11 +91,13 @@ const AieLineDetail = () => {
             p: 1,
           }}
         >
-          <Box sx={{ width: "100%", p: 1, mb: 1 }}>
+          <Box
+            sx={{ width: "100%", p: 1, mb: 1, borderRadius: 3, boxShadow: 2 }}
+          >
             <Box
               component="img"
               sx={{ width: "100%", borderRadius: 3 }}
-              src={data.assetUrl || "../../default-image.jpg"}
+              src={data.assetUrl || "/default-image.jpg"}
             />
           </Box>
         </Box>{" "}
@@ -113,6 +108,7 @@ const AieLineDetail = () => {
             bgcolor: "info.main",
             width: "100%",
             borderRadius: 3,
+            boxShadow: 2,
           }}
         >
           <Typography
