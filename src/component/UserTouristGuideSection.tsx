@@ -20,66 +20,84 @@ const UserTouristGuides = ({ data, id }: Prop) => {
   }, [id, touristGuides]);
   if (!touristGuides) return null;
   return (
-    <Box sx={{ mt: 3, mb: 6 }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "centr",
-          maxWidth: "1200px",
-          mx: { xs: 2, lg: "auto" },
-        }}
-      >
-        <Typography
-          textAlign={"center"}
-          sx={{ fontSize: { xs: "1.3rem", sm: "1.8rem" }, fontWeight: "bold" }}
+    <Box
+      sx={{
+        mt: 3,
+        mb: 6,
+        maxWidth: "1300px",
+        mx: { xs: 1, md: "auto" },
+        borderRadius: 3,
+
+        bgcolor: "info.main",
+        p: 1,
+        boxShadow: 2,
+      }}
+    >
+      <Box>
+        {" "}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            maxWidth: "1200px",
+            mx: { xs: 2, lg: "auto" },
+          }}
         >
-          We Also Have Tourist Guides For You
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          position: "relative",
-          flexWrap: "wrap",
-          mt: 2,
-          maxWidth: "800px",
-          mx: "auto",
-        }}
-      >
-        {showData.slice(0, 4).map((item) => (
-          <UserTouristGuideCard
-            name={item.name}
-            phoneNumber={item.phoneNumber}
-            price={item.price}
-            key={item.id}
-            language={item.language}
-          />
-        ))}
-        <Link href={"/user/tourist-guide"} style={{ textDecoration: "none" }}>
           <Typography
+            textAlign={"center"}
             sx={{
+              fontSize: { xs: "1.3rem", sm: "1.8rem" },
               fontWeight: "bold",
-              fontSize: { xs: "0.9rem", sm: "1.2rem" },
-              cursor: "pointer",
-              color: "info.main",
-              p: 1,
-              bgcolor: "success.main",
-              position: "absolute",
-              left: "44.5%",
-              bottom: { xs: -35, md: "45%" },
-              borderRadius: 2,
-              textAlign: "center",
-              "&:hover": {
-                bgcolor: "success.light",
-                color: "info.main",
-              },
             }}
           >
-            View All{" "}
+            We Also Have Tourist Guides For You
           </Typography>
-        </Link>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            position: "relative",
+            flexWrap: "wrap",
+            mt: 2,
+            maxWidth: "800px",
+            mx: "auto",
+          }}
+        >
+          {showData.slice(0, 4).map((item) => (
+            <UserTouristGuideCard
+              name={item.name}
+              phoneNumber={item.phoneNumber}
+              price={item.price}
+              key={item.id}
+              language={item.language}
+            />
+          ))}
+          <Link href={"/user/tourist-guide"} style={{ textDecoration: "none" }}>
+            <Typography
+              sx={{
+                fontWeight: "bold",
+                fontSize: { xs: "0.9rem", sm: "1.2rem" },
+                cursor: "pointer",
+                color: "info.main",
+                p: 1,
+                bgcolor: "success.main",
+                position: "absolute",
+                left: "44.5%",
+                bottom: { xs: -35, md: "45%" },
+                borderRadius: 2,
+                textAlign: "center",
+                "&:hover": {
+                  bgcolor: "success.light",
+                  color: "info.main",
+                },
+              }}
+            >
+              View All{" "}
+            </Typography>
+          </Link>
+        </Box>
       </Box>
     </Box>
   );
