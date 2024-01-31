@@ -40,7 +40,7 @@ const UserBusAirLineDetailCard = ({
           height: { sm: 250 },
           borderRadius: 1,
         }}
-        image={"/travel.jpg" || assetUrl}
+        image={assetUrl || "/travel.jpg"}
         alt="tourist guide photo"
       />
       <Box

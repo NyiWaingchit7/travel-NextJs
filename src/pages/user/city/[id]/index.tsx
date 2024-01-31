@@ -1,4 +1,3 @@
-import UserAirLine from "@/component/UserAirLineSection";
 import UserBus from "@/component/UserBusAirLineSection";
 import UserLocationSection from "@/component/UserLocationSection";
 import { useAppSelector } from "@/store/hook";
@@ -93,11 +92,11 @@ const CitiesDetail = () => {
             <UserBus data={buses} id={id} />
           </Box>
         )}
-        {airLines.length > 0 && (
+        {/* {airLines.length > 0 && (
           <Box sx={{ mt: 3 }}>
             <UserAirLine data={airLines} id={id} />
           </Box>
-        )}
+        )} */}
       </Box>
     </Box>
   );

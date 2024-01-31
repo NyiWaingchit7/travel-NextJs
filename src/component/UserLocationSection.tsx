@@ -87,7 +87,12 @@ const UserLocation = ({ data, id }: Prop) => {
         }}
       >
         {showData.slice(0, 4).map((d) => (
-          <ItemCard key={d.id} title={d.name} href={`/user/location/${d.id}`} />
+          <ItemCard
+            key={d.id}
+            title={d.name}
+            href={`/user/location/${d.id}`}
+            assetUrl={d.assetUrl || ""}
+          />
         ))}
       </Box>
     </Box>

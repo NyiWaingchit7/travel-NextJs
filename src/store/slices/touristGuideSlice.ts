@@ -31,6 +31,7 @@ export const createTouristGuide = createAsyncThunk(
       phoneNumber,
       language,
       isAvailable,
+      assetUrl,
       onSuccess,
       onError,
     } = option;
@@ -44,6 +45,7 @@ export const createTouristGuide = createAsyncThunk(
           language,
           phoneNumber,
           isAvailable,
+          assetUrl,
         }),
       });
       const data = await response.json();
@@ -63,6 +65,7 @@ export const updateTouristGuide = createAsyncThunk(
       phoneNumber,
       language,
       isAvailable,
+      assetUrl,
       onSuccess,
       onError,
     } = option;
@@ -77,6 +80,7 @@ export const updateTouristGuide = createAsyncThunk(
           language,
           phoneNumber,
           isAvailable,
+          assetUrl,
         }),
       });
       const data = await response.json();

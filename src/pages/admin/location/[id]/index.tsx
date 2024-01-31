@@ -6,19 +6,41 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 import NewLocation from "@/component/NewLocation";
-import { deleteLocation, getLocation } from "@/store/slices/locationSlice";
+import {
+  deleteLocation,
+  getLocation,
+  updateLocation,
+} from "@/store/slices/locationSlice";
+import { fileUpload } from "@/utils/fileUpload";
+import { Location } from "@prisma/client";
 
 const LocationDetail = () => {
   const router = useRouter();
   const id = Number(router.query.id);
 
   const locations = useAppSelector((store) => store.location.items);
-  const location = locations.find((item) => item.id === id);
+  const location = locations.find((item) => item.id === id) as Location;
   const [open, setOpen] = useState(false);
   const cityName = useAppSelector(
     (store) =>
       store.city.items?.find((item) => item.id === location?.cityId)?.name
   );
+  const handleUpdateImage = async (e: any) => {
+    const image = e.target.files[0];
+
+    const assetUrl = await fileUpload(image);
+    console.log(assetUrl);
+
+    dispatch(
+      updateLocation({
+        ...location,
+        assetUrl,
+        onSuccess: () => {
+          dispatch(getLocation());
+        },
+      })
+    );
+  };
   const dispatch = useAppDispatch();
   const onSuccess = () => {
     dispatch(getLocation());
@@ -99,13 +121,37 @@ const LocationDetail = () => {
           }}
         >
           <Box
-            sx={{ width: "100%", p: 1, mb: 1, borderRadius: 3, boxShadow: 2 }}
+            sx={{
+              width: "100%",
+              p: 1,
+              mb: 1,
+              borderRadius: 3,
+              boxShadow: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
             <Box
               component="img"
               sx={{ width: "100%", borderRadius: 3 }}
               src={location.assetUrl || "/default-image.jpg"}
             />
+            <Button
+              variant="outlined"
+              component="label"
+              sx={{ width: "fit-content", mt: 2 }}
+              size="small"
+            >
+              Upload File
+              <input
+                type="file"
+                hidden
+                onChange={(e) => {
+                  handleUpdateImage(e);
+                }}
+              />
+            </Button>
           </Box>
         </Box>{" "}
         <Box
