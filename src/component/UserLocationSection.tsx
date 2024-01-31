@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { Location } from "@prisma/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import ItemCard from "./cards/ItemCard";
+import UserLocationSectionCard from "./cards/UserLocationSectionCard";
 
 interface Prop {
   data?: Location[];
@@ -51,7 +51,7 @@ const UserLocation = ({ data, id }: Prop) => {
             p: 1,
           }}
         >
-          Places
+          Places You Don't Want To Miss
         </Typography>
         <Typography
           sx={{
@@ -86,9 +86,21 @@ const UserLocation = ({ data, id }: Prop) => {
           mx: "auto",
         }}
       >
-        {showData.slice(0, 4).map((d) => (
-          <ItemCard key={d.id} title={d.name} href={`/user/location/${d.id}`} />
-        ))}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            maxWidth: "1000px",
+          }}
+        >
+          {showData.slice(0, 5).map((item) => (
+            <UserLocationSectionCard
+              key={item.id}
+              title={item.name}
+              href={`/user/location/${item.id}`}
+            />
+          ))}
+        </Box>
       </Box>
     </Box>
   );

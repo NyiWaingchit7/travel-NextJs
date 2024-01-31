@@ -1,5 +1,4 @@
-import UserAirLine from "@/component/UserAirLineSection";
-import UserBus from "@/component/UserBusAirLineSection";
+import UserBusAirLineDetailCard from "@/component/cards/UserBusAirLineDetailCard";
 import UserLocationSection from "@/component/UserLocationSection";
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
@@ -86,18 +85,91 @@ const CitiesDetail = () => {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ mt: 3 }}>
-        <UserLocationSection data={locations} id={id} />
-        {buses.length > 0 && (
-          <Box sx={{ mt: 3 }}>
-            <UserBus data={buses} id={id} />
-          </Box>
-        )}
-        {airLines.length > 0 && (
-          <Box sx={{ mt: 3 }}>
-            <UserAirLine data={airLines} id={id} />
-          </Box>
-        )}
+      <Box
+        sx={{
+          mt: 3,
+        }}
+      >
+        <UserLocationSection data={locations} id={id} />{" "}
+        <Box
+          sx={{
+            p: 1,
+            boxShadow: 2,
+            bgcolor: "info.main",
+            my: 2,
+            maxWidth: "1300px",
+            mx: { xs: 1, md: "auto" },
+          }}
+        >
+          <Typography
+            textAlign={"center"}
+            sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
+          >
+            Buses
+          </Typography>
+          {buses.length > 0 &&
+            buses.map((item) => (
+              <Box
+                sx={{
+                  mt: 3,
+                  display: "flex",
+
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <UserBusAirLineDetailCard
+                  key={item.id}
+                  name={item.name}
+                  assetUrl={item.assetUrl}
+                  address={item.address}
+                  phoneNumber1={item.phoneNumber1}
+                  phoneNumber2={item.phoneNumber2}
+                  to={item.to}
+                  cityId={item.cityId}
+                />
+              </Box>
+            ))}
+        </Box>
+        <Box
+          sx={{
+            p: 1,
+            boxShadow: 2,
+            bgcolor: "info.main",
+            my: 2,
+            maxWidth: "1300px",
+            mx: { xs: 1, md: "auto" },
+          }}
+        >
+          <Typography
+            textAlign={"center"}
+            sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
+          >
+            Air Lines
+          </Typography>
+          {airLines.length > 0 &&
+            airLines.map((item) => (
+              <Box
+                sx={{
+                  mt: 3,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <UserBusAirLineDetailCard
+                  key={item.id}
+                  name={item.name}
+                  assetUrl={item.assetUrl}
+                  address={item.address}
+                  phoneNumber1={item.phoneNumber1}
+                  phoneNumber2={item.phoneNumber2}
+                  to={item.to}
+                  cityId={item.cityId}
+                />
+              </Box>
+            ))}
+        </Box>
       </Box>
     </Box>
   );

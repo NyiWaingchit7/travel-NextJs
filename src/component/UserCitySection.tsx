@@ -75,7 +75,11 @@ const UserCity = () => {
         >
           <Carousel sx={{ width: "80%" }}>
             {cities.slice(0, 4).map((item) => (
-              <Link href={`city/${item.id}`} style={{ textDecoration: "none" }}>
+              <Link
+                key={item.id}
+                href={`city/${item.id}`}
+                style={{ textDecoration: "none" }}
+              >
                 <Box
                   sx={{
                     width: "100%",
