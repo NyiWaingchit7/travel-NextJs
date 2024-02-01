@@ -6,12 +6,14 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 import NewBus, { DefaultBus } from "@/component/NewBus";
-import { deleteBus, getBus } from "@/store/slices/busSlice";
+import { deleteBus, getBus, updateBus } from "@/store/slices/busSlice";
+import { fileUpload } from "@/utils/fileUpload";
+import { Bus } from "@prisma/client";
 const AieLineDetail = () => {
   const router = useRouter();
   const id = Number(router.query.id);
   const buses = useAppSelector((store) => store.bus.items);
-  const data = buses.find((item) => item.id === id);
+  const data = buses.find((item) => item.id === id) as Bus;
   const [open, setOpen] = useState(false);
   const startCityName = useAppSelector(
     (store) => store.city.items?.find((item) => item.id === data?.cityId)?.name
@@ -20,6 +22,20 @@ const AieLineDetail = () => {
     (store) => store.city.items?.find((item) => item.id === data?.to)?.name
   );
   const dispatch = useAppDispatch();
+  const handleUpdateImage = async (e: any) => {
+    const image = e.target.files[0];
+
+    const assetUrl = await fileUpload(image);
+    dispatch(
+      updateBus({
+        ...data,
+        assetUrl,
+        onSuccess: () => {
+          getBus();
+        },
+      })
+    );
+  };
   const onSuccess = () => {
     dispatch(getBus());
     router.push("/admin/bus");
@@ -81,7 +97,7 @@ const AieLineDetail = () => {
       >
         <Box
           sx={{
-            width: { xs: "70%", sm: "50%", lg: "30%" },
+            width: { xs: "80%", md: "50%" },
             display: "flex",
             flexDirection: "column",
 
@@ -92,15 +108,39 @@ const AieLineDetail = () => {
           }}
         >
           <Box
-            sx={{ width: "100%", p: 1, mb: 1, borderRadius: 3, boxShadow: 2 }}
+            sx={{
+              width: "100%",
+              p: 1,
+              mb: 1,
+              borderRadius: 3,
+              boxShadow: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
             <Box
               component="img"
               sx={{ width: "100%", borderRadius: 3 }}
               src={data.assetUrl || "/default-image.jpg"}
             />
+            <Button
+              variant="outlined"
+              component="label"
+              sx={{ width: "fit-content", mt: 2 }}
+              size="small"
+            >
+              Upload File
+              <input
+                type="file"
+                hidden
+                onChange={(e) => {
+                  handleUpdateImage(e);
+                }}
+              />
+            </Button>
           </Box>
-        </Box>{" "}
+        </Box>
         <Box
           sx={{
             p: 2,

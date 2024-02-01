@@ -129,7 +129,7 @@ const CityDetail = () => {
               />
             </Button>
           </Box>
-        </Box>{" "}
+        </Box>
         <Box
           sx={{
             p: 2,

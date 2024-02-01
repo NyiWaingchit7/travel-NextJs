@@ -25,7 +25,7 @@ export interface UpdateAirLineOptions extends BaseOptions {
   to: number;
   address: string;
   phoneNumber1: string;
-  phoneNumber2?: string;
+  phoneNumber2?: string | null;
   cityId: number;
   isAvailable: boolean;
 }

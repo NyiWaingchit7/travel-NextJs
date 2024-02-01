@@ -96,6 +96,7 @@ const UserLocation = ({ data, id }: Prop) => {
               key={item.id}
               title={item.name}
               href={`/user/location/${item.id}`}
+              assetUrl={item.assetUrl || ""}
             />
           ))}
         </Box>

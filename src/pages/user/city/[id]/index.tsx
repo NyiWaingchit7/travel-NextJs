@@ -93,24 +93,24 @@ const CitiesDetail = () => {
         }}
       >
         <UserLocationSection data={locations} id={id} />{" "}
-        <Box
-          sx={{
-            p: 1,
-            boxShadow: 2,
-            bgcolor: "info.main",
-            my: 2,
-            maxWidth: "1300px",
-            mx: { xs: 1, md: "auto" },
-          }}
-        >
-          <Typography
-            textAlign={"center"}
-            sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
+        {buses.length > 0 && (
+          <Box
+            sx={{
+              p: 1,
+              boxShadow: 2,
+              bgcolor: "info.main",
+              my: 2,
+              maxWidth: "1300px",
+              mx: { xs: 1, md: "auto" },
+            }}
           >
-            Buses
-          </Typography>
-          {buses.length > 0 &&
-            buses.map((item) => (
+            <Typography
+              textAlign={"center"}
+              sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
+            >
+              Buses
+            </Typography>
+            {buses.map((item) => (
               <Box
                 sx={{
                   mt: 3,
@@ -132,25 +132,26 @@ const CitiesDetail = () => {
                 />
               </Box>
             ))}
-        </Box>
-        <Box
-          sx={{
-            p: 1,
-            boxShadow: 2,
-            bgcolor: "info.main",
-            my: 2,
-            maxWidth: "1300px",
-            mx: { xs: 1, md: "auto" },
-          }}
-        >
-          <Typography
-            textAlign={"center"}
-            sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
+          </Box>
+        )}
+        {airLines.length > 0 && (
+          <Box
+            sx={{
+              p: 1,
+              boxShadow: 2,
+              bgcolor: "info.main",
+              my: 2,
+              maxWidth: "1300px",
+              mx: { xs: 1, md: "auto" },
+            }}
           >
-            Air Lines
-          </Typography>
-          {airLines.length > 0 &&
-            airLines.map((item) => (
+            <Typography
+              textAlign={"center"}
+              sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
+            >
+              Air Lines
+            </Typography>
+            {airLines.map((item) => (
               <Box
                 sx={{
                   mt: 3,
@@ -171,7 +172,8 @@ const CitiesDetail = () => {
                 />
               </Box>
             ))}
-        </Box>
+          </Box>
+        )}
       </Box>
     </Box>
   );

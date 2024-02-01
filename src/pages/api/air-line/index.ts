@@ -18,6 +18,7 @@ export default async function handler(
       phoneNumber1,
       phoneNumber2,
       cityId,
+      assetUrl,
     } = req.body;
     const isValid =
       name &&
@@ -38,6 +39,7 @@ export default async function handler(
         cityId,
         to,
         isAvailable,
+        assetUrl,
       },
     });
     res.status(200).json({ data });
@@ -50,6 +52,7 @@ export default async function handler(
       phoneNumber1,
       phoneNumber2,
       cityId,
+      assetUrl,
       id,
     } = req.body;
     const isValid =
@@ -73,6 +76,7 @@ export default async function handler(
         phoneNumber1,
         phoneNumber2,
         cityId,
+        assetUrl,
       },
     });
     res.status(200).json({ data });

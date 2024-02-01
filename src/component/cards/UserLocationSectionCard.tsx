@@ -24,7 +24,7 @@ export default function UserLocationSectionCard({
           display: "flex",
           justifyContent: "center",
           left: "-49.25%",
-          top: "28%",
+          top: "40%",
           transform: "rotate(270deg)",
           bgcolor: "red",
         }}
