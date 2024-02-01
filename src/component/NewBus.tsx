@@ -3,6 +3,7 @@ import { createBus, getBus, updateBus } from "@/store/slices/busSlice";
 import {
   Box,
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
@@ -16,6 +17,8 @@ import {
   TextField,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import FileDropZone from "./FileDropZone";
+import { fileUpload } from "@/utils/fileUpload";
 interface Props {
   open: boolean;
   setOpen: (data: any) => void;
@@ -46,6 +49,10 @@ export default function NewAirLine({ open, setOpen, busData }: Props) {
   const [newBus, setNewBus] = useState(defaultBus);
   const dispatch = useAppDispatch();
   const cities = useAppSelector((store) => store.city.items);
+  const [image, setImage] = useState<File>();
+  const onFileSelected = (files: File[]) => {
+    setImage(files[0]);
+  };
   const onSuccess = () => {
     dispatch(getBus());
     setOpen(false);
@@ -54,10 +61,15 @@ export default function NewAirLine({ open, setOpen, busData }: Props) {
   const handleUpdate = () => {
     dispatch(updateBus({ id: busData?.id as number, ...newBus, onSuccess }));
   };
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
+    let assetUrl;
+    if (image) {
+      assetUrl = await fileUpload(image);
+    }
     dispatch(
       createBus({
         ...newBus,
+        assetUrl,
         onSuccess() {
           dispatch(getBus());
           setOpen(false);
@@ -170,6 +182,20 @@ export default function NewAirLine({ open, setOpen, busData }: Props) {
             }
             label="Available"
           />
+          {!busData && (
+            <FormControl sx={{ mt: 3 }}>
+              <Box>
+                <FileDropZone onFileSelected={onFileSelected} />
+                {image && (
+                  <Chip
+                    sx={{ mt: 2 }}
+                    label={image.name}
+                    onDelete={() => setImage(undefined)}
+                  />
+                )}
+              </Box>
+            </FormControl>
+          )}
         </DialogContent>
         <DialogActions sx={{ pb: 3 }}>
           <Button

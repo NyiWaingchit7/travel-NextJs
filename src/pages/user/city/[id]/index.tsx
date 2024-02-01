@@ -1,5 +1,5 @@
-import UserBus from "@/component/UserBusAirLineSection";
 import UserLocationSection from "@/component/UserLocationSection";
+import UserBusAirLineDetailCard from "@/component/cards/UserBusAirLineDetailCard";
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
@@ -50,7 +50,7 @@ const CitiesDetail = () => {
                 height: { xs: "180px", sm: "350px" },
                 borderRadius: 3,
               }}
-              src="../../Yangon.jpg"
+              src={city?.assetUrl ? city.assetUrl : "../../Yangon.jpg"}
             />
           </Box>
           <Box
@@ -85,18 +85,54 @@ const CitiesDetail = () => {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ mt: 3 }}>
-        <UserLocationSection data={locations} id={id} />
+
+      <Box
+        sx={{
+          mt: 3,
+        }}
+      >
+        <UserLocationSection data={locations} id={id} />{" "}
         {buses.length > 0 && (
-          <Box sx={{ mt: 3 }}>
-            <UserBus data={buses} id={id} />
+          <Box
+            sx={{
+              p: 1,
+              boxShadow: 2,
+              bgcolor: "info.main",
+              my: 2,
+              maxWidth: "1300px",
+              mx: { xs: 1, md: "auto" },
+            }}
+          >
+            <Typography
+              textAlign={"center"}
+              sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
+            >
+              Buses
+            </Typography>
+            {buses.map((item) => (
+              <Box
+                sx={{
+                  mt: 3,
+                  display: "flex",
+
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <UserBusAirLineDetailCard
+                  key={item.id}
+                  name={item.name}
+                  assetUrl={item.assetUrl}
+                  address={item.address}
+                  phoneNumber1={item.phoneNumber1}
+                  phoneNumber2={item.phoneNumber2}
+                  to={item.to}
+                  cityId={item.cityId}
+                />
+              </Box>
+            ))}
           </Box>
         )}
-        {/* {airLines.length > 0 && (
-          <Box sx={{ mt: 3 }}>
-            <UserAirLine data={airLines} id={id} />
-          </Box>
-        )} */}
       </Box>
     </Box>
   );

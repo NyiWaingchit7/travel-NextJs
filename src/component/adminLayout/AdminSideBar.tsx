@@ -89,12 +89,12 @@ const sidebars = [
     link: "/admin/city",
   },
 
-  {
-    id: 3,
-    name: "Hotel",
-    icon: <MapsHomeWorkIcon />,
-    link: "/admin/hotel",
-  },
+  // {
+  //   id: 3,
+  //   name: "Hotel",
+  //   icon: <MapsHomeWorkIcon />,
+  //   link: "/admin/hotel",
+  // },
 
   {
     id: 4,

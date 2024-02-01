@@ -4,3 +4,39 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+.location-parent {
+  transition: all linear 1s;
+}
+
+.location {
+  border-right: 3px solid#FCFFE7;
+  border-left: 2px solid #fcffe7;
+}
+
+.location-parent:hover {
+  background-color: blueviolet;
+  width: 100%;
+  transition: 1s;
+}
+
+.location-parent:hover .location-title {
+  top: 0;
+  left: 0;
+  transition: all linear 1s;
+  transform: rotate(360deg);
+}
+
+.locationtitle-bg {
+  transition: all linear 1s;
+}
+
+.location-parent:hover .location-text {
+  margin-top: 9px;
+}
+
+.location-parent:hover .locationtitle-bg {
+  background-color: black;
+  width: 99%;
+  opacity: 0.6;
+}

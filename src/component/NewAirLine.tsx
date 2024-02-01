@@ -7,6 +7,7 @@ import {
 import {
   Box,
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
@@ -20,6 +21,8 @@ import {
   TextField,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import FileDropZone from "./FileDropZone";
+import { fileUpload } from "@/utils/fileUpload";
 interface Props {
   open: boolean;
   setOpen: (data: any) => void;
@@ -50,6 +53,10 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
   const [newAirLine, setNewAirLine] = useState(defaultAirLine);
   const dispatch = useAppDispatch();
   const cities = useAppSelector((store) => store.city.items);
+  const [image, setImage] = useState<File>();
+  const onFileSelected = (files: File[]) => {
+    setImage(files[0]);
+  };
   const onSuccess = () => {
     dispatch(getAirLine());
     setOpen(false);
@@ -60,10 +67,15 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
       updateAirLine({ id: airLineData?.id as number, ...newAirLine, onSuccess })
     );
   };
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
+    let assetUrl;
+    if (image) {
+      assetUrl = await fileUpload(image);
+    }
     dispatch(
       createAirLine({
         ...newAirLine,
+        assetUrl,
         onSuccess() {
           dispatch(getAirLine());
           setOpen(false);
@@ -168,6 +180,7 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             </Select>
           </FormControl>
           <FormControlLabel
+            sx={{ mt: 3, width: "80%" }}
             control={
               <Switch
                 defaultChecked={newAirLine.isAvailable}
@@ -178,6 +191,20 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
             }
             label="Available"
           />
+          {!airLineData && (
+            <FormControl sx={{ mt: 3 }}>
+              <Box>
+                <FileDropZone onFileSelected={onFileSelected} />
+                {image && (
+                  <Chip
+                    sx={{ mt: 2 }}
+                    label={image.name}
+                    onDelete={() => setImage(undefined)}
+                  />
+                )}
+              </Box>
+            </FormControl>
+          )}
         </DialogContent>
         <DialogActions sx={{ pb: 3 }}>
           <Button

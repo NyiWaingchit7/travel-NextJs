@@ -1,12 +1,5 @@
-import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
-import { Bus } from "@prisma/client";
-import { useEffect, useState } from "react";
 import UserBusAirLineCard from "./cards/UserBusAirLineCard";
-interface Prop {
-  data?: Bus[];
-  id?: number;
-}
 
 const UserBusAirLineArray = [
   {
@@ -25,19 +18,7 @@ const UserBusAirLineArray = [
   },
 ];
 
-const UserBus = ({ data, id }: Prop) => {
-  const buses = useAppSelector((store) => store.bus.items);
-  const [showData, setShowData] = useState<Bus[]>(buses);
-
-  useEffect(() => {
-    if (data) {
-      setShowData(data);
-    } else {
-      setShowData(buses);
-    }
-  }, [id, buses]);
-
-  if (!buses) return null;
+const UserBusAirLineSection = () => {
   return (
     <Box
       sx={{
@@ -64,7 +45,7 @@ const UserBus = ({ data, id }: Prop) => {
           textAlign={"center"}
           sx={{ fontSize: { xs: "0.9rem", sm: "1.5rem" }, fontWeight: "bold" }}
         >
-          We also provides transportation services
+          We provide transportation services
         </Typography>
       </Box>
       <Box
@@ -90,4 +71,4 @@ const UserBus = ({ data, id }: Prop) => {
     </Box>
   );
 };
-export default UserBus;
+export default UserBusAirLineSection;
