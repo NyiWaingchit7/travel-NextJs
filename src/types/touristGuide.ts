@@ -13,6 +13,7 @@ export interface CreateTouristGuide extends BaseOptions {
   phoneNumber: string;
   language: string;
   isAvailable: boolean;
+  assetUrl?: string;
 }
 export interface UpdateTouristGuide extends BaseOptions {
   id: number;
@@ -20,6 +21,7 @@ export interface UpdateTouristGuide extends BaseOptions {
   phoneNumber: string;
   price: number;
   language: string;
+  assetUrl?: string;
   isAvailable: boolean;
 }
 export interface DeleteTouristGuide extends BaseOptions {

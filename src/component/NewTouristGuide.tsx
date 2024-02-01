@@ -4,14 +4,17 @@ import {
   getTouristGuide,
   updateTouristGuide,
 } from "@/store/slices/touristGuideSlice";
+import { fileUpload } from "@/utils/fileUpload";
 
 import {
   Box,
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
   FormControlLabel,
   Switch,
   TextField,
@@ -19,6 +22,7 @@ import {
 import { TouristGuide } from "@prisma/client";
 
 import { useEffect, useState } from "react";
+import FileDropZone from "./FileDropZone";
 interface Props {
   open: boolean;
   setOpen: (data: any) => void;
@@ -48,8 +52,16 @@ const NewTouristGuide = ({ open, setOpen, touristGuideData }: Props) => {
     setNewTouristGuide(defaultTouristGuide);
     dispatch(getTouristGuide());
   };
-  const handleCreateTourist = () => {
-    dispatch(createTouristGuide({ ...newTouristGuide, onSuccess }));
+  const [image, setImage] = useState<File>();
+  const onFileSelected = (files: File[]) => {
+    setImage(files[0]);
+  };
+  const handleCreateTourist = async () => {
+    let assetUrl;
+    if (image) {
+      assetUrl = await fileUpload(image);
+    }
+    dispatch(createTouristGuide({ ...newTouristGuide, assetUrl, onSuccess }));
   };
   const handleUpdate = () => {
     dispatch(
@@ -151,6 +163,20 @@ const NewTouristGuide = ({ open, setOpen, touristGuideData }: Props) => {
             }
             label="Available"
           />
+          {!touristGuideData && (
+            <FormControl>
+              <Box sx={{ mt: 2 }}>
+                <FileDropZone onFileSelected={onFileSelected} />
+                {image && (
+                  <Chip
+                    sx={{ mt: 2 }}
+                    label={image.name}
+                    onDelete={() => setImage(undefined)}
+                  />
+                )}
+              </Box>
+            </FormControl>
+          )}
         </DialogContent>
         <DialogActions
           sx={{

@@ -110,7 +110,7 @@ const HotelDetail = () => {
             <Box
               component="img"
               sx={{ width: "100%", borderRadius: 3 }}
-              src={data.assetUrl || "../../default-hotel.jpg"}
+              src={data.assetUrl || "/default-hotel.jpg"}
             />
           </Box>
         </Box>{" "}

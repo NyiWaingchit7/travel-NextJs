@@ -53,7 +53,7 @@ export default function ItemCard({
               <Box
                 component="img"
                 sx={{ width: "100%", height: "100%", borderRadius: 3 }}
-                src={assetUrl || "../../../Yangon.jpg"}
+                src={assetUrl || "/default-image.jpg"}
               />
             </Box>
             <Typography
@@ -95,7 +95,7 @@ export default function ItemCard({
             <Box
               component="img"
               sx={{ width: "100%", height: "100%", borderRadius: 3 }}
-              src={assetUrl || "../../Yangon.jpg"}
+              src={assetUrl || "/default-image.jpg"}
             />
           </Box>
           <Typography

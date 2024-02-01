@@ -1,4 +1,5 @@
 import UserBusAirLineDetailCard from "@/component/cards/UserBusAirLineDetailCard";
+
 import UserLocationSection from "@/component/UserLocationSection";
 import { useAppSelector } from "@/store/hook";
 import { Box, Typography } from "@mui/material";
@@ -85,6 +86,7 @@ const CitiesDetail = () => {
           </Box>
         </Box>
       </Box>
+
       <Box
         sx={{
           mt: 3,

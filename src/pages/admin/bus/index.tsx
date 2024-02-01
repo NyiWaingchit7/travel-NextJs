@@ -26,6 +26,7 @@ const Bus = () => {
             key={item.id}
             title={item.name}
             href={`/admin/bus/${item.id}`}
+            assetUrl={item.assetUrl || ""}
           />
         ))}
       </Box>

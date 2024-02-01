@@ -46,9 +46,8 @@ const UserLocation = ({ data, id }: Prop) => {
       >
         <Typography
           sx={{
-            fontSize: { xs: "0.9rem", sm: "1.4rem" },
+            fontSize: { xs: "0.8rem", sm: "1.4rem" },
             fontWeight: "bold",
-            p: 1,
           }}
         >
           Places You Don't Want To Miss
@@ -66,7 +65,6 @@ const UserLocation = ({ data, id }: Prop) => {
 
               borderRadius: 2,
             },
-            fontSize: { xs: "0.8rem", sm: "1rem" },
           }}
           onClick={() => {
             id && router.push(`/user/location?cityId=${id}`);

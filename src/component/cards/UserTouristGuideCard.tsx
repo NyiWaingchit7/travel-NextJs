@@ -62,7 +62,7 @@ const UserTouristGuideCard = ({
         <CardMedia
           component="img"
           sx={{ width: 151 }}
-          image={"/touristGuidePhoto.jpg" || assetUrl}
+          image={assetUrl || "/touristGuidePhoto.jpg"}
           alt="tourist guide photo"
         />
       </Card>

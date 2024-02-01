@@ -57,6 +57,7 @@ const UserTouristGuides = ({ data, id }: Prop) => {
             price={item.price}
             key={item.id}
             language={item.language}
+            assetUrl={item.assetUrl || ""}
           />
         ))}
         <Link href={"/user/tourist-guide"} style={{ textDecoration: "none" }}>
