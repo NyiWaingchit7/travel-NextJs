@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/hook";
-import { Box, Card, CardActionArea, Typography, Zoom } from "@mui/material";
+import { Box, CardActionArea, Typography, Zoom } from "@mui/material";
 import Link from "next/link";
 
 const UserCity = () => {
@@ -46,7 +46,7 @@ const UserCity = () => {
                       height: { xs: "150px", md: "200px" },
                       borderRadius: 3,
                     }}
-                    src={d.assetUrl || "../Yangon.jpg"}
+                    src={d.assetUrl ? d.assetUrl : "../Yangon.jpg"}
                   />
                 </Box>
               </Zoom>

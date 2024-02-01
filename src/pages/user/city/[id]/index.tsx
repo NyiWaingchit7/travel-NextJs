@@ -50,7 +50,7 @@ const CitiesDetail = () => {
                 height: { xs: "180px", sm: "350px" },
                 borderRadius: 3,
               }}
-              src="../../Yangon.jpg"
+              src={city?.assetUrl ? city.assetUrl : "../../Yangon.jpg"}
             />
           </Box>
           <Box

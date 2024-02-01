@@ -1,7 +1,7 @@
-import { Box, Typography } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 
 const Profiles = () => {
@@ -23,11 +23,11 @@ const Profiles = () => {
               component="img"
               sx={{
                 width: "100%",
-                height: "100%",
-                objectFit: "contain",
+                height: "200px",
+                objectFit: "cover",
                 borderRadius: 3,
               }}
-              src="../nwc.jpg"
+              src={d.image}
             />
           </Box>
           <Box
@@ -225,26 +225,26 @@ export default Profiles;
 export const profiles = [
   {
     id: 1,
-    image: "",
+    image: "/kzt-profile-photo.jpg",
     name: "Kyaw Zin Thet",
     phone: "09790833940",
     emial: "kyawzinthett7@gmail.com",
-    address: "Minbu",
+    address: "Yangon",
     social: [
       {
         id: 1,
         icon: <FacebookIcon sx={{ fontSize: { xs: "1.5rem", sm: "2rem" } }} />,
-        linkTag: "https://www.facebook.com/Chit.24007",
+        linkTag: "https://www.facebook.com/MinGaLarPar.69/",
       },
       {
         id: 2,
         icon: <InstagramIcon sx={{ fontSize: { xs: "1.5rem", sm: "2rem" } }} />,
-        linkTag: "https://www.instagram.com/nyiwaingchit/",
+        linkTag: "https://www.instagram.com/kyawzin_thet7/",
       },
       {
         id: 3,
         icon: <TelegramIcon sx={{ fontSize: { xs: "1.5rem", sm: "2rem" } }} />,
-        linkTag: "",
+        linkTag: "https://t.me/monkeykaw",
       },
     ],
     techStack: [
@@ -272,12 +272,12 @@ export const profiles = [
       {
         id: 1,
         icon: <FacebookIcon sx={{ fontSize: { xs: "1.5rem", sm: "2rem" } }} />,
-        linkTag: "",
+        linkTag: "https://www.facebook.com/Chit.24007",
       },
       {
         id: 2,
         icon: <InstagramIcon sx={{ fontSize: { xs: "1.5rem", sm: "2rem" } }} />,
-        linkTag: "",
+        linkTag: "https://www.instagram.com/nyiwaingchit/",
       },
       {
         id: 3,

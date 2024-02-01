@@ -69,7 +69,7 @@ const UserCity = () => {
             justifyContent: "center",
             alignItems: "center",
             mt: 2,
-            width: "90vw",
+            width: "100%",
             mx: "auto",
           }}
         >

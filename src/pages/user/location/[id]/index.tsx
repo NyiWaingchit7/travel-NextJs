@@ -1,7 +1,6 @@
-import { Box, Typography } from "@mui/material";
-import city from "../../city";
-import { useRouter } from "next/router";
 import { useAppSelector } from "@/store/hook";
+import { Box, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 
 const LocationDetail = () => {
   const router = useRouter();
@@ -40,7 +39,9 @@ const LocationDetail = () => {
                 height: { xs: "180px", sm: "250px" },
                 borderRadius: 3,
               }}
-              src="../../Yangon.jpg"
+              src={
+                locations?.assetUrl ? locations.assetUrl : "../../Yangon.jpg"
+              }
             />
           </Box>
           <Box
