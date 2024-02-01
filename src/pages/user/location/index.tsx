@@ -51,7 +51,7 @@ const UserLocation = () => {
                       height: { xs: "150px", md: "200px" },
                       borderRadius: 3,
                     }}
-                    src="../Yangon.jpg"
+                    src={d.assetUrl ? d.assetUrl : "../Yangon.jpg"}
                   />
                 </Box>
               </Zoom>

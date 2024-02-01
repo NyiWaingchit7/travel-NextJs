@@ -15,6 +15,7 @@ body {
 }
 
 .location-parent:hover {
+  background-color: blueviolet;
   width: 100%;
   transition: 1s;
 }
@@ -28,7 +29,6 @@ body {
 
 .locationtitle-bg {
   transition: all linear 1s;
-  overflow: hidden;
 }
 
 .location-parent:hover .location-text {
@@ -37,7 +37,6 @@ body {
 
 .location-parent:hover .locationtitle-bg {
   background-color: black;
-
   width: 99%;
   opacity: 0.6;
 }

@@ -40,6 +40,7 @@ const ContactUs = () => {
       </Box>
       <Box
         sx={{
+          mt: 3,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
