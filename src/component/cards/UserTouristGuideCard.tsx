@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 interface Props {
   name: string;
   phoneNumber: string;
-  assetUrl?: string;
+  assetUrl?: string | null;
   price: number;
   language: string;
   key: number;
@@ -62,7 +62,7 @@ const UserTouristGuideCard = ({
         <CardMedia
           component="img"
           sx={{ width: 151 }}
-          image={assetUrl || "/touristGuidePhoto.jpg"}
+          image={assetUrl ? assetUrl : "/touristGuidePhoto.jpg"}
           alt="tourist guide photo"
         />
       </Card>
@@ -81,7 +81,7 @@ const UserTouristGuideCard = ({
             height: { sm: 250 },
             borderRadius: 2,
           }}
-          image={"/touristGuidePhoto.jpg" || assetUrl}
+          image={assetUrl || "/touristGuidePhoto.jpg"}
           alt="tourist guide photo"
         />
         <Box

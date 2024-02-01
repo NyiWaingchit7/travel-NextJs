@@ -15,7 +15,6 @@ body {
 }
 
 .location-parent:hover {
-  background-color: blueviolet;
   width: 100%;
   transition: 1s;
 }

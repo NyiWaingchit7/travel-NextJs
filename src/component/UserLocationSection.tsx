@@ -38,39 +38,20 @@ const UserLocation = ({ data, id }: Prop) => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "centr",
+          justifyContent: "center",
+          alignItems: "center",
           maxWidth: "1200px",
           mx: { xs: 2, lg: "auto" },
+          my: 1,
         }}
       >
         <Typography
           sx={{
-            fontSize: { xs: "0.8rem", sm: "1.4rem" },
+            fontSize: { xs: "0.8rem", sm: "1.5rem" },
             fontWeight: "bold",
           }}
         >
           Places You Don't Want To Miss
-        </Typography>
-        <Typography
-          sx={{
-            fontWeight: "bold",
-            cursor: "pointer",
-            color: "success.light",
-            p: 1,
-            textAlign: "center",
-            "&:hover": {
-              bgcolor: "success.main",
-              color: "info.main",
-
-              borderRadius: 2,
-            },
-          }}
-          onClick={() => {
-            id && router.push(`/user/location?cityId=${id}`);
-          }}
-        >
-          View All
         </Typography>
       </Box>
       <Box

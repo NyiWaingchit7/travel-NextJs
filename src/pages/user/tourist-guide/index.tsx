@@ -10,6 +10,7 @@ const UserTouristGuide = () => {
     >
       {touristGuides.map((item) => (
         <UserTouristGuideCard
+          assetUrl={item.assetUrl}
           name={item.name}
           phoneNumber={item.phoneNumber}
           price={item.price}

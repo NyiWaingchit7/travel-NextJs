@@ -20,21 +20,27 @@ const UserTouristGuides = ({ data, id }: Prop) => {
   }, [id, touristGuides]);
   if (!touristGuides) return null;
   return (
-    <Box sx={{ mt: 3, mb: 6 }}>
+    <Box
+      sx={{
+        mt: 3,
+        mb: 6,
+        boxShadow: 2,
+        maxWidth: "1300px",
+        mx: { xs: 1, md: "auto" },
+        bgcolor: "info.main",
+        p: 1,
+      }}
+    >
       <Box
         sx={{
-          maxWidth: "1300px",
           mx: { xs: 1, md: "auto" },
           borderRadius: 3,
           mt: 3,
-          bgcolor: "info.main",
-          p: 1,
-          boxShadow: 2,
         }}
       >
         <Typography
           textAlign={"center"}
-          sx={{ fontSize: { xs: "1.3rem", sm: "1.8rem" }, fontWeight: "bold" }}
+          sx={{ fontSize: { xs: "1.3rem", sm: "1.5rem" }, fontWeight: "bold" }}
         >
           We Also Have Tourist Guides For You
         </Typography>
@@ -70,7 +76,7 @@ const UserTouristGuides = ({ data, id }: Prop) => {
               p: 1,
               bgcolor: "success.main",
               position: "absolute",
-              left: "44.5%",
+              left: "43.9%",
               bottom: { xs: -35, md: "45%" },
               borderRadius: 2,
               textAlign: "center",

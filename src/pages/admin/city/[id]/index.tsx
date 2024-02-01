@@ -8,7 +8,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { Box, Button, Typography } from "@mui/material";
 import { City } from "@prisma/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 const CityDetail = () => {
   const router = useRouter();
@@ -89,9 +89,7 @@ const CityDetail = () => {
             width: { xs: "80%", md: "50%" },
             display: "flex",
             flexDirection: "column",
-
             alignItems: "center",
-
             borderRadius: 3,
             p: 1,
           }}
@@ -110,7 +108,11 @@ const CityDetail = () => {
           >
             <Box
               component="img"
-              sx={{ width: "100%", borderRadius: 3 }}
+              sx={{
+                width: "100%",
+                borderRadius: 3,
+                height: { xs: "180px", sm: "250px" },
+              }}
               src={data.assetUrl || "/default-image.jpg"}
             />
             <Button
