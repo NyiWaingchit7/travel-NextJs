@@ -9,6 +9,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const method = req.method;
+  const session = await getServerSession(req, res, Nextauth);
+  if (!session) return res.status(401).send("unauthorized");
   if (method === "POST") {
     const { name, description, assetUrl } = req.body;
     const isValid = name && description;

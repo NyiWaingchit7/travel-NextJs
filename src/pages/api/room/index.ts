@@ -2,12 +2,16 @@
 
 import { prisma } from "@/utils/db";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getServerSession } from "next-auth";
+import Nextauth from "../auth/[...nextauth]";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const method = req.method;
+  const session = await getServerSession(req, res, Nextauth);
+  if (!session) return res.status(401).send("unauthorized");
   if (method === "POST") {
     const { type, price, hotelId, isAvailable } = req.body;
     const isValid = type && price && hotelId;

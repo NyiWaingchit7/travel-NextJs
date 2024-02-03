@@ -1,12 +1,16 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { prisma } from "@/utils/db";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getServerSession } from "next-auth";
+import Nextauth from "../auth/[...nextauth]";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const method = req.method;
+  const session = await getServerSession(req, res, Nextauth);
+  if (!session) return res.status(401).send("unauthorized");
   if (method === "POST") {
     const { name, title, description, cityId, assetUrl } = req.body;
     const isValid = name && title && description && cityId;

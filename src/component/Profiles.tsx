@@ -17,7 +17,7 @@ const Profiles = () => {
       }}
     >
       {profiles.map((d) => (
-        <Box sx={{ width: { xs: "90%", md: "45%" }, mt: 3 }}>
+        <Box key={d.id} sx={{ width: { xs: "90%", md: "45%" }, mt: 3 }}>
           <Box sx={{ width: { xs: "35%", sm: "30%", md: "25%" }, mx: "auto" }}>
             <Box
               component="img"

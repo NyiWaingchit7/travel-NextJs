@@ -112,6 +112,7 @@ const CitiesDetail = () => {
             </Typography>
             {buses.map((item) => (
               <Box
+                key={item.id}
                 sx={{
                   mt: 3,
                   display: "flex",
@@ -153,6 +154,7 @@ const CitiesDetail = () => {
             </Typography>
             {airLines.map((item) => (
               <Box
+                key={item.id}
                 sx={{
                   mt: 3,
                   display: "flex",
