@@ -90,7 +90,7 @@ export default function NewAirLine({ open, setOpen, airLineData }: Props) {
     } else {
       setNewAirLine(defaultAirLine);
     }
-  }, [open]);
+  }, [open, airLineData]);
 
   return (
     <Box>

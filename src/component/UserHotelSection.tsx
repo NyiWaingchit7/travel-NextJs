@@ -12,7 +12,6 @@ interface Prop {
 const UserLocation = ({ data, id }: Prop) => {
   const hotels = useAppSelector((store) => store.hotel.items);
   const [showData, setShowData] = useState<Hotel[]>(hotels);
-  if (!hotels) return null;
 
   useEffect(() => {
     if (data) {
@@ -21,6 +20,7 @@ const UserLocation = ({ data, id }: Prop) => {
       setShowData(hotels);
     }
   }, [id, hotels]);
+  if (!hotels) return null;
   return (
     <Box sx={{ mt: 3 }}>
       <Box

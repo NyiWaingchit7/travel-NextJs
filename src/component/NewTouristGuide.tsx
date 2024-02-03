@@ -78,7 +78,7 @@ const NewTouristGuide = ({ open, setOpen, touristGuideData }: Props) => {
     } else {
       setNewTouristGuide(defaultTouristGuide);
     }
-  }, [open]);
+  }, [open, touristGuideData]);
   return (
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>

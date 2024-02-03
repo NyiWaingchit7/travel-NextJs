@@ -13,7 +13,6 @@ interface Prop {
 const UserLocation = ({ data, id }: Prop) => {
   const locations = useAppSelector((store) => store.location.items);
   const [showData, setShowData] = useState<Location[]>(locations);
-  if (!locations) return null;
   const router = useRouter();
 
   useEffect(() => {
@@ -23,6 +22,8 @@ const UserLocation = ({ data, id }: Prop) => {
       setShowData(locations);
     }
   }, [id, locations]);
+  if (!locations) return null;
+
   return (
     <Box
       sx={{
@@ -51,7 +52,7 @@ const UserLocation = ({ data, id }: Prop) => {
             fontWeight: "bold",
           }}
         >
-          Places You Don't Want To Miss
+          Places You Don&apos;t Want To Miss
         </Typography>
       </Box>
       <Box

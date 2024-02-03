@@ -84,7 +84,7 @@ export default function NewAirLine({ open, setOpen, busData }: Props) {
     } else {
       setNewBus(defaultBus);
     }
-  }, [open]);
+  }, [open, busData]);
 
   return (
     <Box>

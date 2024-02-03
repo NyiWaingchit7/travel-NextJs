@@ -53,7 +53,7 @@ const NewHotel = ({ open, setOpen, hotelData }: props) => {
     } else {
       setNewHotel(defaultHotel);
     }
-  }, [open]);
+  }, [open, hotelData]);
   return (
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>
