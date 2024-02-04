@@ -92,9 +92,7 @@ const TouristGuideDetail = () => {
             width: { xs: "80%", md: "50%" },
             display: "flex",
             flexDirection: "column",
-
             alignItems: "center",
-
             borderRadius: 3,
             p: 1,
           }}
@@ -113,7 +111,7 @@ const TouristGuideDetail = () => {
           >
             <Box
               component="img"
-              sx={{ width: "100%", borderRadius: 3 }}
+              sx={{ width: "100%", height: "300px", borderRadius: 3 }}
               src={data.assetUrl || "/default-image.jpg"}
             />
             <Button

@@ -61,7 +61,7 @@ const UserTouristGuideCard = ({
         </Box>
         <CardMedia
           component="img"
-          sx={{ width: 151 }}
+          sx={{ width: 151, height: 180 }}
           image={assetUrl ? assetUrl : "/touristGuidePhoto.jpg"}
           alt="tourist guide photo"
         />
@@ -77,9 +77,10 @@ const UserTouristGuideCard = ({
         <CardMedia
           component="img"
           sx={{
-            width: { xs: 151, sm: 200 },
+            width: { xs: 151, sm: 180 },
             height: { sm: 250 },
             borderRadius: 2,
+            objectFit: "cover",
           }}
           image={assetUrl || "/touristGuidePhoto.jpg"}
           alt="tourist guide photo"
