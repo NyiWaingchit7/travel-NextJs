@@ -19,6 +19,7 @@ const UserCity = () => {
         bgcolor: "info.main",
         flexDirection: "column",
         boxShadow: 2,
+        p: 1,
       }}
     >
       <Box>
@@ -34,6 +35,7 @@ const UserCity = () => {
             }}
           >
             <Typography
+              textAlign="center"
               sx={{
                 fontSize: { xs: "0.8rem", sm: "1.5rem" },
                 fontWeight: "bold",
@@ -92,7 +94,7 @@ const UserCity = () => {
                     component="img"
                     sx={{
                       width: "100%",
-                      height: { xs: "300px", sm: "400px" },
+                      height: { xs: "320px", md: "460px" },
                       borderRadius: 1,
                       opacity: "0.9",
                     }}

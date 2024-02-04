@@ -40,7 +40,7 @@ const UserTouristGuides = ({ data, id }: Prop) => {
       >
         <Typography
           textAlign={"center"}
-          sx={{ fontSize: { xs: "1.3rem", sm: "1.5rem" }, fontWeight: "bold" }}
+          sx={{ fontSize: { xs: "0.8rem", sm: "1.5rem" }, fontWeight: "bold" }}
         >
           We Also Have Tourist Guides For You
         </Typography>
