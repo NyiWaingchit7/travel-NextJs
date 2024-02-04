@@ -65,7 +65,7 @@ const NewRoom = ({ open, setOpen, roomData }: props) => {
     } else {
       setNewRoom(defaultRoom);
     }
-  }, [open]);
+  }, [open, roomData]);
   return (
     <Box>
       <Dialog open={open} onClose={() => setOpen(false)}>

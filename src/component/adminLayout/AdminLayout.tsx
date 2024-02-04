@@ -4,7 +4,7 @@ import AdminTopBar from "./AdminTopBar";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import AdminSideBar from "./AdminSideBar";
-import { useAppDispatch } from "@/store/hook";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { fetchAppData } from "@/store/slices/appSlice";
 interface Prop {
   children: ReactNode;
@@ -12,13 +12,20 @@ interface Prop {
 
 const AdminLayout = ({ children }: Prop) => {
   const { data } = useSession();
-  const router = useRouter();
+  const { isReady, ...router } = useRouter();
   const dispatch = useAppDispatch();
+  const { init } = useAppSelector((state) => state.app);
   useEffect(() => {
-    if (data) {
+    if (data && !init) {
+      localStorage.setItem("login", data?.user?.name as string);
       dispatch(fetchAppData());
+    } else {
+      const check = localStorage.getItem("login");
+      if (!check) {
+        router.push("/admin");
+      }
     }
-  }, [data]);
+  }, [data, isReady]);
 
   return (
     <Box>

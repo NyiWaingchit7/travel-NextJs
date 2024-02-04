@@ -3,6 +3,7 @@ import UserBusAirLineCard from "./cards/UserBusAirLineCard";
 
 const UserBusAirLineArray = [
   {
+    id: 1,
     title: "Bus",
     description:
       "the ticket system is  not ready yet.but we have best company of buses for transportation. you can search your bus by your current city and contact with phone number and address",
@@ -10,6 +11,7 @@ const UserBusAirLineArray = [
     assetUrl: "/Bus.jpg",
   },
   {
+    id: 2,
     title: "Air Line",
     description:
       "the ticket system is  not ready yet.but we have best company of air-lines for transportation. you can search your flight by your current city and contact with phone number and address",
@@ -61,6 +63,7 @@ const UserBusAirLineSection = () => {
       >
         {UserBusAirLineArray.map((item) => (
           <UserBusAirLineCard
+            key={item.id}
             title={item.title}
             description={item.description}
             href={item.href}

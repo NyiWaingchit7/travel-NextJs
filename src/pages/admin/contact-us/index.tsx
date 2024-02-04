@@ -2,7 +2,7 @@ import MessageCard from "@/component/cards/MessageCard";
 import { useAppSelector } from "@/store/hook";
 import { Box } from "@mui/material";
 
-const contactUs = () => {
+const ContactUs = () => {
   const data = useAppSelector((store) => store.contactUs.items);
   if (!data) return null;
   return (
@@ -17,7 +17,7 @@ const contactUs = () => {
             mt: 2,
           }}
         >
-          {data.map((item) => (
+          {data?.map((item) => (
             <MessageCard
               key={item.id}
               name={item.name}
@@ -32,4 +32,4 @@ const contactUs = () => {
     </Box>
   );
 };
-export default contactUs;
+export default ContactUs;

@@ -100,11 +100,20 @@ const UserCity = () => {
                     }}
                     src={item.assetUrl || "/Yangon.jpg"}
                   />
-                  <Box sx={{ position: "absolute", top: 30 }}>
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: 30,
+                      bgcolor: "success.main",
+                      px: 1,
+                      borderRadius: 2,
+                      boxShadow: 2,
+                    }}
+                  >
                     <Typography
                       fontWeight={"bold"}
                       color="info.main"
-                      sx={{ fontSize: { xs: "1.3rem", sm: "2rem" } }}
+                      sx={{ fontSize: { xs: "1.3rem", sm: "1.5rem" } }}
                     >
                       {item.name}
                     </Typography>

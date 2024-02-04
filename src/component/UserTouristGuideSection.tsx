@@ -54,6 +54,7 @@ const UserTouristGuides = ({ data, id }: Prop) => {
           mt: 2,
           maxWidth: "800px",
           mx: "auto",
+          mb: 5,
         }}
       >
         {showData.slice(0, 4).map((item) => (

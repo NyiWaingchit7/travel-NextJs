@@ -33,7 +33,10 @@ const AdminTopBar = () => {
             <Box sx={{ display: { xs: "none", md: "block" } }}>
               <Button
                 variant="contained"
-                onClick={() => signOut({ callbackUrl: "/admin" })}
+                onClick={() => {
+                  signOut({ callbackUrl: "/admin" });
+                  localStorage.removeItem("login");
+                }}
                 color="success"
                 sx={{ color: "info.main" }}
               >
@@ -76,7 +79,10 @@ const AdminTopBar = () => {
         >
           <Button
             variant="contained"
-            onClick={() => signOut({ callbackUrl: "/admin" })}
+            onClick={() => {
+              signOut({ callbackUrl: "/admin" });
+              localStorage.removeItem("login");
+            }}
             color="success"
             sx={{ mt: 4, color: "info.main" }}
           >
