@@ -170,7 +170,7 @@ export const cates = [
   {
     id: 1,
     name: "Home",
-    linkTag: "/user/home",
+    linkTag: "/",
   },
   {
     id: 2,

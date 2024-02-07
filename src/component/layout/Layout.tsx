@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import AdminLayout from "../adminLayout/AdminLayout";
 import { Box } from "@mui/material";
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
+import AdminLayout from "../adminLayout/AdminLayout";
 import UserLayout from "../userLayout/UserLayout";
 interface Prop {
   children: ReactNode;
@@ -19,7 +19,7 @@ const Layout = ({ children }: Prop) => {
       </AdminLayout>
     );
   }
-  if (isUser) {
+  if (!isAdmin) {
     return (
       <UserLayout>
         <Box>{children}</Box>

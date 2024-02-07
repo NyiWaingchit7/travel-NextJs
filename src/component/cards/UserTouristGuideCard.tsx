@@ -22,9 +22,9 @@ const UserTouristGuideCard = ({
   language,
 }: Props) => {
   const router = useRouter();
-  const isHome = router.pathname.includes("home");
+  const notHome = router.pathname.includes("user");
 
-  if (isHome) {
+  if (!notHome) {
     return (
       <Card
         key={key}
